@@ -28,6 +28,13 @@ public class Vehicle
     return LicenseNo;
   }
 
+  public void changeCar(String licenseNo, String color, String carBrand)
+  {
+    this.LicenseNo = licenseNo;
+    this.Color = color;
+    this.CarBrand = carBrand;
+  }
+
   @Override public String toString()
   {
     return "Vehicle{" + "LicenseNo='" + LicenseNo + '\'' + ", Color='" + Color
