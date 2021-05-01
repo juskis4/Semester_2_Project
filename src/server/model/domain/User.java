@@ -9,12 +9,13 @@ public class User
   private String firstname;
   private String lastname;
 
-  public User()
+  public User(Login login)
   {
     this.firstname = null;
     this.lastname = null;
     this.vehicle = null;
     this.userRequest = null;
+    this.login = login;
   }
 
   public void setFirstname(String firstname)
