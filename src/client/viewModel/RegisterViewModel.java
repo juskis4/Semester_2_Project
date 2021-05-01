@@ -2,12 +2,13 @@ package client.viewModel;
 
 import client.model.Model;
 
-public class LoginViewModel
+public class RegisterViewModel
 {
-  public LoginViewModel(Model model)
+  public RegisterViewModel(Model model)
   {
 
   }
+
   public void reset()
   {
   }
