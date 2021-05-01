@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: E2E8CE;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.LoginView">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: E2E8CE;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.LoginViewController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="191.0" style="-fx-background-color: ACBFA4;">
          <children>
@@ -55,9 +55,9 @@
             <Font name="Malgun Gothic Semilight" size="18.0" />
          </font>
       </Text>
-      <TextField layoutX="331.0" layoutY="134.0" style="-fx-background-color: F7F9F1;" />
-      <TextField layoutX="331.0" layoutY="182.0" style="-fx-background-color: F7F9F1;" />
-      <Button layoutX="434.0" layoutY="228.0" mnemonicParsing="false" style="-fx-background-color: F7F9F1;" text="Login">
+      <TextField fx:id="usernameField" layoutX="331.0" layoutY="134.0" style="-fx-background-color: F7F9F1;" />
+      <TextField fx:id="passwordField" layoutX="331.0" layoutY="182.0" style="-fx-background-color: F7F9F1;" />
+      <Button layoutX="434.0" layoutY="228.0" mnemonicParsing="false" onAction="#onLogin" style="-fx-background-color: F7F9F1;" text="Login">
          <font>
             <Font name="Malgun Gothic Semilight" size="13.0" />
          </font>
