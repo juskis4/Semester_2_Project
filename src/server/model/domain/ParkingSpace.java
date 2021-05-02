@@ -4,6 +4,7 @@ public class ParkingSpace
 {
   private boolean isOccupied;
   private String nameOfParkingSpace;
+  
 
   public ParkingSpace(String nameOfParkingSpace)
   {

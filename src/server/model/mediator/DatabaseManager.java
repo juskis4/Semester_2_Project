@@ -62,7 +62,7 @@ public class DatabaseManager implements ParkingDatabase
     {
       e.printStackTrace();
     }
-    
+
   }
 
 }

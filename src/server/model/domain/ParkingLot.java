@@ -6,4 +6,50 @@ public class ParkingLot
 {
   private ArrayList<ParkingSpace> parkingSpaces;
 
+  public ParkingLot()
+  {
+    this.parkingSpaces = new ArrayList<>();
+    //Adding all the parking spaces to the parking lot
+    for(int i = 0; i < 6; i++)
+    {
+      ParkingSpace aRow = new ParkingSpace("A" + i);
+      ParkingSpace bRow = new ParkingSpace("B" + i);
+      ParkingSpace cRow = new ParkingSpace("C" + i);
+      parkingSpaces.add(aRow);
+      parkingSpaces.add(bRow);
+      parkingSpaces.add(cRow);
+    }
+  }
+
+  public ArrayList<ParkingSpace> getParkingSpaces()
+  {
+    return parkingSpaces;
+  }
+
+  //Get parking space by the name of it
+  public ParkingSpace getParkingSpaceByName(String name)
+  {
+    for(int i = 0; i<parkingSpaces.size(); i++)
+    {
+      if(parkingSpaces.get(i).getNameOfParkingSpace().equals(name))
+      {
+        return parkingSpaces.get(i);
+      }
+    }
+    return null;
+  }
+
+  //Get all the not occupied parking spaces
+  public ArrayList<ParkingSpace> notOccupiedParkingSpaces()
+  {
+    ArrayList<ParkingSpace> notOccupied = new ArrayList<>();
+    for(int i = 0; i<parkingSpaces.size(); i++)
+    {
+      if(!(parkingSpaces.get(i).getIsOccupied()))
+      {
+        notOccupied.add(parkingSpaces.get(i));
+      }
+    }
+    return notOccupied;
+  }
 }
