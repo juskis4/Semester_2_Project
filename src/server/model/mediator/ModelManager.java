@@ -1,4 +1,4 @@
-package server.mediator;
+package server.model.mediator;
 
 import server.model.domain.ParkingLot;
 
