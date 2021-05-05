@@ -1,3 +1,6 @@
 package server.viewModel;
 
-public class Rename {
+public class Rename
+{
+}
+

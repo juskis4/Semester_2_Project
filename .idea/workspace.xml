@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="8964938e-abdd-42b8-85ce-5444bd0f36d7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/server/model/domain/Queue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/mediator/RemoteInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/model/RMIClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/model/domain/RMIServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/model/domain/ParkingLot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/domain/ParkingLot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/model/Rename.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/model/domain/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/domain/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/viewModel/Rename.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/viewModel/Rename.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,13 +46,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/client/SeverMain.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/client/mediator/Rename.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/client/MyApplication.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/client/model/Rename.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/server/view/Rename.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/server/model/Rename.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/server/view/Rename.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/server/viewModel/Rename.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/client/SeverMain.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -101,5 +122,11 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="765" y="246" key="#com.intellij.ide.util.MemberChooser" timestamp="1620238377645">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="765" y="246" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1620238377645" />
   </component>
 </project>
