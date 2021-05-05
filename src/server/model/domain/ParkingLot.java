@@ -67,4 +67,6 @@ public class ParkingLot
     }
     return notOccupied;
   }
+
+  //TODO: 05/05/21  ADD A QUEUE ELEMENT OR DECIDE TO USE QUEUEADT INSTEAD
 }
