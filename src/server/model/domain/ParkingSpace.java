@@ -27,6 +27,14 @@ public class ParkingSpace
     return isOccupied;
   }
 
+  public boolean equals(Object obj)
+  {
+    if(!(obj instanceof ParkingSpace))
+      return false;
+    ParkingSpace other = (ParkingSpace) obj;
+    return isOccupied == other.isOccupied && nameOfParkingSpace.equals(other.nameOfParkingSpace);
+  }
+
   @Override public String toString()
   {
     return "ParkingSpace{" + "isOccupied=" + isOccupied

@@ -39,6 +39,21 @@ public class ParkingLot
     return null;
   }
 
+  public int size()
+  {
+    return parkingSpaces.size();
+  }
+
+  public ParkingSpace getParkingSpace(int index)
+  {
+    return parkingSpaces.get(index);
+  }
+
+  public boolean isOcuppied(int index)
+  {
+    return parkingSpaces.get(index).getIsOccupied();
+  }
+
   //Get all the not occupied parking spaces
   public ArrayList<ParkingSpace> notOccupiedParkingSpaces()
   {
