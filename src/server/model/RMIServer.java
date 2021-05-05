@@ -1,6 +1,7 @@
-package server.model.domain;
+package server.model;
 
 import client.mediator.RemoteInterface;
+import server.model.domain.Login;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
