@@ -4,18 +4,22 @@ public class ParkingSpace
 {
   private boolean isOccupied;
   private String nameOfParkingSpace;
+  private User user;
   
 
   public ParkingSpace(String nameOfParkingSpace)
   {
     this.nameOfParkingSpace = nameOfParkingSpace;
     isOccupied = false;
+    this.user = null;
   }
 
-  public void setOccupied(boolean isOccupied)
+  public void setOccupied(boolean isOccupied, User user)
   {
     this.isOccupied = isOccupied;
+    this.user = user;
   }
+
 
   public String getNameOfParkingSpace()
   {
