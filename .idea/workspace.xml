@@ -19,14 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8964938e-abdd-42b8-85ce-5444bd0f36d7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/server/model/domain/Time.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/mediator/RemoteInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/mediator/RemoteInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/model/domain/RMIServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/domain/RMIServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/model/mediator/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/mediator/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/model/mediator/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/mediator/ModelManager.java" afterDir="false" />
-    </list>
+    <list default="true" id="8964938e-abdd-42b8-85ce-5444bd0f36d7" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,12 +38,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/client/SeverMain.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/client/mediator/Rename.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/client/MyApplication.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/server/model/Rename.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/server/view/Rename.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/server/viewModel/Rename.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/server/view/Rename.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/client/MyApplication.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/client/mediator/Rename.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/client/SeverMain.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/server/model/Rename.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -70,9 +63,10 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Global Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.1321004" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -121,11 +115,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="765" y="246" key="#com.intellij.ide.util.MemberChooser" timestamp="1621245093748">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="765" y="246" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1621245093748" />
   </component>
 </project>

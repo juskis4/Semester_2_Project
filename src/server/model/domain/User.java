@@ -20,11 +20,19 @@ public class User
 
   public void setFirstname(String firstname)
   {
+    if(firstname == null)
+    {
+      firstname = "Not set.";
+    }
     this.firstname = firstname;
   }
 
   public void setLastname(String lastname)
   {
+    if(lastname == null)
+    {
+      lastname = "Not set.";
+    }
     this.lastname = lastname;
   }
 
