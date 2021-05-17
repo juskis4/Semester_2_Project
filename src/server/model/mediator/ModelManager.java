@@ -1,8 +1,6 @@
 package server.model.mediator;
 
-import server.model.domain.ParkingLot;
-import server.model.domain.ParkingSpace;
-import server.model.domain.Vehicle;
+import server.model.domain.*;
 
 public class ModelManager implements Model
 {
@@ -15,7 +13,7 @@ public class ModelManager implements Model
   }
 
   @Override public void registerSpace(String username, Vehicle vehicle,
-      ParkingSpace parkingSpace)
+      ParkingSpace parkingSpace, Time time, Date date)
   {
     // TO BE IMPLEMENTED
   }
