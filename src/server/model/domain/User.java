@@ -66,7 +66,10 @@ public class User
     return lastname;
   }
 
-
+  public String getUsername()
+  {
+    return username;
+  }
   @Override public String toString()
   {
     return "User{" + "vehicle=" + vehicle + ", firstname='"

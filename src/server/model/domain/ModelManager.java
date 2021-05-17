@@ -4,13 +4,13 @@ public class ModelManager implements Model{
 
     private ParkingLot parkingLot;
     private Login login;
-    private User user;
+    private UserList userList;
 
     public ModelManager()
     {
         parkingLot = new ParkingLot();
         login = new Login();
-        user = new User(login);
+        userList = new UserList();
     }
 
     @Override
@@ -40,12 +40,12 @@ public class ModelManager implements Model{
 
     @Override
     public boolean login(String userName, String password) {
-        return user.isCorrectLogin(userName,password);
+        return login.isCorrectLogin(userName,password);
     }
 
     @Override
-    public void registerFirstAndLastName(String firstName, String lastName) {
-        user.setFirstname(firstName);
+    public void registerFirstAndLastName(String firstName, String lastName, String username) {
+        userList..setFirstname(firstName);
         user.setLastname(lastName);
     }
 }
