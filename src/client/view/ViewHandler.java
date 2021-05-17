@@ -15,6 +15,7 @@ public class ViewHandler
   private LoginViewController loginViewController;
   private RegisterViewController registerViewController;
   private ChangeCarViewController changeCarViewController;
+  private ProfileViewController profileViewController;
 
   public ViewHandler(ViewModelFactory viewModelFactory)
   {
@@ -126,5 +127,12 @@ public class ViewHandler
     return changeCarViewController.getRoot();
   }
 
+  public Region loadProfileView(String fxmlFile)
+  {
+    if(profileViewController == null)
+    {
+      
+    }
+  }
 
 }
