@@ -1,12 +1,14 @@
 package server.model.mediator;
 
-import server.model.domain.Date;
-import server.model.domain.ParkingSpace;
-import server.model.domain.Time;
-import server.model.domain.Vehicle;
+import server.model.domain.*;
 
 public interface Model
 {
   void registerSpace(String username, Vehicle vehicle,
       ParkingSpace parkingSpace, Time time, Date date);
+  void reserveParkingSpace(ParkingSpace parkingSpace, User user);
+  void reserveParkingSpace(int index, User user);
+  void register(String userName, String password);
+  boolean login(String userName, String password);
+  void registerFirstAndLastName(String firstName, String lastName);
 }

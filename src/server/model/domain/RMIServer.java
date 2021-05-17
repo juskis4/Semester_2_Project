@@ -1,7 +1,6 @@
 package server.model.domain;
 
 import client.mediator.RemoteInterface;
-import client.model.RMIClient;
 import server.model.mediator.Model;
 
 import java.net.MalformedURLException;
