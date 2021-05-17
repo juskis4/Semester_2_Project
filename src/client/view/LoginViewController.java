@@ -26,6 +26,10 @@ public class LoginViewController
     this.viewModel = viewModel;
     this.viewHandler = viewHandler;
     this.root = root;
+
+    usernameField.textProperty().bindBidirectional(viewModel.getUserNameProperty());
+    passwordField.textProperty().bindBidirectional(viewModel.getPasswordProperty());
+    errorLabel.textProperty().bindBidirectional(viewModel.getErrorProperty());
   }
 
   public Region getRoot()
@@ -40,6 +44,8 @@ public class LoginViewController
 
   @FXML private void onLogin()
   {
+    if(viewModel.login()){
 
+    }
   }
 }

@@ -43,6 +43,6 @@ public class RegisterViewModel
 
   public void register()
   {
-
+    model.register(userNameProperty.get(), passwordProperty.get());
   }
 }

@@ -1,6 +1,5 @@
 package client.view;
 
-import client.viewModel.LoginViewModel;
 import client.viewModel.RegisterViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -18,7 +17,7 @@ public class RegisterViewController
 
   public RegisterViewController()
   {
-
+    //////
   }
 
   public void init(ViewHandler viewHandler, RegisterViewModel viewModel, Region root)
@@ -26,6 +25,10 @@ public class RegisterViewController
     this.viewModel = viewModel;
     this.viewHandler = viewHandler;
     this.root = root;
+
+    usernameField.textProperty().bindBidirectional(viewModel.getUserNameProperty());
+    passwordField.textProperty().bindBidirectional(viewModel.getPasswordProperty());
+    errorLabel.textProperty().bindBidirectional(viewModel.getErrorProperty());
   }
 
   public Region getRoot()
@@ -40,6 +43,6 @@ public class RegisterViewController
 
   @FXML private void onRegister()
   {
-
+    viewModel.register();
   }
 }

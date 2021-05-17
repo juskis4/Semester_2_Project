@@ -1,8 +1,10 @@
 package client.model;
 
-public interface Model
+import utility.observer.javaobserver.UnnamedPropertyChangeSubject;
+
+public interface Model extends UnnamedPropertyChangeSubject
 {
     void register(String userName, String password);
     boolean login(String userName, String password);
-    void registerFirstAndLastName(String firstName, String lastName);
+    void registerFirstAndLastName(String firstName, String lastName, String userName);
 }

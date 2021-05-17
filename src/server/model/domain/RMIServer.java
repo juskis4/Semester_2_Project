@@ -10,7 +10,6 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class RMIServer implements RemoteInterface
 {
-  private Login login;
   private Model model;
 
   public RMIServer(Model model)
@@ -22,19 +21,23 @@ public class RMIServer implements RemoteInterface
   {
     UnicastRemoteObject.exportObject(this, 0);
     Naming.rebind("ParkingLot", this);
-    login = new Login();
   }
 
-  @Override public void login(String username, String password)
+  @Override public boolean login(String username, String password)
       throws RemoteException
   {
-
+    return model.login(username, password);
   }
 
   @Override public void register(String username, String password)
       throws RemoteException
   {
-      login.register(username, password);
+      model.register(username,password);
+  }
+
+  @Override
+  public void registerFirstAndLastName(String firstName, String lastName,String userName) throws RemoteException {
+    model.registerFirstAndLastName(firstName,lastName,userName);
   }
 
   @Override public void registerSpace(String username, Vehicle vehicle,

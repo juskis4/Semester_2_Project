@@ -1,12 +1,17 @@
 package client.mediator;
 
-import java.rmi.Naming;
+import client.model.Model;
 
-public class RMIClient implements RemoteInterface{
+import java.rmi.Naming;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class RMIClient extends UnicastRemoteObject {
 
     private RemoteInterface server;
 
-    public RMIClient()
+    public RMIClient() throws RemoteException
     {
         try
         {
@@ -18,5 +23,18 @@ public class RMIClient implements RemoteInterface{
         }
     }
 
+    public void register(String userName, String password) throws RemoteException
+    {
+        server.register(userName,password);
+    }
 
+    public boolean login(String userName, String password) throws RemoteException
+    {
+        return server.login(userName,password);
+    }
+
+    public void registerFirstAndLastName(String firstName, String lastName, String userName) throws RemoteException
+    {
+        server.registerFirstAndLastName(firstName,lastName,userName);
+    }
 }
