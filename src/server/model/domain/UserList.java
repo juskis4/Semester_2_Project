@@ -22,4 +22,10 @@ public class UserList
     }
     return null;
   }
+
+  public void addUser(String username)
+  {
+    User user1 = new User(username);
+    this.users.add(user1);
+  }
 }
