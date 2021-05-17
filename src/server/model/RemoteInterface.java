@@ -1,4 +1,4 @@
-package client.mediator;
+package server.model;
 
 import server.model.domain.Date;
 import server.model.domain.ParkingSpace;

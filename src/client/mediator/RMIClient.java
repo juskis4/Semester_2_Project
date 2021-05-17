@@ -1,13 +1,14 @@
 package client.mediator;
 
 import client.model.Model;
+import server.model.RemoteInterface;
 
 import java.rmi.Naming;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class RMIClient extends UnicastRemoteObject {
+public class RMIClient {
 
     private RemoteInterface server;
 

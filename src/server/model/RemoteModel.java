@@ -1,18 +1,23 @@
-package server.model.domain;
+package server.model;
 
-import client.mediator.RemoteInterface;
+
+import server.model.domain.Date;
+import server.model.domain.ParkingSpace;
+import server.model.domain.Time;
+import server.model.domain.Vehicle;
 import server.model.mediator.Model;
+import server.model.mediator.ModelManager;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class RMIServer implements RemoteInterface
+public class RemoteModel extends UnicastRemoteObject implements RemoteInterface
 {
   private Model model;
 
-  public RMIServer(Model model)
+  public RemoteModel(Model model) throws RemoteException
   {
     this.model = model;
   }
@@ -32,7 +37,7 @@ public class RMIServer implements RemoteInterface
   @Override public void register(String username, String password)
       throws RemoteException
   {
-      model.register(username,password);
+    model.register(username,password);
   }
 
   @Override
