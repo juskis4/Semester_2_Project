@@ -39,8 +39,8 @@ public class RMIServer implements RemoteInterface
   }
 
   @Override public void registerSpace(String username, Vehicle vehicle,
-      ParkingSpace parkingSpace) throws RemoteException
+      ParkingSpace parkingSpace, Time time, Date date) throws RemoteException
   {
-      model.registerSpace(username, vehicle, parkingSpace);
+    model.registerSpace(username, vehicle, parkingSpace, time, date);
   }
 }
