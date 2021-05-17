@@ -24,19 +24,6 @@ public class ModelManager implements Model{
         }
     }
 
-    @Override
-    public void reserveParkingSpace(int index, User user)
-    {
-        if(!parkingLot.getParkingSpace(index).getIsOccupied())
-        {
-            parkingLot.getParkingSpace(index).setOccupied(true, user);
-        }
-    }
-
-    @Override
-    public void register(String userName, String password) {
-        login.register(userName,password);
-    }
 
     @Override
     public boolean login(String userName, String password) {
@@ -48,4 +35,5 @@ public class ModelManager implements Model{
         userList..setFirstname(firstName);
         user.setLastname(lastName);
     }
+
 }
