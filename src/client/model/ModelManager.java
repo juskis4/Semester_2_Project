@@ -71,4 +71,9 @@ public class ModelManager implements Model
         client.registerVehicle(userName, licenseNo, color, carBrand);
     }
 
+    @Override
+    public ParkingLot getParkingLot() {
+        return client.getParkingLot();
+    }
+
 }

@@ -57,4 +57,9 @@ public class RemoteModel extends UnicastRemoteObject implements RemoteInterface
   {
     model.registerVehicle(username, licenseNo, color, carBrand);
   }
+
+  @Override
+  public ParkingLot getParkingLot() {
+    return model.getParkingLot();
+  }
 }
