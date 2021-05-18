@@ -54,4 +54,10 @@ public class ProfileViewController {
 
         }
     }
+
+    @FXML
+    private void onChange()
+    {
+        viewModel.changeNames();
+    }
 }
