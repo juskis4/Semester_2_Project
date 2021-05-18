@@ -64,6 +64,6 @@ public class ParkingLotViewModel {
     }
 
     public boolean isOccupied(String name){
-        
+
     }
 }
