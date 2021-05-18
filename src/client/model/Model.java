@@ -13,4 +13,5 @@ public interface Model
         throws RemoteException;
     User getUserByUserName() throws RemoteException;
     void registerVehicle(String licenseNo, String color, String carBrand) throws RemoteException;
+    ParkingLot getParkingLot();
 }

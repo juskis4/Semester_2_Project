@@ -56,4 +56,8 @@ public class RMIClient {
     {
         server.registerVehicle(username, licenseNo, color, carBrand);
     }
+
+    public ParkingLot getParkingLot(){
+        return server.getParkingLot();
+    }
 }

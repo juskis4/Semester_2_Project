@@ -104,7 +104,6 @@ public class ParkingLotViewController implements UnnamedPropertyChangeSubject {
         setColour(spaceD5,"D5");
         setColour(spaceD6,"D6");
     }
-    }
 
     public Region getRoot()
     {
