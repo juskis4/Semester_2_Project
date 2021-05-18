@@ -7,13 +7,11 @@ public class ModelManager implements Model
   private ParkingLot parkingLot;
   private DatabaseManager databaseManager;
   private Login login;
-  private UserList userList;
 
   public ModelManager()
   {
     parkingLot = new ParkingLot();
     login = new Login();
-    userList = new UserList();
   }
 
   @Override public void registerSpace(String username, Vehicle vehicle,
@@ -54,7 +52,12 @@ public class ModelManager implements Model
 
   @Override
   public void registerFirstAndLastName(String firstName, String lastName, String username) {
-    userList.getUserByUsername(username).setFirstname(firstName);
-    userList.getUserByUsername(username).setLastname(lastName);
+    login.getUserList().getUserByUsername(username).setFirstname(firstName);
+    login.getUserList().getUserByUsername(username).setLastname(lastName);
+  }
+
+  @Override
+  public String getUserName() {
+    return login.getUserName();
   }
 }
