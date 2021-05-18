@@ -8,6 +8,8 @@ import server.model.mediator.ModelManager;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
 public class RemoteModel extends UnicastRemoteObject implements RemoteInterface
@@ -19,10 +21,25 @@ public class RemoteModel extends UnicastRemoteObject implements RemoteInterface
     this.model = model;
   }
 
-  public void start() throws RemoteException, MalformedURLException
+  @Override
+  public void startRegistry() throws RemoteException
   {
-    UnicastRemoteObject.exportObject(this, 0);
-    Naming.rebind("ParkingLot", this);
+    try {
+      Registry reg = LocateRegistry.createRegistry(1099);
+      System.out.println("Registry started...");
+    }
+    catch (java.rmi.server.ExportException e)
+    {
+      System.out.println("Registry already started? Message: " + e.getMessage());
+    }
+  }
+
+  @Override
+  public void startServer() throws RemoteException, MalformedURLException
+  {
+        UnicastRemoteObject.exportObject(this, 0);
+        Naming.rebind("ParkingLotSystem", this);
+        System.out.println("Server started...");
   }
 
   @Override public boolean login(String username, String password)
@@ -59,7 +76,7 @@ public class RemoteModel extends UnicastRemoteObject implements RemoteInterface
   }
 
   @Override
-  public ParkingLot getParkingLot() {
+  public ParkingLot getParkingLot() throws RemoteException {
     return model.getParkingLot();
   }
 }

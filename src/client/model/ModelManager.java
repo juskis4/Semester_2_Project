@@ -64,7 +64,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public ParkingLot getParkingLot() {
+    public ParkingLot getParkingLot() throws RemoteException {
         return client.getParkingLot();
     }
 

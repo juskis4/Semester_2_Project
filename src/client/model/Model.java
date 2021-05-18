@@ -18,5 +18,5 @@ public interface Model {
 
     void registerVehicle(String licenseNo, String color, String carBrand) throws RemoteException;
 
-    ParkingLot getParkingLot();
+    ParkingLot getParkingLot() throws RemoteException;
 }

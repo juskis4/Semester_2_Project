@@ -136,9 +136,11 @@ public class ParkingLotViewController implements UnnamedPropertyChangeSubject {
     private void setColour(Label space, String name) throws RemoteException {
         if (viewModel.isOccupied(name)) {
             space.setTextFill(Color.rgb(255, 0, 0));
-        } else if (space.isYourCar()) {
-            space.setTextFill(Color.rgb(0, 0, 255));
-        } else {
+        }
+// else if (space.isYourCar()) {
+////            space.setTextFill(Color.rgb(0, 0, 255));
+//        }
+        else {
             spaceD6.setTextFill(Color.rgb(0, 255, 0));
         }
     }

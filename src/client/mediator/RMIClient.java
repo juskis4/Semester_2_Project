@@ -15,7 +15,7 @@ public class RMIClient {
 
     public RMIClient() throws RemoteException {
         try {
-            server = (RemoteInterface) Naming.lookup("rmi://localhost:1099/ParkingLot");
+            server = (RemoteInterface) Naming.lookup("rmi://localhost:1099/ParkingLotSystem");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -48,7 +48,7 @@ public class RMIClient {
         server.registerVehicle(username, licenseNo, color, carBrand);
     }
 
-    public ParkingLot getParkingLot() {
+    public ParkingLot getParkingLot() throws RemoteException{
         return server.getParkingLot();
     }
 }

@@ -17,19 +17,31 @@ public class CancelReservationViewModel {
 
     public CancelReservationViewModel(Model model) throws RemoteException
     {
-        this.model = model;
-        errorLabelProperty = new SimpleStringProperty("");
-        authorNameProperty = new SimpleStringProperty(model.getUserByUserName().getUsername());
-        parkingSpaceFieldProperty = new SimpleStringProperty(model.getParkingLot().getParkingSpaceByName(authorNameProperty.get()).getNameOfParkingSpace());
-        vehicleInfoProperty = new SimpleStringProperty(model.getUserByUserName().getVehicle().toString());
+        try {
+            this.model = model;
+            errorLabelProperty = new SimpleStringProperty("");
+            authorNameProperty = new SimpleStringProperty(model.getUserByUserName().getUsername());
+            parkingSpaceFieldProperty = new SimpleStringProperty(model.getParkingLot().getParkingSpaceByName(authorNameProperty.get()).getNameOfParkingSpace());
+            vehicleInfoProperty = new SimpleStringProperty(model.getUserByUserName().getVehicle().toString());
+        }
+        catch (RemoteException ignored)
+        {
+
+        }
     }
 
     public void reset()
     {
-        errorLabelProperty = new SimpleStringProperty("");
-        authorNameProperty = new SimpleStringProperty(model.getUserByUserName().getUsername());
-        parkingSpaceFieldProperty = new SimpleStringProperty(model.getParkingLot().getParkingSpaceByName(authorNameProperty.get()).getNameOfParkingSpace());
-        vehicleInfoProperty = new SimpleStringProperty(model.getUserByUserName().getVehicle().toString());
+        try {
+            errorLabelProperty = new SimpleStringProperty("");
+            authorNameProperty = new SimpleStringProperty(model.getUserByUserName().getUsername());
+            parkingSpaceFieldProperty = new SimpleStringProperty(model.getParkingLot().getParkingSpaceByName(authorNameProperty.get()).getNameOfParkingSpace());
+            vehicleInfoProperty = new SimpleStringProperty(model.getUserByUserName().getVehicle().toString());
+        }
+        catch (RemoteException ignored)
+        {
+
+        }
     }
 
     public StringProperty getErrorLabelProperty()
