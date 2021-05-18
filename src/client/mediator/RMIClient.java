@@ -51,4 +51,10 @@ public class RMIClient {
     {
         return server.getUserByUserName(userName);
     }
+
+    public void registerVehicle(String username, String licenseNo, String color, String carBrand)
+        throws RemoteException
+    {
+        server.registerVehicle(username, licenseNo, color, carBrand);
+    }
 }

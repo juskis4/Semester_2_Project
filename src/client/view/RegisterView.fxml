@@ -19,7 +19,7 @@
                         <Font name="Malgun Gothic Semilight" size="24.0" />
                      </font>
                   </Text>
-                  <Text fill="#262626" layoutX="28.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" wrappingWidth="150.40003147125248">
+                  <Text fill="#262626" layoutX="28.0" layoutY="152.0" onMouseClicked="#onLogin" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" wrappingWidth="150.40003147125248">
                      <font>
                         <Font name="Malgun Gothic Semilight" size="18.0" />
                      </font>

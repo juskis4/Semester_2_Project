@@ -3,9 +3,7 @@ package client.model;
 import client.mediator.RMIClient;
 import server.model.domain.*;
 
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public class ModelManager implements Model
@@ -67,4 +65,11 @@ public class ModelManager implements Model
     public User getUserByUserName() throws RemoteException{
         return client.getUserByUserName(userName);
     }
+
+    @Override public void registerVehicle(String licenseNo,
+        String color, String carBrand) throws RemoteException
+    {
+        client.registerVehicle(userName, licenseNo, color, carBrand);
+    }
+
 }

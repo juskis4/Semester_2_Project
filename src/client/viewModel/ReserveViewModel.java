@@ -14,9 +14,6 @@ public class ReserveViewModel
   private StringProperty licenseNo;
   private StringProperty color;
   private StringProperty carBrand;
-  private StringProperty username;
-  private StringProperty firstName;
-  private StringProperty lastName;
   private StringProperty nameOfParkingSpace;
   private IntegerProperty day;
   private IntegerProperty month;
@@ -33,9 +30,6 @@ public class ReserveViewModel
     this.licenseNo = new SimpleStringProperty("");
     this.color = new SimpleStringProperty("");
     this.carBrand = new SimpleStringProperty("");
-    this.username = new SimpleStringProperty("");
-    this.firstName = new SimpleStringProperty("");
-    this.lastName = new SimpleStringProperty("");
     this.nameOfParkingSpace = new SimpleStringProperty("");
     this.day = new SimpleIntegerProperty(0);
     this.month  = new SimpleIntegerProperty(0);
@@ -62,23 +56,15 @@ public class ReserveViewModel
     return time;
   }
 
-  public User getUser()
-  {
-    User user = new User(username.get());
-    user.setFirstname(firstName.get());
-    user.setLastname(lastName.get());
-    return user;
-  }
-
-  public ParkingSpace getParkingSpace()
+  public ParkingSpace getParkingSpace() throws RemoteException
   {
     ParkingSpace parkingSpace = new ParkingSpace(nameOfParkingSpace.get());
-    parkingSpace.setOccupied(true, getUser());
+    parkingSpace.setOccupied(true, model.getUserByUserName());
     return parkingSpace;
   }
 
   public void registerSpace() throws RemoteException
   {
-    model.registerSpace(username.get(), getVehicle(), getParkingSpace(), getTime(), getDate());
+    model.registerSpace(model.getUserByUserName().getUsername(), getVehicle(), getParkingSpace(), getTime(), getDate());
   }
 }
