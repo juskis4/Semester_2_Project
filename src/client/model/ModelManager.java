@@ -67,4 +67,11 @@ public class ModelManager implements Model
     public User getUserByUserName() throws RemoteException{
         return client.getUserByUserName(userName);
     }
+
+    @Override public void registerVehicle(String username, String licenseNo,
+        String color, String carBrand) throws RemoteException
+    {
+        client.registerVehicle(username, licenseNo, color, carBrand);
+    }
+
 }

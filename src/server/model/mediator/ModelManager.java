@@ -60,4 +60,11 @@ public class ModelManager implements Model
   public User getUserByUserName(String userName) {
     return login.getUserList().getUserByUsername(userName);
   }
+
+  @Override public void registerVehicle(String username, String licenseNo, String color,
+      String carBrand)
+  {
+    login.getUserList().getUserByUsername(username).registerVehicle(licenseNo, color, carBrand);
+  }
+
 }
