@@ -57,7 +57,7 @@ public class ModelManager implements Model
   }
 
   @Override
-  public String getUserName() {
-    return login.getUserName();
+  public User getUserByUserName(String userName) {
+    return login.getUserList().getUserByUsername(userName);
   }
 }

@@ -7,6 +7,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 public class LoginViewController
 {
   @FXML private TextField usernameField;
@@ -47,5 +51,10 @@ public class LoginViewController
     if(viewModel.login()){
 
     }
+  }
+
+  @Override
+  public void propertyChange(PropertyChangeEvent evt) {
+
   }
 }

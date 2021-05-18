@@ -25,15 +25,9 @@ public class RMIClient {
         }
     }
 
-    public void register(String userName, String password) throws RemoteException
-    {
+    public void register(String userName, String password) throws RemoteException {
 
-        server.register(userName,password);
-    }
-
-    public String getUserName() throws RemoteException
-    {
-        return server.getUserName();
+        server.register(userName, password);
     }
 
     public boolean login(String userName, String password) throws RemoteException
@@ -46,9 +40,15 @@ public class RMIClient {
     {
         server.registerFirstAndLastName(firstName,lastName,userName);
     }
+
     public void registerSpace(String username, Vehicle vehicle,
         ParkingSpace parkingSpace, Time time, Date date) throws RemoteException
     {
         server.registerSpace(username, vehicle, parkingSpace, time, date);
+    }
+
+    public User getUserByUserName(String userName) throws RemoteException
+    {
+        return server.getUserByUserName(userName);
     }
 }

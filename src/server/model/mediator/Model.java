@@ -11,5 +11,5 @@ public interface Model
   void register(String userName, String password);
   boolean login(String userName, String password);
   void registerFirstAndLastName(String firstName, String lastName, String username);
-  String getUserName();
+  User getUserByUserName(String userName);
 }

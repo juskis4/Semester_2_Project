@@ -12,9 +12,11 @@ public class ModelManager implements Model
 {
     private PropertyChangeSupport support;
     private RMIClient client;
+    private String userName;
 
     public ModelManager(RMIClient client)
     {
+        userName = null;
         this.client = client;
         support = new PropertyChangeSupport(this);
     }
@@ -33,6 +35,7 @@ public class ModelManager implements Model
     @Override
     public boolean login(String userName, String password) {
         try {
+            this.userName = userName;
             return client.login(userName,password);
         }
         catch (RemoteException ignored)
@@ -45,6 +48,7 @@ public class ModelManager implements Model
     @Override
     public void registerFirstAndLastName(String firstName, String lastName, String userName) {
         try {
+            this.userName = userName;
             client.registerFirstAndLastName(firstName,lastName,userName);
         }
         catch (RemoteException e)
@@ -60,17 +64,7 @@ public class ModelManager implements Model
     }
 
     @Override
-    public void addListener(PropertyChangeListener listener) {
-        support.addPropertyChangeListener(listener);
-    }
-
-    @Override
-    public void removeListener(PropertyChangeListener listener) {
-        support.removePropertyChangeListener(listener);
-    }
-
-    @Override
-    public String getUserName() throws RemoteException {
-        return client.getUserName();
+    public User getUserByUserName() throws RemoteException{
+        return client.getUserByUserName(userName);
     }
 }

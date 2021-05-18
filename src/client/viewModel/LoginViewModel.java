@@ -25,6 +25,10 @@ public class LoginViewModel
     errorProperty.set("");
   }
 
+  public Model getModel() {
+    return model;
+  }
+
   public StringProperty getPasswordProperty()
   {
     return passwordProperty;
