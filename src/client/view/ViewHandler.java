@@ -188,8 +188,7 @@ public class ViewHandler
         loader.setLocation(getClass().getResource(fxmlFile));
         Region root = loader.load();
         parkingLotViewController = loader.getController();
-        parkingLotViewController
-            .init(this, viewModelFactory.getParkingLotViewModel(), root);
+        parkingLotViewController.init(this, viewModelFactory.getParkingLotViewModel(), root);
       }
       catch (IOException e)
       {
