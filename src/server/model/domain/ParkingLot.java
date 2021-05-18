@@ -13,11 +13,16 @@ public class ParkingLot
     for(int i = 0; i < 6; i++)
     {
       ParkingSpace aRow = new ParkingSpace("A" + i);
-      ParkingSpace bRow = new ParkingSpace("B" + i);
-      ParkingSpace cRow = new ParkingSpace("C" + i);
       parkingSpaces.add(aRow);
-      parkingSpaces.add(bRow);
-      parkingSpaces.add(cRow);
+      if(i<5)
+      {
+        ParkingSpace bRow = new ParkingSpace("B" + i);
+        ParkingSpace cRow = new ParkingSpace("C" + i);
+        parkingSpaces.add(bRow);
+        parkingSpaces.add(cRow);
+      }
+      ParkingSpace dRow = new ParkingSpace("D" + i);
+      parkingSpaces.add(dRow);
     }
   }
 
@@ -47,6 +52,18 @@ public class ParkingLot
   public ParkingSpace getParkingSpace(int index)
   {
     return parkingSpaces.get(index);
+  }
+
+  public boolean isOccupiedBySpaceName(String parkingSpaceName)
+  {
+    for(int i = 0; i< parkingSpaces.size(); i++)
+    {
+      if(parkingSpaces.get(i).getNameOfParkingSpace().equals(parkingSpaceName) && parkingSpaces.get(i).getIsOccupied())
+      {
+        return true;
+      }
+    }
+    return false;
   }
 
   public boolean isOccupied(int index)
