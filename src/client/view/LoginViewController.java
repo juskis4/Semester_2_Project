@@ -11,55 +11,51 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class LoginViewController
-{
-  @FXML private TextField usernameField;
-  @FXML private TextField passwordField;
-  @FXML private Label errorLabel;
-  private ViewHandler viewHandler;
-  private Region root;
-  private LoginViewModel viewModel;
+public class LoginViewController {
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private TextField passwordField;
+    @FXML
+    private Label errorLabel;
+    private ViewHandler viewHandler;
+    private Region root;
+    private LoginViewModel viewModel;
 
-  public LoginViewController()
-  {
+    public LoginViewController() {
 
-  }
-
-  public void init(ViewHandler viewHandler, LoginViewModel viewModel, Region root)
-  {
-    this.viewModel = viewModel;
-    this.viewHandler = viewHandler;
-    this.root = root;
-
-    usernameField.textProperty().bindBidirectional(viewModel.getUserNameProperty());
-    passwordField.textProperty().bindBidirectional(viewModel.getPasswordProperty());
-    errorLabel.textProperty().bindBidirectional(viewModel.getErrorProperty());
-  }
-
-  public Region getRoot()
-  {
-    return root;
-  }
-
-  public void reset()
-  {
-    viewModel.reset();
-  }
-
-  @FXML private void onLogin()
-  {
-    if(viewModel.login()){
-      viewHandler.openView("ParkingLotView");
     }
-    else
-    {
-      errorLabel.setText("Wrong password or username!");
-    }
-  }
 
-  @FXML private void onRegister()
-  {
-    viewHandler.openView("Register");
-  }
+    public void init(ViewHandler viewHandler, LoginViewModel viewModel, Region root) {
+        this.viewModel = viewModel;
+        this.viewHandler = viewHandler;
+        this.root = root;
+
+        usernameField.textProperty().bindBidirectional(viewModel.getUserNameProperty());
+        passwordField.textProperty().bindBidirectional(viewModel.getPasswordProperty());
+        errorLabel.textProperty().bindBidirectional(viewModel.getErrorProperty());
+    }
+
+    public Region getRoot() {
+        return root;
+    }
+
+    public void reset() {
+        viewModel.reset();
+    }
+
+    @FXML
+    private void onLogin() {
+        if (viewModel.login()) {
+            viewHandler.openView("ParkingLotView");
+        } else {
+            errorLabel.setText("Wrong password or username!");
+        }
+    }
+
+    @FXML
+    private void onRegister() {
+        viewHandler.openView("Register");
+    }
 
 }

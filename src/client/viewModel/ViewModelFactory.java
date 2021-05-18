@@ -13,6 +13,7 @@ public class ViewModelFactory
   private ParkingLotViewModel parkingLotViewModel;
   private WorkingHoursViewModel workingHoursViewModel;
   private ReserveViewModel reserveViewModel;
+  private CancelReservationViewModel cancelReservationViewModel;
 
   public ViewModelFactory(Model model) throws RemoteException
   {
@@ -23,6 +24,7 @@ public class ViewModelFactory
     this.parkingLotViewModel = new ParkingLotViewModel(model);
     this.workingHoursViewModel = new WorkingHoursViewModel(model);
     this.reserveViewModel = new ReserveViewModel(model);
+    this.cancelReservationViewModel = new CancelReservationViewModel(model);
   }
 
   public ReserveViewModel getReserveViewModel()
@@ -59,5 +61,10 @@ public class ViewModelFactory
   public ProfileViewModel getProfileViewModel()
   {
     return profileViewModel;
+  }
+
+  public CancelReservationViewModel getCancelReservationViewModel()
+  {
+    return cancelReservationViewModel;
   }
 }

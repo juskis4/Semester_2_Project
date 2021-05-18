@@ -16,29 +16,49 @@ import java.rmi.RemoteException;
 
 public class ParkingLotViewController implements UnnamedPropertyChangeSubject {
 
-    @FXML private Label spaceA1;
-    @FXML private Label spaceA2;
-    @FXML private Label spaceA3;
-    @FXML private Label spaceA4;
-    @FXML private Label spaceA5;
-    @FXML private Label spaceA6;
+    @FXML
+    private Label spaceA1;
+    @FXML
+    private Label spaceA2;
+    @FXML
+    private Label spaceA3;
+    @FXML
+    private Label spaceA4;
+    @FXML
+    private Label spaceA5;
+    @FXML
+    private Label spaceA6;
 
-    @FXML private Label spaceB1;
-    @FXML private Label spaceB2;
-    @FXML private Label spaceB3;
-    @FXML private Label spaceB4;
+    @FXML
+    private Label spaceB1;
+    @FXML
+    private Label spaceB2;
+    @FXML
+    private Label spaceB3;
+    @FXML
+    private Label spaceB4;
 
-    @FXML private Label spaceC1;
-    @FXML private Label spaceC2;
-    @FXML private Label spaceC3;
-    @FXML private Label spaceC4;
+    @FXML
+    private Label spaceC1;
+    @FXML
+    private Label spaceC2;
+    @FXML
+    private Label spaceC3;
+    @FXML
+    private Label spaceC4;
 
-    @FXML private Label spaceD1;
-    @FXML private Label spaceD2;
-    @FXML private Label spaceD3;
-    @FXML private Label spaceD4;
-    @FXML private Label spaceD5;
-    @FXML private Label spaceD6;
+    @FXML
+    private Label spaceD1;
+    @FXML
+    private Label spaceD2;
+    @FXML
+    private Label spaceD3;
+    @FXML
+    private Label spaceD4;
+    @FXML
+    private Label spaceD5;
+    @FXML
+    private Label spaceD6;
 
     private ViewHandler viewHandler;
     private Region root;
@@ -46,7 +66,7 @@ public class ParkingLotViewController implements UnnamedPropertyChangeSubject {
 
     private PropertyChangeSupport propertyChangeSupport;
 
-    public ParkingLotViewController(){
+    public ParkingLotViewController() {
 
     }
 
@@ -80,145 +100,156 @@ public class ParkingLotViewController implements UnnamedPropertyChangeSubject {
         spaceD5.textProperty().bindBidirectional(viewModel.spaceD5Property());
         spaceD6.textProperty().bindBidirectional(viewModel.spaceD6Property());
 
-        setColour(spaceA1,"A1");
-        setColour(spaceA2,"A2");
-        setColour(spaceA3,"A3");
-        setColour(spaceA4,"A4");
-        setColour(spaceA5,"A5");
-        setColour(spaceA6,"A6");
+        setColour(spaceA1, "A1");
+        setColour(spaceA2, "A2");
+        setColour(spaceA3, "A3");
+        setColour(spaceA4, "A4");
+        setColour(spaceA5, "A5");
+        setColour(spaceA6, "A6");
 
-        setColour(spaceB1,"B1");
-        setColour(spaceB2,"B2");
-        setColour(spaceB3,"B3");
-        setColour(spaceB4,"B4");
+        setColour(spaceB1, "B1");
+        setColour(spaceB2, "B2");
+        setColour(spaceB3, "B3");
+        setColour(spaceB4, "B4");
 
-        setColour(spaceC1,"C1");
-        setColour(spaceC2,"C2");
-        setColour(spaceC3,"C3");
-        setColour(spaceC4,"C4");
+        setColour(spaceC1, "C1");
+        setColour(spaceC2, "C2");
+        setColour(spaceC3, "C3");
+        setColour(spaceC4, "C4");
 
-        setColour(spaceD1,"D1");
-        setColour(spaceD2,"D2");
-        setColour(spaceD3,"D3");
-        setColour(spaceD4,"D4");
-        setColour(spaceD5,"D5");
-        setColour(spaceD6,"D6");
+        setColour(spaceD1, "D1");
+        setColour(spaceD2, "D2");
+        setColour(spaceD3, "D3");
+        setColour(spaceD4, "D4");
+        setColour(spaceD5, "D5");
+        setColour(spaceD6, "D6");
     }
 
-    public Region getRoot()
-    {
+    public Region getRoot() {
         return root;
     }
 
-    public void reset()
-    {
+    public void reset() {
         viewModel.reset();
     }
 
     private void setColour(Label space, String name) throws RemoteException {
         if (viewModel.isOccupied(name)) {
             space.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (space.isYourCar()) {
+        } else if (space.isYourCar()) {
             space.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else {
+        } else {
             spaceD6.setTextFill(Color.rgb(0, 255, 0));
         }
     }
 
-    @FXML private void onClickedA1()
-    {
-
+    @FXML
+    private void onClickedA1() {
         onClickUndef("A1");
     }
-    @FXML private void onClickedA2()
-    {
+
+    @FXML
+    private void onClickedA2() {
 
         onClickUndef("A2");
     }
-    @FXML private void onClickedA3()
-    {
+
+    @FXML
+    private void onClickedA3() {
 
         onClickUndef("A3");
     }
-    @FXML private void onClickedA4()
-    {
+
+    @FXML
+    private void onClickedA4() {
 
         onClickUndef("A4");
     }
-    @FXML private void onClickedA5()
-    {
+
+    @FXML
+    private void onClickedA5() {
 
         onClickUndef("A5");
     }
-    @FXML private void onClickedA6()
-    {
+
+    @FXML
+    private void onClickedA6() {
         onClickUndef("A6");
     }
 
-    @FXML private void onClickedB1()
-    {
+    @FXML
+    private void onClickedB1() {
         onClickUndef("B1");
     }
-    @FXML private void onClickedB2()
-    {
+
+    @FXML
+    private void onClickedB2() {
         onClickUndef("B2");
     }
-    @FXML private void onClickedB3()
-    {
+
+    @FXML
+    private void onClickedB3() {
         onClickUndef("B3");
     }
-    @FXML private void onClickedB4()
-    {
+
+    @FXML
+    private void onClickedB4() {
         onClickUndef("B4");
     }
 
-    @FXML private void onClickedC1()
-    {
+    @FXML
+    private void onClickedC1() {
         onClickUndef("C1");
     }
-    @FXML private void onClickedC2()
-    {
+
+    @FXML
+    private void onClickedC2() {
         onClickUndef("C2");
     }
-    @FXML private void onClickedC3()
-    {
+
+    @FXML
+    private void onClickedC3() {
         onClickUndef("C3");
     }
-    @FXML private void onClickedC4()
-    {
+
+    @FXML
+    private void onClickedC4() {
         onClickUndef("C4");
     }
 
-    @FXML private void onClickedD1()
-    {
+    @FXML
+    private void onClickedD1() {
         onClickUndef("D1");
     }
-    @FXML private void onClickedD2()
-    {
+
+    @FXML
+    private void onClickedD2() {
         onClickUndef("D2");
     }
-    @FXML private void onClickedD3()
-    {
+
+    @FXML
+    private void onClickedD3() {
         onClickUndef("D3");
     }
-    @FXML private void onClickedD4()
-    {
+
+    @FXML
+    private void onClickedD4() {
         onClickUndef("D4");
     }
-    @FXML private void onClickedD5()
-    {
+
+    @FXML
+    private void onClickedD5() {
         onClickUndef("D5");
     }
-    @FXML private void onClickedD6()
-    {
+
+    @FXML
+    private void onClickedD6() {
         onClickUndef("D6");
     }
 
-    private void onClickUndef(String name){
+    private void onClickUndef(String name) {
         viewHandler.openView("ReserveView");
-        propertyChangeSupport.firePropertyChange(name,null,1);
+        propertyChangeSupport.firePropertyChange(name, null, 1);
     }
 
     @Override

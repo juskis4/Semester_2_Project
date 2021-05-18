@@ -11,22 +11,27 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public class ProfileViewController {
-    @FXML private Label userName;
-    @FXML private Label licenseNo;
-    @FXML private Label actualFirstName;
-    @FXML private Label actualSecondName;
-    @FXML private TextField firstName;
-    @FXML private TextField secondName;
+    @FXML
+    private Label userName;
+    @FXML
+    private Label licenseNo;
+    @FXML
+    private Label actualFirstName;
+    @FXML
+    private Label actualSecondName;
+    @FXML
+    private TextField firstName;
+    @FXML
+    private TextField secondName;
     private ViewHandler viewHandler;
     private Region root;
     private ProfileViewModel viewModel;
 
-    public ProfileViewController()
-    {
+    public ProfileViewController() {
         ///
     }
-    public void init(ViewHandler viewHandler, ProfileViewModel viewModel, Region root)
-    {
+
+    public void init(ViewHandler viewHandler, ProfileViewModel viewModel, Region root) {
         this.viewHandler = viewHandler;
         this.viewModel = viewModel;
         this.root = root;
@@ -44,20 +49,16 @@ public class ProfileViewController {
         return root;
     }
 
-    public void reset()
-    {
+    public void reset() {
         try {
             viewModel.reset();
-        }
-        catch (RemoteException ignored)
-        {
+        } catch (RemoteException ignored) {
 
         }
     }
 
     @FXML
-    private void onChange()
-    {
+    private void onChange() {
         viewModel.changeNames();
     }
 }
