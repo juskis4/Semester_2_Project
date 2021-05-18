@@ -66,8 +66,4 @@ public class ModelManager implements Model
     login.getUserList().getUserByUsername(username).registerVehicle(licenseNo, color, carBrand);
   }
 
-  public ParkingLot getParkingLot(){
-    return parkingLot;
-  }
-
 }
