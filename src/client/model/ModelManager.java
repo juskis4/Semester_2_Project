@@ -3,9 +3,7 @@ package client.model;
 import client.mediator.RMIClient;
 import server.model.domain.*;
 
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public class ModelManager implements Model

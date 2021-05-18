@@ -17,7 +17,7 @@ public class ModelManager implements Model
   @Override public void registerSpace(String username, Vehicle vehicle,
       ParkingSpace parkingSpace, Time time, Date date)
   {
-    // TO BE IMPLEMENTED
+    // TO BE IMPLEMENTED WITH DATABASE
   }
 
   @Override

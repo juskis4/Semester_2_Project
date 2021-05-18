@@ -1,7 +1,6 @@
 package client.model;
 
 import server.model.domain.*;
-import utility.observer.javaobserver.UnnamedPropertyChangeSubject;
 
 import java.rmi.RemoteException;
 
