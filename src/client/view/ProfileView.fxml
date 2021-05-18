@@ -8,8 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: E2E8CE;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.ProfileView">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: E2E8CE;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.ProfileViewController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="191.0" style="-fx-background-color: ACBFA4;">
          <children>
@@ -51,8 +50,8 @@
             <Font name="Malgun Gothic Semilight" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="licenseNoField" layoutX="340.0" layoutY="259.0" prefHeight="26.0" prefWidth="214.0" style="-fx-background-color: F7F9F1;" />
-      <TextField fx:id="colorField" layoutX="358.0" layoutY="295.0" prefHeight="26.0" prefWidth="198.0" style="-fx-background-color: F7F9F1;" />
+      <TextField fx:id="firstName" layoutX="340.0" layoutY="259.0" prefHeight="26.0" prefWidth="214.0" style="-fx-background-color: F7F9F1;" />
+      <TextField fx:id="secondName" layoutX="358.0" layoutY="295.0" prefHeight="26.0" prefWidth="198.0" style="-fx-background-color: F7F9F1;" />
       <Button layoutX="493.0" layoutY="345.0" mnemonicParsing="false" onAction="#onChange" style="-fx-background-color: F7F9F1;" text="Change">
          <font>
             <Font name="Malgun Gothic Semilight" size="13.0" />
@@ -64,7 +63,7 @@
             <Font name="Malgun Gothic Semilight" size="18.0" />
          </font>
       </Text>
-      <Label layoutX="328.0" layoutY="90.0" text="Username" textFill="#262626">
+      <Label fx:id="userName" layoutX="328.0" layoutY="90.0" text="Username" textFill="#262626">
          <font>
             <Font name="Malgun Gothic Semilight" size="18.0" />
          </font>
@@ -74,7 +73,7 @@
             <Font name="Malgun Gothic Semilight" size="18.0" />
          </font>
       </Text>
-      <Label layoutX="340.0" layoutY="123.0" text="License No." textFill="#262626">
+      <Label fx:id="licenseNo" layoutX="340.0" layoutY="123.0" text="License No." textFill="#262626">
          <font>
             <Font name="Malgun Gothic Semilight" size="18.0" />
          </font>
@@ -84,7 +83,7 @@
             <Font name="Malgun Gothic Semilight" size="18.0" />
          </font>
       </Text>
-      <Label layoutX="340.0" layoutY="158.0" text="First Name" textFill="#262626">
+      <Label fx:id="actualFirstName" layoutX="340.0" layoutY="158.0" text="First Name" textFill="#262626">
          <font>
             <Font name="Malgun Gothic Semilight" size="18.0" />
          </font>
@@ -94,7 +93,7 @@
             <Font name="Malgun Gothic Semilight" size="18.0" />
          </font>
       </Text>
-      <Label layoutX="341.0" layoutY="191.0" text="Last Name" textFill="#262626">
+      <Label fx:id="actualSecondName" layoutX="341.0" layoutY="191.0" text="Last Name" textFill="#262626">
          <font>
             <Font name="Malgun Gothic Semilight" size="18.0" />
          </font>

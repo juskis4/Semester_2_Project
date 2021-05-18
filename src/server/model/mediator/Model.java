@@ -4,8 +4,7 @@ import server.model.domain.*;
 
 public interface Model
 {
-  void registerSpace(String username, Vehicle vehicle,
-      ParkingSpace parkingSpace, Time time, Date date);
+  void registerSpace(String username, ParkingSpace parkingSpace, Time time, Date date);
   void reserveParkingSpace(ParkingSpace parkingSpace, User user);
   void reserveParkingSpace(int index, User user);
   void register(String userName, String password);

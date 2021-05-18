@@ -55,10 +55,9 @@ public class ModelManager implements Model
         }
     }
 
-    @Override public void registerSpace(String username, Vehicle vehicle,
-        ParkingSpace parkingSpace, Time time, Date date) throws RemoteException
+    @Override public void registerSpace(String username, ParkingSpace parkingSpace, Time time, Date date) throws RemoteException
     {
-        client.registerSpace(username, vehicle, parkingSpace, time, date);
+        client.registerSpace(username, parkingSpace, time, date);
     }
 
     @Override
