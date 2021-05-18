@@ -49,4 +49,8 @@ public class ReserveViewController
     viewModel.registerSpace();
     viewHandler.openView("ParkingLotView");
   }
+  @FXML public void onWorkingHours()
+  {
+    viewHandler.openView("WorkingHoursView");
+  }
 }
