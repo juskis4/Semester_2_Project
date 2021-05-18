@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class ViewHandler
 {
   private Scene currentScene;
@@ -15,6 +17,10 @@ public class ViewHandler
   private LoginViewController loginViewController;
   private RegisterViewController registerViewController;
   private ChangeCarViewController changeCarViewController;
+  private ProfileViewController profileViewController;
+  private ParkingLotViewController parkingLotViewController;
+  private WorkingHoursViewController workingHoursViewController;
+  private ReserveViewController reserveViewController;
 
   public ViewHandler(ViewModelFactory viewModelFactory)
   {
@@ -44,11 +50,27 @@ public class ViewHandler
       case "ChangeCar":
         root = loadChangeCarView("ChangeCarView.fxml");
         break;
+
+      case "ProfileView":
+        root = loadProfileView("ProfileView.fxml");
+        break;
+
+      case "ParkingLotView":
+        root = loadParkingView("ParkingLotView.fxml");
+        break;
+
+      case "WorkingHoursView":
+        root = loadWorkingHoursView("WorkingHoursView.fxml");
+        break;
+
+      case "ReserveView":
+        root = loadReserveView("ReserveView.fxml");
+        break;
     }
 
     currentScene.setRoot(root);
     String title = "";
-    if(root.getUserData() != null)
+    if (root.getUserData() != null)
     {
       title += root.getUserData();
     }
@@ -62,21 +84,24 @@ public class ViewHandler
 
   public Region loadLoginView(String fxmlFile)
   {
-    if(loginViewController == null)
+    if (loginViewController == null)
     {
-      try {
+      try
+      {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(fxmlFile));
         Region root = loader.load();
         loginViewController = loader.getController();
-        loginViewController.init(this, viewModelFactory.getLoginViewModel(), root);
+        loginViewController
+            .init(this, viewModelFactory.getLoginViewModel(), root);
       }
       catch (Exception e)
       {
         e.printStackTrace();
       }
     }
-    else {
+    else
+    {
       loginViewController.reset();
     }
     return loginViewController.getRoot();
@@ -84,21 +109,24 @@ public class ViewHandler
 
   public Region loadRegisterView(String fxmlFile)
   {
-    if(registerViewController == null)
+    if (registerViewController == null)
     {
-      try {
+      try
+      {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(fxmlFile));
         Region root = loader.load();
         registerViewController = loader.getController();
-        registerViewController.init(this, viewModelFactory.getRegisterViewModel(), root);
+        registerViewController
+            .init(this, viewModelFactory.getRegisterViewModel(), root);
       }
       catch (Exception e)
       {
         e.printStackTrace();
       }
     }
-    else {
+    else
+    {
       registerViewController.reset();
     }
     return registerViewController.getRoot();
@@ -106,25 +134,110 @@ public class ViewHandler
 
   public Region loadChangeCarView(String fxmlFile)
   {
-    if(changeCarViewController == null)
+    if (changeCarViewController == null)
     {
-      try {
+      try
+      {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(fxmlFile));
         Region root = loader.load();
         changeCarViewController = loader.getController();
-        changeCarViewController.init(this, viewModelFactory.getChangeCarViewModel(), root);
+        changeCarViewController
+            .init(this, viewModelFactory.getChangeCarViewModel(), root);
       }
       catch (Exception e)
       {
         e.printStackTrace();
       }
     }
-    else {
+    else
+    {
       changeCarViewController.reset();
     }
     return changeCarViewController.getRoot();
   }
 
+  public Region loadProfileView(String fxmlFile)
+  {
+    if (profileViewController == null)
+    {
+      try
+      {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(fxmlFile));
+        Region root = loader.load();
+        profileViewController = loader.getController();
+        profileViewController
+            .init(this, viewModelFactory.getProfileViewModel(), root);
+      }
+      catch (IOException e)
+      {
+        e.printStackTrace();
+      }
+    }
+    return changeCarViewController.getRoot();
+  }
 
+  public Region loadParkingView(String fxmlFile)
+  {
+    if (parkingLotViewController == null)
+    {
+      try
+      {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(fxmlFile));
+        Region root = loader.load();
+        parkingLotViewController = loader.getController();
+        parkingLotViewController
+            .init(this, viewModelFactory.getParkingLotViewModel(), root);
+      }
+      catch (IOException e)
+      {
+        e.printStackTrace();
+      }
+    }
+    return parkingLotViewController.getRoot();
+  }
+
+  public Region loadWorkingHoursView(String fxmlFile)
+  {
+    if (workingHoursViewController == null)
+    {
+      try
+      {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(fxmlFile));
+        Region root = loader.load();
+        workingHoursViewController = loader.getController();
+        workingHoursViewController
+            .init(this, viewModelFactory.getWorkingHoursViewModel(), root);
+      }
+      catch (IOException e)
+      {
+        e.printStackTrace();
+      }
+    }
+    return workingHoursViewController.getRoot();
+  }
+
+  public Region loadReserveView(String fxmlFile)
+  {
+    if (reserveViewController == null)
+    {
+      try
+      {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(fxmlFile));
+        Region root = loader.load();
+        reserveViewController = loader.getController();
+        reserveViewController
+            .init(this, viewModelFactory.getReserveViewModel(), root);
+      }
+      catch (IOException e)
+      {
+        e.printStackTrace();
+      }
+    }
+    return reserveViewController.getRoot();
+  }
 }
