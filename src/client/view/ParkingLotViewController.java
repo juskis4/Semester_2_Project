@@ -267,10 +267,28 @@ public class ParkingLotViewController {
         viewModel.reset();
     }
 
-    @FXML private void onLogin()
+    @FXML private void onClickedA1()
     {
-        if(viewModel.login()){
 
-        }
+    }
+    @FXML private void onClickedA2()
+    {
+
+    }
+    @FXML private void onClickedA3()
+    {
+
+    }
+    @FXML private void onClickedA4()
+    {
+
+    }
+    @FXML private void onClickedA5()
+    {
+
+    }
+    @FXML private void onClickedA6()
+    {
+
     }
 }

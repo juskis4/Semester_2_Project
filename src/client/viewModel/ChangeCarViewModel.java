@@ -4,6 +4,8 @@ import client.model.Model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.rmi.RemoteException;
+
 public class ChangeCarViewModel
 {
   private StringProperty carBrandProperty;
@@ -49,6 +51,10 @@ public class ChangeCarViewModel
     return errorProperty;
   }
 
-  public void
+  public void registerVehicle() throws RemoteException
+  {
+    model.registerVehicle(licenseNoProperty.get(), colorProperty.get(),
+        carBrandProperty.get());
+  }
 
 }

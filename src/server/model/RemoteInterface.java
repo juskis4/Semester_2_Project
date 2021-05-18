@@ -12,4 +12,6 @@ public interface RemoteInterface extends Remote
   void registerFirstAndLastName(String firstName, String lastName, String userName) throws RemoteException;
   void registerSpace(String username, Vehicle vehicle, ParkingSpace parkingSpace, Time time, Date date) throws RemoteException;
   User getUserByUserName(String userName) throws RemoteException;
+  void registerVehicle(String username, String licenseNo, String color, String carBrand) throws RemoteException;
+
 }

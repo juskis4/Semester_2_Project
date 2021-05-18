@@ -12,4 +12,5 @@ public interface Model
   boolean login(String userName, String password);
   void registerFirstAndLastName(String firstName, String lastName, String username);
   User getUserByUserName(String userName);
+  void registerVehicle(String username, String licenseNo, String color, String carBrand);
 }

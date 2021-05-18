@@ -52,4 +52,10 @@ public class RemoteModel extends UnicastRemoteObject implements RemoteInterface
   public User getUserByUserName(String userName) throws RemoteException {
     return model.getUserByUserName(userName);
   }
+
+  @Override public void registerVehicle(String username, String licenseNo,
+      String color, String carBrand) throws RemoteException
+  {
+    model.registerVehicle(username, licenseNo, color, carBrand);
+  }
 }
