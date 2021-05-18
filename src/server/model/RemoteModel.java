@@ -1,10 +1,7 @@
 package server.model;
 
 
-import server.model.domain.Date;
-import server.model.domain.ParkingSpace;
-import server.model.domain.Time;
-import server.model.domain.Vehicle;
+import server.model.domain.*;
 import server.model.mediator.Model;
 import server.model.mediator.ModelManager;
 
@@ -49,5 +46,10 @@ public class RemoteModel extends UnicastRemoteObject implements RemoteInterface
       ParkingSpace parkingSpace, Time time, Date date) throws RemoteException
   {
     model.registerSpace(username, vehicle, parkingSpace, time, date);
+  }
+
+  @Override
+  public String getUserName() throws RemoteException {
+    return model.getUserName();
   }
 }

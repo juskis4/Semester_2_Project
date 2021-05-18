@@ -1,10 +1,7 @@
 package client.model;
 
 import client.mediator.RMIClient;
-import server.model.domain.Date;
-import server.model.domain.ParkingSpace;
-import server.model.domain.Time;
-import server.model.domain.Vehicle;
+import server.model.domain.*;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -70,5 +67,10 @@ public class ModelManager implements Model
     @Override
     public void removeListener(PropertyChangeListener listener) {
         support.removePropertyChangeListener(listener);
+    }
+
+    @Override
+    public String getUserName() throws RemoteException {
+        return client.getUserName();
     }
 }

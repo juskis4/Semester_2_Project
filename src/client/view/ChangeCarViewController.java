@@ -27,6 +27,11 @@ public class ChangeCarViewController
     this.viewModel = viewModel;
     this.viewHandler = viewHandler;
     this.root = root;
+
+    carBrandField.textProperty().bindBidirectional(viewModel.getCarBrandProperty());
+    licenseNoField.textProperty().bindBidirectional(viewModel.getLicenseNoProperty());
+    colorField.textProperty().bindBidirectional(viewModel.getColorProperty());
+    errorLabel.textProperty().bindBidirectional(viewModel.getErrorProperty());
   }
 
   public Region getRoot()
