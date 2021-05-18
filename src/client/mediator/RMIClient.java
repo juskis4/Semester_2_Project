@@ -41,10 +41,9 @@ public class RMIClient {
         server.registerFirstAndLastName(firstName,lastName,userName);
     }
 
-    public void registerSpace(String username, Vehicle vehicle,
-        ParkingSpace parkingSpace, Time time, Date date) throws RemoteException
+    public void registerSpace(String username, ParkingSpace parkingSpace, Time time, Date date) throws RemoteException
     {
-        server.registerSpace(username, vehicle, parkingSpace, time, date);
+        server.registerSpace(username, parkingSpace, time, date);
     }
 
     public User getUserByUserName(String userName) throws RemoteException
