@@ -11,9 +11,6 @@ import java.rmi.RemoteException;
 
 public class ReserveViewModel
 {
-  private StringProperty licenseNo;
-  private StringProperty color;
-  private StringProperty carBrand;
   private StringProperty nameOfParkingSpace;
   private IntegerProperty day;
   private IntegerProperty month;
@@ -27,9 +24,6 @@ public class ReserveViewModel
   public ReserveViewModel(Model model)
   {
     this.model = model;
-    this.licenseNo = new SimpleStringProperty("");
-    this.color = new SimpleStringProperty("");
-    this.carBrand = new SimpleStringProperty("");
     this.nameOfParkingSpace = new SimpleStringProperty("");
     this.day = new SimpleIntegerProperty(0);
     this.month  = new SimpleIntegerProperty(0);
@@ -37,11 +31,6 @@ public class ReserveViewModel
     this.h = new SimpleIntegerProperty(0);
     this.m = new SimpleIntegerProperty(0);
     this.s = new SimpleIntegerProperty(0);
-  }
-  public Vehicle getVehicle()
-  {
-    Vehicle vehicle = new Vehicle(licenseNo.get(), color.get(), carBrand.get());
-    return vehicle;
   }
 
   public Date getDate()
@@ -65,6 +54,6 @@ public class ReserveViewModel
 
   public void registerSpace() throws RemoteException
   {
-    model.registerSpace(model.getUserByUserName().getUsername(), getVehicle(), getParkingSpace(), getTime(), getDate());
+    model.registerSpace(model.getUserByUserName().getUsername(), getParkingSpace(), getTime(), getDate());
   }
 }

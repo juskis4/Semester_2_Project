@@ -167,8 +167,7 @@ public class ViewHandler
         loader.setLocation(getClass().getResource(fxmlFile));
         Region root = loader.load();
         profileViewController = loader.getController();
-        profileViewController
-            .init(this, viewModelFactory.getProfileViewModel(), root);
+        profileViewController.init(this, viewModelFactory.getProfileViewModel(), root);
       }
       catch (IOException e)
       {
@@ -229,8 +228,7 @@ public class ViewHandler
         loader.setLocation(getClass().getResource(fxmlFile));
         Region root = loader.load();
         reserveViewController = loader.getController();
-        reserveViewController
-            .init(this, viewModelFactory.getReserveViewModel(), root);
+        reserveViewController.init(this, viewModelFactory.getReserveViewModel(), root);
       }
       catch (IOException e)
       {

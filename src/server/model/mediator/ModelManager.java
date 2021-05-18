@@ -14,8 +14,7 @@ public class ModelManager implements Model
     login = new Login();
   }
 
-  @Override public void registerSpace(String username, Vehicle vehicle,
-      ParkingSpace parkingSpace, Time time, Date date)
+  @Override public void registerSpace(String username, ParkingSpace parkingSpace, Time time, Date date)
   {
     // TO BE IMPLEMENTED WITH DATABASE
   }
