@@ -36,7 +36,7 @@
             <Font name="Malgun Gothic Semilight" size="18.0" />
          </font>
       </Text>
-      <DatePicker layoutX="135.0" layoutY="134.0" prefHeight="26.0" prefWidth="226.0" style="-fx-background-color: ACBFA4;" />
+      <DatePicker fx:id="reserveDate" layoutX="135.0" layoutY="134.0" prefHeight="26.0" prefWidth="226.0" style="-fx-background-color: ACBFA4;" />
       <Text fill="#262626" layoutX="36.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserve for:" wrappingWidth="106.40000000000009">
          <font>
             <Font name="Malgun Gothic Semilight" size="18.0" />

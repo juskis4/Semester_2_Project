@@ -17,7 +17,6 @@ public class ReserveViewModel
   private IntegerProperty year;
   private IntegerProperty h;
   private IntegerProperty m;
-  private IntegerProperty s;
 
   private Model model;
 
@@ -30,9 +29,7 @@ public class ReserveViewModel
     this.year = new SimpleIntegerProperty(0);
     this.h = new SimpleIntegerProperty(0);
     this.m = new SimpleIntegerProperty(0);
-    this.s = new SimpleIntegerProperty(0);
   }
-
   public Date getDate()
   {
     Date date = new Date(day.get(), month.get(), year.get());
@@ -41,7 +38,7 @@ public class ReserveViewModel
 
   public Time getTime()
   {
-    Time time = new Time(h.get(), m.get(), s.get());
+    Time time = new Time(h.get(), m.get());
     return time;
   }
 
@@ -50,6 +47,36 @@ public class ReserveViewModel
     ParkingSpace parkingSpace = new ParkingSpace(nameOfParkingSpace.get());
     parkingSpace.setOccupied(true, model.getUserByUserName());
     return parkingSpace;
+  }
+
+  public IntegerProperty dayProperty()
+  {
+    return day;
+  }
+
+  public IntegerProperty monthProperty()
+  {
+    return month;
+  }
+
+  public IntegerProperty yearProperty()
+  {
+    return year;
+  }
+
+  public IntegerProperty hProperty()
+  {
+    return h;
+  }
+
+  public IntegerProperty mProperty()
+  {
+    return m;
+  }
+
+  public StringProperty nameOfParkingSpaceProperty()
+  {
+    return nameOfParkingSpace;
   }
 
   public void registerSpace() throws RemoteException

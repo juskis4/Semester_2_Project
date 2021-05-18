@@ -11,6 +11,11 @@ public class Time
     this.minute = m;
     this.second = s;
   }
+  public Time(int h, int m)
+  {
+    this.hour = h;
+    this.minute = m;
+  }
   public Time(int totalTimeInSeconds)
   {
     if (totalTimeInSeconds < 0)
