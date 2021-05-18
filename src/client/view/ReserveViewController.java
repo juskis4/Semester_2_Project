@@ -8,6 +8,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import server.model.domain.User;
 
 import java.awt.*;
 import java.rmi.RemoteException;
@@ -17,6 +18,7 @@ public class ReserveViewController
   @FXML private TextField hourField;
   @FXML private TextField minField;
   @FXML private DatePicker reserveDate;
+  @FXML private Label parkingSpaceField;
   private ViewHandler viewHandler;
   private Region root;
   private ReserveViewModel viewModel;
@@ -27,10 +29,17 @@ public class ReserveViewController
   }
 
   public void init(ViewHandler viewHandler, ReserveViewModel viewModel, Region root)
+      throws RemoteException
   {
     this.viewModel = viewModel;
     this.viewHandler = viewHandler;
     this.root = root;
+
+    String parkingSpaceName;
+    parkingSpaceName = viewModel.getParkingLot().getParkingSpaceByUser(
+        viewModel.getUser()).getNameOfParkingSpace();
+    parkingSpaceField.setText(parkingSpaceName);
+
     Bindings.bindBidirectional(hourField.textProperty(),
         viewModel.hProperty(), new IntStringConverter());
     Bindings.bindBidirectional(minField.textProperty(),

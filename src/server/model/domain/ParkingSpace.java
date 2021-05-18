@@ -44,6 +44,8 @@ public class ParkingSpace
     return user;
   }
 
+
+
   @Override public String toString()
   {
     return "ParkingSpace{" + "isOccupied=" + isOccupied

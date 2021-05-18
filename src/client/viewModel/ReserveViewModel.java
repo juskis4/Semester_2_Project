@@ -76,4 +76,13 @@ public class ReserveViewModel
   {
     model.registerSpace(model.getUserByUserName().getUsername(), getParkingSpace(), getTime(), getDate());
   }
+  public ParkingLot getParkingLot() throws RemoteException
+  {
+    return model.getParkingLot();
+  }
+
+  public User getUser() throws RemoteException
+  {
+    return model.getUserByUserName();
+  }
 }

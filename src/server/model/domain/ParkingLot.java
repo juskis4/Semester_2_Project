@@ -85,5 +85,17 @@ public class ParkingLot
     return notOccupied;
   }
 
+  public ParkingSpace getParkingSpaceByUser(User user)
+  {
+    for(int i = 0; i< parkingSpaces.size(); i++)
+    {
+      if(parkingSpaces.get(i).getUser().equals(user))
+      {
+        return parkingSpaces.get(i);
+      }
+    }
+    return null;
+  }
+
   //TODO: 05/05/21  ADD A QUEUE ELEMENT OR DECIDE TO USE QUEUEADT INSTEAD
 }
