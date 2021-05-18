@@ -49,7 +49,7 @@ public class ParkingLot
     return parkingSpaces.get(index);
   }
 
-  public boolean isOcuppied(int index)
+  public boolean isOccupied(int index)
   {
     return parkingSpaces.get(index).getIsOccupied();
   }
