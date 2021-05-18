@@ -2,8 +2,6 @@ package client.viewModel;
 
 import client.model.Model;
 
-import java.rmi.RemoteException;
-
 public class ViewModelFactory
 {
   private LoginViewModel loginViewModel;
@@ -14,7 +12,7 @@ public class ViewModelFactory
   private WorkingHoursViewModel workingHoursViewModel;
   private ReserveViewModel reserveViewModel;
 
-  public ViewModelFactory(Model model) throws RemoteException
+  public ViewModelFactory(Model model)
   {
     this.loginViewModel = new LoginViewModel(model);
     this.registerViewModel = new RegisterViewModel(model);

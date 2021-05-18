@@ -7,13 +7,13 @@ public class Login
 {
   private HashMap<String, String> usernameAndPassword;
   private UserList userList;
-
+  private String userName;
 
   public Login()
   {
     this.usernameAndPassword = new HashMap<String, String>();
     this.userList = new UserList();
-
+    userName = null;
   }
 
   public HashMap<String, String> getUsernameAndPassword()
@@ -25,7 +25,7 @@ public class Login
   {
     usernameAndPassword.put(username, password);
     userList.addUser(username);
-
+    this.userName = username;
   }
 
   //Takes a username and looks if the hashmap has it as a key, if it does then
@@ -45,5 +45,7 @@ public class Login
     return userList;
   }
 
-
+  public String getUserName() {
+    return userName;
+  }
 }
