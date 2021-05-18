@@ -56,4 +56,8 @@ public class RMIClient {
     {
         server.registerVehicle(username, licenseNo, color, carBrand);
     }
+
+    public ParkingLot getParkingLot() throws RemoteException{
+        return server.getParkingLot();
+    }
 }

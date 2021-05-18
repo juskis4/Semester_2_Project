@@ -1,10 +1,14 @@
 package client.viewModel;
 
 import client.model.Model;
+import client.view.ParkingLotViewController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import server.model.domain.ParkingLot;
+
+import java.rmi.RemoteException;
 
 public class ParkingLotViewModel {
 
@@ -34,7 +38,7 @@ public class ParkingLotViewModel {
 
     Model model;
 
-    public ParkingLotViewModel(Model model){
+    public ParkingLotViewModel(Model model) throws RemoteException {
         this.model = model;
 
         spaceA1 = new SimpleStringProperty("A1");
@@ -63,7 +67,104 @@ public class ParkingLotViewModel {
 
     }
 
-    public boolean isOccupied(String name){
+    public boolean isOccupied(String name) throws RemoteException {
+        return model.getParkingLot().isOccupiedBySpaceName(name);
+    }
 
+    public StringProperty spaceA1Property() {
+        return spaceA1;
+    }
+
+    public StringProperty spaceA2Property() {
+        return spaceA2;
+    }
+
+    public StringProperty spaceA3Property() {
+        return spaceA3;
+    }
+
+
+    public StringProperty spaceA4Property() {
+        return spaceA4;
+    }
+
+
+    public StringProperty spaceA5Property() {
+        return spaceA5;
+    }
+
+
+    public StringProperty spaceA6Property() {
+        return spaceA6;
+    }
+
+
+    public StringProperty spaceB1Property() {
+        return spaceB1;
+    }
+
+
+    public StringProperty spaceB2Property() {
+        return spaceB2;
+    }
+
+
+    public StringProperty spaceB3Property() {
+        return spaceB3;
+    }
+
+
+    public StringProperty spaceB4Property() {
+        return spaceB4;
+    }
+
+
+    public StringProperty spaceC1Property() {
+        return spaceC1;
+    }
+
+
+    public StringProperty spaceC2Property() {
+        return spaceC2;
+    }
+
+
+    public StringProperty spaceC3Property() {
+        return spaceC3;
+    }
+
+
+    public StringProperty spaceC4Property() {
+        return spaceC4;
+    }
+
+
+    public StringProperty spaceD1Property() {
+        return spaceD1;
+    }
+
+
+    public StringProperty spaceD2Property() {
+        return spaceD2;
+    }
+
+
+    public StringProperty spaceD3Property() {
+        return spaceD3;
+    }
+
+
+    public StringProperty spaceD4Property() {
+        return spaceD4;
+    }
+
+
+    public StringProperty spaceD5Property() {
+        return spaceD5;
+    }
+
+
+    public StringProperty spaceD6Property() {
+        return spaceD6;
     }
 }

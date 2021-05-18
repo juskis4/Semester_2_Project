@@ -71,4 +71,8 @@ public class ModelManager implements Model
         client.registerVehicle(userName, licenseNo, color, carBrand);
     }
 
+    @Override
+    public ParkingLot getParkingLot() throws RemoteException{
+        return client.getParkingLot();
+    }
 }

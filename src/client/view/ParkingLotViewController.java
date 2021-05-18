@@ -2,15 +2,20 @@ package client.view;
 
 import client.viewModel.ParkingLotViewModel;
 import client.viewModel.RegisterViewModel;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Region;
 import server.model.domain.ParkingLot;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
+import utility.observer.javaobserver.UnnamedPropertyChangeSubject;
 
 import java.awt.*;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.rmi.RemoteException;
 
-public class ParkingLotViewController {
+public class ParkingLotViewController implements UnnamedPropertyChangeSubject {
 
     @FXML private Label spaceA1;
     @FXML private Label spaceA2;
@@ -39,221 +44,79 @@ public class ParkingLotViewController {
     private ViewHandler viewHandler;
     private Region root;
     private ParkingLotViewModel viewModel;
+    private PropertyChangeSupport propertyChangeSupport;
 
     public ParkingLotViewController(){
 
+
+
     }
 
-    public void init(ViewHandler viewHandler, ParkingLotViewModel viewModel, Region root)
-    {
+    public void init(ViewHandler viewHandler, ParkingLotViewModel viewModel, Region root) throws RemoteException {
         this.viewModel = viewModel;
         this.viewHandler = viewHandler;
         this.root = root;
 
-        if(spaceA1.isOccupied()) {
-            spaceA1.setTextFill(Color.rgb(255, 0, 0));
+        propertyChangeSupport = new PropertyChangeSupport(this);
+
+        spaceA1.textProperty().bindBidirectional(viewModel.spaceA1Property());
+        spaceA2.textProperty().bindBidirectional(viewModel.spaceA2Property());
+        spaceA3.textProperty().bindBidirectional(viewModel.spaceA3Property());
+        spaceA4.textProperty().bindBidirectional(viewModel.spaceA4Property());
+        spaceA5.textProperty().bindBidirectional(viewModel.spaceA5Property());
+        spaceA6.textProperty().bindBidirectional(viewModel.spaceA6Property());
+
+        spaceB1.textProperty().bindBidirectional(viewModel.spaceB1Property());
+        spaceB2.textProperty().bindBidirectional(viewModel.spaceB2Property());
+        spaceB3.textProperty().bindBidirectional(viewModel.spaceB3Property());
+        spaceB4.textProperty().bindBidirectional(viewModel.spaceB4Property());
+
+        spaceC1.textProperty().bindBidirectional(viewModel.spaceC1Property());
+        spaceC2.textProperty().bindBidirectional(viewModel.spaceC2Property());
+        spaceC3.textProperty().bindBidirectional(viewModel.spaceC3Property());
+        spaceC4.textProperty().bindBidirectional(viewModel.spaceC4Property());
+
+        spaceD1.textProperty().bindBidirectional(viewModel.spaceD1Property());
+        spaceD2.textProperty().bindBidirectional(viewModel.spaceD2Property());
+        spaceD3.textProperty().bindBidirectional(viewModel.spaceD3Property());
+        spaceD4.textProperty().bindBidirectional(viewModel.spaceD4Property());
+        spaceD5.textProperty().bindBidirectional(viewModel.spaceD5Property());
+        spaceD6.textProperty().bindBidirectional(viewModel.spaceD6Property());
+
+        setColour(spaceA1,"A1");
+        setColour(spaceA2,"A2");
+        setColour(spaceA3,"A3");
+        setColour(spaceA4,"A4");
+        setColour(spaceA5,"A5");
+        setColour(spaceA6,"A6");
+
+        setColour(spaceB1,"B1");
+        setColour(spaceB2,"B2");
+        setColour(spaceB3,"B3");
+        setColour(spaceB4,"B4");
+
+        setColour(spaceC1,"C1");
+        setColour(spaceC2,"C2");
+        setColour(spaceC3,"C3");
+        setColour(spaceC4,"C4");
+
+        setColour(spaceD1,"D1");
+        setColour(spaceD2,"D2");
+        setColour(spaceD3,"D3");
+        setColour(spaceD4,"D4");
+        setColour(spaceD5,"D5");
+        setColour(spaceD6,"D6");
+    }
+
+    private void setColour(Label space, String name) throws RemoteException {
+        if(viewModel.isOccupied(name)) {
+            space.setTextFill(Color.rgb(255, 0, 0));
         }
-        else if (spaceA1.isYourCar()){
-            spaceA1.setTextFill(Color.rgb(0, 0, 255));
+        else if (space.isYourCar()){
+            space.setTextFill(Color.rgb(0, 0, 255));
         }
         else{
-            spaceA1.setTextFill(Color.rgb(0, 255, 0));
-        }
-
-        if(spaceA2.isOccupied()) {
-            spaceA2.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (spaceA2.isYourCar()){
-            spaceA2.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else{
-            spaceA2.setTextFill(Color.rgb(0, 255, 0));
-        }
-
-        if(spaceA3.isOccupied()) {
-            spaceA3.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (spaceA3.isYourCar()){
-            spaceA3.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else{
-            spaceA3.setTextFill(Color.rgb(0, 255, 0));
-        }
-
-        if(spaceA4.isOccupied()) {
-            spaceA4.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (spaceA4.isYourCar()){
-            spaceA4.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else{
-            spaceA4.setTextFill(Color.rgb(0, 255, 0));
-        }
-
-        if(spaceA5.isOccupied()) {
-            spaceA5.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (spaceA5.isYourCar()){
-            spaceA5.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else{
-            spaceA5.setTextFill(Color.rgb(0, 255, 0));
-        }
-
-        if(spaceA6.isOccupied()) {
-            spaceA6.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (spaceA6.isYourCar()){
-            spaceA6.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else{
-            spaceA6.setTextFill(Color.rgb(0, 255, 0));
-        }
-
-        //////////////////////////// B LINE ///////////////////////////
-
-        if(spaceB1.isOccupied()) {
-            spaceB1.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (spaceB1.isYourCar()){
-            spaceB1.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else{
-            spaceB1.setTextFill(Color.rgb(0, 255, 0));
-        }
-
-        if(spaceB2.isOccupied()) {
-            spaceB2.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (spaceB2.isYourCar()){
-            spaceB2.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else{
-            spaceB2.setTextFill(Color.rgb(0, 255, 0));
-        }
-
-        if(spaceB3.isOccupied()) {
-            spaceB3.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (spaceB3.isYourCar()){
-            spaceB3.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else{
-            spaceB3.setTextFill(Color.rgb(0, 255, 0));
-        }
-
-        if(spaceB4.isOccupied()) {
-            spaceB4.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (spaceB4.isYourCar()){
-            spaceB4.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else{
-            spaceB4.setTextFill(Color.rgb(0, 255, 0));
-        }
-
-        //////////////////////// C LINE ////////////////////////
-
-        if(spaceC1.isOccupied()) {
-            spaceC1.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (spaceC1.isYourCar()){
-            spaceC1.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else{
-            spaceC1.setTextFill(Color.rgb(0, 255, 0));
-        }
-
-        if(spaceC2.isOccupied()) {
-            spaceC2.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (spaceC2.isYourCar()){
-            spaceC2.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else{
-            spaceC2.setTextFill(Color.rgb(0, 255, 0));
-        }
-
-        if(spaceC3.isOccupied()) {
-            spaceC3.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (spaceC3.isYourCar()){
-            spaceC3.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else{
-            spaceC3.setTextFill(Color.rgb(0, 255, 0));
-        }
-
-        if(spaceC4.isOccupied()) {
-            spaceC4.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (spaceC4.isYourCar()){
-            spaceC4.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else{
-            spaceC4.setTextFill(Color.rgb(0, 255, 0));
-        }
-
-        ////////////////////// D LINE ///////////////////////
-
-        if(spaceD1.isOccupied()) {
-            spaceD1.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (spaceD1.isYourCar()){
-            spaceD1.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else{
-            spaceD1.setTextFill(Color.rgb(0, 255, 0));
-        }
-
-        if(spaceD2.isOccupied()) {
-            spaceD2.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (spaceD2.isYourCar()){
-            spaceD2.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else{
-            spaceD2.setTextFill(Color.rgb(0, 255, 0));
-        }
-
-        if(spaceD3.isOccupied()) {
-            spaceD3.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (spaceD3.isYourCar()){
-            spaceD3.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else{
-            spaceD3.setTextFill(Color.rgb(0, 255, 0));
-        }
-
-        if(spaceD4.isOccupied()) {
-            spaceD4.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (spaceD4.isYourCar()){
-            spaceD4.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else{
-            spaceD4.setTextFill(Color.rgb(0, 255, 0));
-        }
-
-        if(spaceD5.isOccupied()) {
-            spaceD5.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (spaceD5.isYourCar()){
-            spaceD5.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else{
-            spaceD5.setTextFill(Color.rgb(0, 255, 0));
-        }
-
-        if(spaceD6.isOccupied()) {
-            spaceD6.setTextFill(Color.rgb(255, 0, 0));
-        }
-        else if (spaceD6.isYourCar()){
-            spaceD6.setTextFill(Color.rgb(0, 0, 255));
-        }
-        else{
-            spaceD6.setTextFill(Color.rgb(0, 255, 0));
+            space.setTextFill(Color.rgb(0, 255, 0));
         }
     }
 
@@ -269,26 +132,100 @@ public class ParkingLotViewController {
 
     @FXML private void onClickedA1()
     {
-
+        onClickUndef("A1");
     }
     @FXML private void onClickedA2()
     {
-
+        onClickUndef("A2");
     }
     @FXML private void onClickedA3()
     {
-
+        onClickUndef("A3");
     }
     @FXML private void onClickedA4()
     {
-
+        onClickUndef("A4");
     }
     @FXML private void onClickedA5()
     {
-
+        onClickUndef("A5");
     }
     @FXML private void onClickedA6()
     {
+        onClickUndef("A6");
+    }
 
+    @FXML private void onClickedB1()
+    {
+        onClickUndef("B1");
+    }
+    @FXML private void onClickedB2()
+    {
+        onClickUndef("B2");
+    }
+    @FXML private void onClickedB3()
+    {
+        onClickUndef("B3");
+    }
+    @FXML private void onClickedB4()
+    {
+        onClickUndef("B4");
+    }
+
+    @FXML private void onClickedC1()
+    {
+        onClickUndef("C1");
+    }
+    @FXML private void onClickedC2()
+    {
+        onClickUndef("C2");
+    }
+    @FXML private void onClickedC3()
+    {
+        onClickUndef("C3");
+    }
+    @FXML private void onClickedC4()
+    {
+        onClickUndef("C4");
+    }
+
+    @FXML private void onClickedD1()
+    {
+        onClickUndef("D1");
+    }
+    @FXML private void onClickedD2()
+    {
+        onClickUndef("D2");
+    }
+    @FXML private void onClickedD3()
+    {
+        onClickUndef("D3");
+    }
+    @FXML private void onClickedD4()
+    {
+        onClickUndef("D4");
+    }
+    @FXML private void onClickedD5()
+    {
+        onClickUndef("D5");
+    }
+    @FXML private void onClickedD6()
+    {
+        onClickUndef("D6");
+    }
+
+    private void onClickUndef(String name){
+        viewHandler.openView("ReserveView");
+        propertyChangeSupport.firePropertyChange(name,null,1);
+    }
+
+    @Override
+    public void addListener(PropertyChangeListener listener) {
+        propertyChangeSupport.addPropertyChangeListener(listener);
+    }
+
+    @Override
+    public void removeListener(PropertyChangeListener listener) {
+        propertyChangeSupport.removePropertyChangeListener(listener);
     }
 }
