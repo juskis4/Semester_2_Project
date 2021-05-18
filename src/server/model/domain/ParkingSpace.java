@@ -49,4 +49,6 @@ public class ParkingSpace
     return "ParkingSpace{" + "isOccupied=" + isOccupied
         + ", nameOfParkingSpace='" + nameOfParkingSpace + '\'' + '}';
   }
+
+  //TODO: After finishing the project, delete "boolean isOcuppied" for every class.
 }
