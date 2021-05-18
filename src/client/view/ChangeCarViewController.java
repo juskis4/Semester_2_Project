@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 
+import java.rmi.RemoteException;
+
 public class ChangeCarViewController
 {
   @FXML private TextField carBrandField;
@@ -44,8 +46,18 @@ public class ChangeCarViewController
     viewModel.reset();
   }
 
-  @FXML private void onChange()
+  @FXML private void onChange() throws RemoteException
   {
+    viewModel.registerVehicle();
+  }
 
+  @FXML private void onParkingLot()
+  {
+    viewHandler.openView("ParkingLotView");
+  }
+
+  @FXML private void onProfile()
+  {
+    viewHandler.openView("ProfileView");
   }
 }

@@ -12,5 +12,5 @@ public interface Model
     void registerSpace(String username, Vehicle vehicle, ParkingSpace parkingSpace, Time time, Date date)
         throws RemoteException;
     User getUserByUserName() throws RemoteException;
-    void registerVehicle(String username, String licenseNo, String color, String carBrand) throws RemoteException;
+    void registerVehicle(String licenseNo, String color, String carBrand) throws RemoteException;
 }
