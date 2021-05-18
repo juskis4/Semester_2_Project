@@ -1,6 +1,10 @@
 package client.model;
 
 import client.mediator.RMIClient;
+import server.model.domain.Date;
+import server.model.domain.ParkingSpace;
+import server.model.domain.Time;
+import server.model.domain.Vehicle;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -50,6 +54,12 @@ public class ModelManager implements Model
         {
 
         }
+    }
+
+    @Override public void registerSpace(String username, Vehicle vehicle,
+        ParkingSpace parkingSpace, Time time, Date date) throws RemoteException
+    {
+        client.registerSpace(username, vehicle, parkingSpace, time, date);
     }
 
     @Override

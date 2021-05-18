@@ -2,6 +2,10 @@ package client.mediator;
 
 import client.model.Model;
 import server.model.RemoteInterface;
+import server.model.domain.Date;
+import server.model.domain.ParkingSpace;
+import server.model.domain.Time;
+import server.model.domain.Vehicle;
 
 import java.rmi.Naming;
 import java.rmi.Remote;
@@ -37,5 +41,10 @@ public class RMIClient {
     public void registerFirstAndLastName(String firstName, String lastName, String userName) throws RemoteException
     {
         server.registerFirstAndLastName(firstName,lastName,userName);
+    }
+    public void registerSpace(String username, Vehicle vehicle,
+        ParkingSpace parkingSpace, Time time, Date date) throws RemoteException
+    {
+        server.registerSpace(username, vehicle, parkingSpace, time, date);
     }
 }
