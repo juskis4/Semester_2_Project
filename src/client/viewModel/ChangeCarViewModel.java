@@ -49,5 +49,6 @@ public class ChangeCarViewModel
     return errorProperty;
   }
 
-  public
+  public void
+
 }

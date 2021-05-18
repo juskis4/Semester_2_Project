@@ -49,7 +49,7 @@ public class RemoteModel extends UnicastRemoteObject implements RemoteInterface
   }
 
   @Override
-  public String getUserName() throws RemoteException {
-    return model.getUserName();
+  public User getUserByUserName(String userName) throws RemoteException {
+    return model.getUserByUserName(userName);
   }
 }
