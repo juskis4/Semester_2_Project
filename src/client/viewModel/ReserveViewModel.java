@@ -12,9 +12,7 @@ import java.rmi.RemoteException;
 public class ReserveViewModel
 {
   private StringProperty nameOfParkingSpace;
-  private IntegerProperty day;
-  private IntegerProperty month;
-  private IntegerProperty year;
+  private StringProperty dateInString;
   private IntegerProperty h;
   private IntegerProperty m;
 
@@ -24,16 +22,14 @@ public class ReserveViewModel
   {
     this.model = model;
     this.nameOfParkingSpace = new SimpleStringProperty("");
-    this.day = new SimpleIntegerProperty(0);
-    this.month  = new SimpleIntegerProperty(0);
-    this.year = new SimpleIntegerProperty(0);
+    this.dateInString = new SimpleStringProperty("");
     this.h = new SimpleIntegerProperty(0);
     this.m = new SimpleIntegerProperty(0);
   }
-  public Date getDate()
+
+  public StringProperty dateInStringProperty()
   {
-    Date date = new Date(day.get(), month.get(), year.get());
-    return date;
+    return dateInString;
   }
 
   public Time getTime()
@@ -49,21 +45,6 @@ public class ReserveViewModel
     return parkingSpace;
   }
 
-  public IntegerProperty dayProperty()
-  {
-    return day;
-  }
-
-  public IntegerProperty monthProperty()
-  {
-    return month;
-  }
-
-  public IntegerProperty yearProperty()
-  {
-    return year;
-  }
-
   public IntegerProperty hProperty()
   {
     return h;
@@ -77,6 +58,18 @@ public class ReserveViewModel
   public StringProperty nameOfParkingSpaceProperty()
   {
     return nameOfParkingSpace;
+  }
+
+  public Date getDate()
+  {
+    String date = dateInString.get();
+    String delims = "[/]";
+    String[] tokens = date.split(delims);
+    int month = Integer.parseInt(tokens[0]);
+    int day = Integer.parseInt(tokens[1]);
+    int year = Integer.parseInt(tokens[2]);
+    Date dateReturned = new Date(day, month, year);
+    return dateReturned;
   }
 
   public void registerSpace() throws RemoteException

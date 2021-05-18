@@ -36,13 +36,7 @@ public class ReserveViewController
     Bindings.bindBidirectional(minField.textProperty(),
         viewModel.mProperty(), new IntStringConverter());
     TextField dateEditor = reserveDate.getEditor();
-    String date = dateEditor.getText();
-    String delims = "[/]";
-    String[] tokens = date.split(delims);
-    int month = Integer.parseInt(tokens[0]);
-    int day = Integer.parseInt(tokens[1]);
-    int year = Integer.parseInt(tokens[2]);
-
+    dateEditor.textProperty().bind(viewModel.dateInStringProperty());
   }
 
   public Region getRoot()
@@ -53,5 +47,6 @@ public class ReserveViewController
   @FXML public void onReserve() throws RemoteException
   {
     viewModel.registerSpace();
+    viewHandler.openView("ParkingLotView");
   }
 }
