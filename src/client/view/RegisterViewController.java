@@ -45,4 +45,9 @@ public class RegisterViewController
   {
     viewModel.register();
   }
+
+  @FXML private void onLogin()
+  {
+    viewHandler.openView("Login");
+  }
 }
