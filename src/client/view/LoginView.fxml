@@ -22,7 +22,7 @@
                   <Font name="Malgun Gothic Semilight" size="18.0" />
                </font>
             </Text>
-            <Text fill="#262626" layoutX="28.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register" wrappingWidth="150.40003147125248">
+            <Text fill="#262626" layoutX="28.0" layoutY="188.0" onMouseClicked="#onRegister" strokeType="OUTSIDE" strokeWidth="0.0" text="Register" wrappingWidth="150.40003147125248">
                <font>
                   <Font name="Malgun Gothic Semilight" size="18.0" />
                </font>
