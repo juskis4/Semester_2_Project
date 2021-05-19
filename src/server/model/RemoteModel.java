@@ -16,30 +16,26 @@ public class RemoteModel extends UnicastRemoteObject implements RemoteInterface
 {
   private Model model;
 
-  public RemoteModel(Model model) throws RemoteException
-  {
+  public RemoteModel(Model model) throws RemoteException, MalformedURLException
+    {
     this.model = model;
   }
 
-  @Override
-  public void startRegistry() throws RemoteException
+  public void startServer() throws RemoteException, MalformedURLException
   {
     try {
       Registry reg = LocateRegistry.createRegistry(1099);
       System.out.println("Registry started...");
+
+      UnicastRemoteObject.exportObject(this,0);
+      Naming.rebind("ParkingLotSystem",this);
+      System.out.println("Server started...");
     }
     catch (java.rmi.server.ExportException e)
     {
       System.out.println("Registry already started? Message: " + e.getMessage());
     }
-  }
 
-  @Override
-  public void startServer() throws RemoteException, MalformedURLException
-  {
-        UnicastRemoteObject.exportObject(this, 0);
-        Naming.rebind("ParkingLotSystem", this);
-        System.out.println("Server started...");
   }
 
   @Override public boolean login(String username, String password)

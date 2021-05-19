@@ -9,7 +9,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class RMIClient {
+public class RMIClient extends UnicastRemoteObject{
 
     private RemoteInterface server;
 

@@ -15,6 +15,4 @@ public interface RemoteInterface extends Remote
   User getUserByUserName(String userName) throws RemoteException;
   void registerVehicle(String username, String licenseNo, String color, String carBrand) throws RemoteException;
   ParkingLot getParkingLot() throws RemoteException;
-  void startServer() throws RemoteException,MalformedURLException;
-  void startRegistry() throws RemoteException;
 }
