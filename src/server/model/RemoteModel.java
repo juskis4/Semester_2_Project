@@ -14,6 +14,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 
 public class RemoteModel extends UnicastRemoteObject implements RemoteInterface
 {
@@ -56,7 +57,11 @@ public class RemoteModel extends UnicastRemoteObject implements RemoteInterface
   @Override public void register(String username, String password)
       throws RemoteException
   {
-    model.register(username,password);
+    try {
+      model.register(username,password);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
   }
 
   @Override

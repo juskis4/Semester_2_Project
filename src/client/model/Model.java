@@ -6,7 +6,7 @@ import utility.observer.javaobserver.UnnamedPropertyChangeSubject;
 
 import java.rmi.RemoteException;
 
-public interface Model implements UnnamedPropertyChangeSubject {
+public interface Model extends UnnamedPropertyChangeSubject {
     void register(String userName, String password);
 
     boolean login(String userName, String password);

@@ -8,7 +8,6 @@ import client.viewModel.ViewModelFactory;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import javax.swing.text.View;
 import java.rmi.RemoteException;
 
 public class MyApplication extends Application {
