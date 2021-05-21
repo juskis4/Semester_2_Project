@@ -6,6 +6,7 @@ import server.model.domain.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class ModelManager implements Model {
     private RMIClient client;
@@ -33,7 +34,7 @@ public class ModelManager implements Model {
         try {
             this.userName = userName;
             return client.login(userName, password);
-        } catch (RemoteException ignored) {
+        } catch (RemoteException | SQLException ignored) {
 
         }
         return false;

@@ -46,13 +46,26 @@ public class DatabaseManager implements ParkingDatabase
       statement.executeUpdate();
       return new User(username,password);
     }
+  }
+
+  @Override public User getUserDB(String username, String password) throws SQLException
+  {
+    try(Connection connection = getConnection())
+    {
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM user_parking WHERE username = ? AND password = ?;");
+      statement.setString(1, username);
+      statement.setString(2, password);
+
+     statement.executeQuery();
+
+      return new User(username, password);
+    }
 
   }
 
-
   private Connection getConnection() throws SQLException{
 
-    return DriverManager.getConnection("jdbc:postgresql://10.10.27.65:5432/postgres?currentSchema=jdbc", "postgres","admin");
+    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=parking_lot", "postgres","1234");
   }
 //  public void createTables()
 //  {

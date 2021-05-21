@@ -80,6 +80,11 @@ public class User implements Serializable
     return lastname;
   }
 
+  public String getPassword()
+  {
+    return password;
+  }
+
   public String getUsername()
   {
     return username;

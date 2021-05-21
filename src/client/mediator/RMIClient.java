@@ -13,6 +13,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 
 public class RMIClient extends UnicastRemoteObject implements RemoteListener<String, String> {
 
@@ -33,7 +34,9 @@ public class RMIClient extends UnicastRemoteObject implements RemoteListener<Str
         server.register(userName, password);
     }
 
-    public boolean login(String userName, String password) throws RemoteException {
+    public boolean login(String userName, String password)
+        throws RemoteException, SQLException
+    {
 
         return server.login(userName, password);
     }

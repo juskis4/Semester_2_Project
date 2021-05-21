@@ -7,10 +7,12 @@ import java.net.MalformedURLException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.RemoteObject;
+import java.sql.SQLException;
 
 public interface RemoteInterface extends RemoteSubject<String, String>
 {
-  boolean login(String username, String password) throws RemoteException;
+  boolean login(String username, String password)
+      throws RemoteException, SQLException;
   void register(String username, String password) throws RemoteException;
   void registerFirstAndLastName(String firstName, String lastName, String userName) throws RemoteException;
   void registerSpace(String username, ParkingSpace parkingSpace, Time time, Date date) throws RemoteException;

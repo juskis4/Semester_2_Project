@@ -50,8 +50,16 @@ public class ModelManager implements Model
   }
 
   @Override
-  public boolean login(String userName, String password) {
-    return login.isCorrectLogin(userName,password);
+  public boolean login(String userName, String password) throws SQLException
+  {
+    //System.out.println(parkingDatabase.getUserDB(userName,password));
+    User dummy = new User(userName,password);
+    if(parkingDatabase.getUserDB(userName, password).getUsername().equals(dummy.getUsername()) &&
+        parkingDatabase.getUserDB(userName, password).getPassword().equals(dummy.getPassword()))
+    {
+      return true;
+    }
+    return false;
   }
 
   @Override

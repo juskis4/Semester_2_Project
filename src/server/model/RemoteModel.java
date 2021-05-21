@@ -49,7 +49,7 @@ public class RemoteModel extends UnicastRemoteObject implements RemoteInterface
   }
 
   @Override public boolean login(String username, String password)
-      throws RemoteException
+      throws RemoteException, SQLException
   {
     return model.login(username, password);
   }

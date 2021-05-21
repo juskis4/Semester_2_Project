@@ -10,7 +10,7 @@ public interface Model
   void reserveParkingSpace(ParkingSpace parkingSpace, User user);
   void reserveParkingSpace(int index, User user);
   void register(String userName, String password) throws SQLException;
-  boolean login(String userName, String password);
+  boolean login(String userName, String password) throws SQLException;
   void registerFirstAndLastName(String firstName, String lastName, String username);
   User getUserByUserName(String userName);
   void registerVehicle(String username, String licenseNo, String color, String carBrand);
