@@ -35,52 +35,60 @@ public class ViewHandler {
     }
 
     public void openView(String window) {
-        Region root = null;
-        switch (window) {
-            case "Login":
-                root = loadLoginView("LoginView.fxml");
-                break;
+        try {
+            double Width = primaryStage.getWidth();
+            double Height = primaryStage.getHeight();
+            Region root = null;
+            switch (window) {
+                case "Login":
+                    root = loadLoginView("LoginView.fxml");
+                    break;
 
-            case "Register":
-                root = loadRegisterView("RegisterView.fxml");
-                break;
+                case "Register":
+                    root = loadRegisterView("RegisterView.fxml");
+                    break;
 
-            case "ChangeCar":
-                root = loadChangeCarView("ChangeCarView.fxml");
-                break;
+                case "ChangeCar":
+                    root = loadChangeCarView("ChangeCarView.fxml");
+                    break;
 
-            case "ProfileView":
-                root = loadProfileView("ProfileView.fxml");
-                break;
+                case "ProfileView":
+                    root = loadProfileView("ProfileView.fxml");
+                    break;
 
-            case "ParkingLotView":
-                root = loadParkingView("ParkingLotView.fxml");
-                break;
+                case "ParkingLotView":
+                    root = loadParkingView("ParkingLotView.fxml");
+                    break;
 
-            case "WorkingHoursView":
-                root = loadWorkingHoursView("WorkingHoursView.fxml");
-                break;
+                case "WorkingHoursView":
+                    root = loadWorkingHoursView("WorkingHoursView.fxml");
+                    break;
 
-            case "ReserveView":
-                root = loadReserveView("ReserveView.fxml");
-                break;
+                case "ReserveView":
+                    root = loadReserveView("ReserveView.fxml");
+                    break;
 
-            case "CancelReservationView":
-                root = loadCancelReservationView("CancelReservationView.fxml");
-                break;
+                case "CancelReservationView":
+                    root = loadCancelReservationView("CancelReservationView.fxml");
+                    break;
+            }
+
+            currentScene.setRoot(root);
+            String title = "";
+            if (root.getUserData() != null) {
+                title += root.getUserData();
+            }
+            primaryStage.setTitle(title);
+            primaryStage.setScene(currentScene);
+            primaryStage.setWidth(root.getPrefWidth());
+            primaryStage.setHeight(root.getPrefHeight());
+            primaryStage.setWidth(root.getPrefWidth());
+            primaryStage.setHeight(root.getPrefHeight());
+            primaryStage.show();
+            primaryStage.setMinWidth(root.minWidth(-1));
+            primaryStage.setMinHeight(root.minHeight(-1));
+            primaryStage.show();
         }
-
-        currentScene.setRoot(root);
-        String title = "";
-        if (root.getUserData() != null) {
-            title += root.getUserData();
-        }
-
-        primaryStage.setTitle(title);
-        primaryStage.setScene(currentScene);
-        primaryStage.setWidth(root.getPrefWidth());
-        primaryStage.setHeight(root.getPrefHeight());
-        primaryStage.show();
     }
 
     public Region loadLoginView(String fxmlFile) {
