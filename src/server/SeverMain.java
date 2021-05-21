@@ -13,6 +13,5 @@ public class SeverMain {
     public static void main(String[] args) throws RemoteException, MalformedURLException {
         Model model = new ModelManager();
         RemoteModel server = new RemoteModel(model);
-        server.startServer();
     }
 }

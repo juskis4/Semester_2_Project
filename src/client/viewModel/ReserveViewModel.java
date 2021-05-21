@@ -12,17 +12,29 @@ import java.rmi.RemoteException;
 public class ReserveViewModel
 {
   private StringProperty nameOfParkingSpace;
+  private StringProperty errorLabelProperty;
+  private static final String USER_NULL = "User not set";
   private StringProperty dateInString;
   private IntegerProperty h;
   private IntegerProperty m;
 
   private Model model;
 
-  public ReserveViewModel(Model model)
+  public ReserveViewModel(Model model) throws RemoteException
   {
     this.model = model;
-    this.nameOfParkingSpace = new SimpleStringProperty("");
+    if(getUser() == null)
+    {
+      nameOfParkingSpace = new SimpleStringProperty(USER_NULL);
+    }
+    else {
+      String parkingSpaceName;
+      parkingSpaceName = getParkingLot().getParkingSpaceByUser(
+              getUser()).getNameOfParkingSpace();
+      nameOfParkingSpace = new SimpleStringProperty(parkingSpaceName);
+    }
     this.dateInString = new SimpleStringProperty("");
+    this.errorLabelProperty = new SimpleStringProperty("");
     this.h = new SimpleIntegerProperty(0);
     this.m = new SimpleIntegerProperty(0);
   }
@@ -30,6 +42,11 @@ public class ReserveViewModel
   public StringProperty dateInStringProperty()
   {
     return dateInString;
+  }
+
+  public StringProperty getErrorLabelProperty()
+  {
+    return errorLabelProperty;
   }
 
   public Time getTime()
@@ -40,9 +57,8 @@ public class ReserveViewModel
 
   public ParkingSpace getParkingSpace() throws RemoteException
   {
-    ParkingSpace parkingSpace = new ParkingSpace(nameOfParkingSpace.get());
-    parkingSpace.setOccupied(true, model.getUserByUserName());
-    return parkingSpace;
+    return model.getParkingLot().getParkingSpaceByName(nameOfParkingSpace.get());
+
   }
 
   public IntegerProperty hProperty()
@@ -75,6 +91,7 @@ public class ReserveViewModel
   public void registerSpace() throws RemoteException
   {
     model.registerSpace(model.getUserByUserName().getUsername(), getParkingSpace(), getTime(), getDate());
+    getParkingSpace().setOccupied(true, model.getUserByUserName());
   }
   public ParkingLot getParkingLot() throws RemoteException
   {
@@ -85,4 +102,30 @@ public class ReserveViewModel
   {
     return model.getUserByUserName();
   }
+
+  public void reset()
+  {
+    try
+    {
+      if(getUser() == null)
+      {
+        nameOfParkingSpace = new SimpleStringProperty(USER_NULL);
+      }
+      else {
+        String parkingSpaceName;
+        parkingSpaceName = getParkingLot().getParkingSpaceByUser(
+                getUser()).getNameOfParkingSpace();
+        nameOfParkingSpace = new SimpleStringProperty(parkingSpaceName);
+      }
+      this.dateInString = new SimpleStringProperty("");
+      this.errorLabelProperty = new SimpleStringProperty("");
+      this.h = new SimpleIntegerProperty(0);
+      this.m = new SimpleIntegerProperty(0);
+    }
+    catch (RemoteException ignored)
+    {
+
+    }
+  }
+
 }

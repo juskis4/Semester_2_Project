@@ -9,12 +9,13 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 import javax.swing.text.View;
+import java.rmi.RemoteException;
 
 public class MyApplication extends Application {
 
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) throws RemoteException {
             RMIClient client = new RMIClient();
             Model model = new ModelManager(client);
             ViewModelFactory viewModelFactory = new ViewModelFactory(model);

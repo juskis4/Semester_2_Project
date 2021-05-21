@@ -1,12 +1,14 @@
 package server.model;
 
 import server.model.domain.*;
+import utility.observer.subject.RemoteSubject;
 
 import java.net.MalformedURLException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.rmi.server.RemoteObject;
 
-public interface RemoteInterface extends Remote
+public interface RemoteInterface extends RemoteSubject<String, String>
 {
   boolean login(String username, String password) throws RemoteException;
   void register(String username, String password) throws RemoteException;

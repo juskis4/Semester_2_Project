@@ -5,7 +5,11 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import utility.observer.javaobserver.PropertyChangeSubject;
+import utility.observer.javaobserver.UnnamedPropertyChangeSubject;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 
 public class ParkingLotViewModel {
@@ -165,4 +169,10 @@ public class ParkingLotViewModel {
     public StringProperty spaceD6Property() {
         return spaceD6;
     }
+
+//    public void onClickUndef(String name)
+//    {
+//        model.setNameSpace(name);
+//    }
+
 }

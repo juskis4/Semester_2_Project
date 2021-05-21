@@ -31,7 +31,7 @@ public class ViewHandler {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.currentScene = new Scene(new Region());
-        openView("Log");
+        openView("Login");
     }
 
     public void openView(String window) {
@@ -78,8 +78,8 @@ public class ViewHandler {
 
         primaryStage.setTitle(title);
         primaryStage.setScene(currentScene);
-        primaryStage.setWidth(root.getMaxWidth());
-        primaryStage.setHeight(root.getMaxHeight());
+        primaryStage.setWidth(root.getPrefWidth());
+        primaryStage.setHeight(root.getPrefHeight());
         primaryStage.show();
     }
 
@@ -149,7 +149,7 @@ public class ViewHandler {
                 e.printStackTrace();
             }
         }
-        return changeCarViewController.getRoot();
+        return profileViewController.getRoot();
     }
 
     public Region loadParkingView(String fxmlFile) {
@@ -212,4 +212,5 @@ public class ViewHandler {
         }
         return cancelReservationViewController.getRoot();
     }
+
 }

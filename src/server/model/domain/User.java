@@ -1,6 +1,8 @@
 package server.model.domain;
 
-public class User
+import java.io.Serializable;
+
+public class User implements Serializable
 {
   private Vehicle vehicle;
   private String username;

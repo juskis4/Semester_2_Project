@@ -1,8 +1,9 @@
 package server.model.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ParkingLot
+public class ParkingLot implements Serializable
 {
   private ArrayList<ParkingSpace> parkingSpaces;
 

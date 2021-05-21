@@ -1,6 +1,8 @@
 package server.model.domain;
 
-public class ParkingSpace
+import java.io.Serializable;
+
+public class ParkingSpace implements Serializable
 {
   private boolean isOccupied;
   private String nameOfParkingSpace;

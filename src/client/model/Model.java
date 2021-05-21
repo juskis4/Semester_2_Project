@@ -1,10 +1,12 @@
 package client.model;
 
 import server.model.domain.*;
+import utility.observer.javaobserver.PropertyChangeSubject;
+import utility.observer.javaobserver.UnnamedPropertyChangeSubject;
 
 import java.rmi.RemoteException;
 
-public interface Model {
+public interface Model implements UnnamedPropertyChangeSubject {
     void register(String userName, String password);
 
     boolean login(String userName, String password);
@@ -19,4 +21,6 @@ public interface Model {
     void registerVehicle(String licenseNo, String color, String carBrand) throws RemoteException;
 
     ParkingLot getParkingLot() throws RemoteException;
+
+    void setNameSpace(String name);
 }

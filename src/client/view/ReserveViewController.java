@@ -1,6 +1,7 @@
 package client.view;
 
 import client.utility.IntStringConverter;
+import client.viewModel.ParkingLotViewModel;
 import client.viewModel.ReserveViewModel;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
@@ -11,6 +12,9 @@ import javafx.scene.layout.Region;
 import server.model.domain.User;
 
 import java.awt.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 
 public class ReserveViewController
@@ -19,6 +23,7 @@ public class ReserveViewController
   @FXML private TextField minField;
   @FXML private DatePicker reserveDate;
   @FXML private Label parkingSpaceField;
+  @FXML private Label errorLabel;
   private ViewHandler viewHandler;
   private Region root;
   private ReserveViewModel viewModel;
@@ -35,17 +40,22 @@ public class ReserveViewController
     this.viewHandler = viewHandler;
     this.root = root;
 
-    String parkingSpaceName;
-    parkingSpaceName = viewModel.getParkingLot().getParkingSpaceByUser(
-        viewModel.getUser()).getNameOfParkingSpace();
-    parkingSpaceField.setText(parkingSpaceName);
-
+    parkingSpaceField.textProperty().bindBidirectional(viewModel.nameOfParkingSpaceProperty());
     Bindings.bindBidirectional(hourField.textProperty(),
         viewModel.hProperty(), new IntStringConverter());
     Bindings.bindBidirectional(minField.textProperty(),
         viewModel.mProperty(), new IntStringConverter());
     TextField dateEditor = reserveDate.getEditor();
-    dateEditor.textProperty().bind(viewModel.dateInStringProperty());
+    viewModel.dateInStringProperty().bindBidirectional(dateEditor.textProperty());
+    errorLabel.textProperty().bindBidirectional(viewModel.getErrorLabelProperty());
+
+//    dateEditor.textProperty().bind(viewModel.dateInStringProperty());
+
+  }
+
+  public void reset()
+  {
+    viewModel.reset();
   }
 
   public Region getRoot()

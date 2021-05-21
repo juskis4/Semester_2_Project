@@ -3,13 +3,14 @@ package client.model;
 import client.mediator.RMIClient;
 import server.model.domain.*;
 
+import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 
 public class ModelManager implements Model {
-    private PropertyChangeSupport support;
     private RMIClient client;
     private String userName;
+    private PropertyChangeSupport support;
 
     public ModelManager(RMIClient client) {
         userName = null;
@@ -20,6 +21,7 @@ public class ModelManager implements Model {
     @Override
     public void register(String userName, String password) {
         try {
+            this.userName = userName;
             client.register(userName, password);
         } catch (RemoteException ignored) {
 
@@ -68,4 +70,18 @@ public class ModelManager implements Model {
         return client.getParkingLot();
     }
 
+//    @Override
+//    public void addListener(PropertyChangeListener listener) {
+//        support.addPropertyChangeListener(listener);
+//    }
+//
+//    @Override
+//    public void removeListener(PropertyChangeListener listener) {
+//        support.removePropertyChangeListener(listener);
+//    }
+
+    @Override
+    public void setNameSpace(String name) {
+        support.firePropertyChange(name,null,1);
+    }
 }

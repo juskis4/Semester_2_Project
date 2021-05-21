@@ -14,7 +14,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 
-public class ParkingLotViewController implements UnnamedPropertyChangeSubject {
+public class ParkingLotViewController {
 
     @FXML
     private Label spaceA1;
@@ -64,7 +64,6 @@ public class ParkingLotViewController implements UnnamedPropertyChangeSubject {
     private Region root;
     private ParkingLotViewModel viewModel;
 
-    private PropertyChangeSupport propertyChangeSupport;
 
     public ParkingLotViewController() {
 
@@ -74,7 +73,6 @@ public class ParkingLotViewController implements UnnamedPropertyChangeSubject {
         this.viewModel = viewModel;
         this.viewHandler = viewHandler;
         this.root = root;
-        propertyChangeSupport = new PropertyChangeSupport(this);
 
         spaceA1.textProperty().bindBidirectional(viewModel.spaceA1Property());
         spaceA2.textProperty().bindBidirectional(viewModel.spaceA2Property());
@@ -251,16 +249,24 @@ public class ParkingLotViewController implements UnnamedPropertyChangeSubject {
 
     private void onClickUndef(String name) {
         viewHandler.openView("ReserveView");
-        propertyChangeSupport.firePropertyChange(name, null, 1);
+//        viewModel.onClickUndef(name);
     }
 
-    @Override
-    public void addListener(PropertyChangeListener listener) {
-        propertyChangeSupport.addPropertyChangeListener(listener);
+    @FXML
+    private void onProfileClicked()
+    {
+        viewHandler.openView("ProfileView");
     }
 
-    @Override
-    public void removeListener(PropertyChangeListener listener) {
-        propertyChangeSupport.removePropertyChangeListener(listener);
+    @FXML
+    private void onChangeYourCarClicked()
+    {
+        viewHandler.openView("ChangeCar");
+    }
+
+    @FXML
+    private void onWorkingHoursClicked()
+    {
+        viewHandler.openView("WorkingHoursView");
     }
 }
