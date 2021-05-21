@@ -37,7 +37,6 @@ public class RMIClient extends UnicastRemoteObject implements RemoteListener<Str
     public boolean login(String userName, String password)
         throws RemoteException, SQLException
     {
-
         return server.login(userName, password);
     }
 

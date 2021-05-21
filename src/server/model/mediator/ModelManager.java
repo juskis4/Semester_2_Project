@@ -54,6 +54,7 @@ public class ModelManager implements Model
   {
     //System.out.println(parkingDatabase.getUserDB(userName,password));
     User dummy = new User(userName,password);
+    System.out.println(parkingDatabase.getUserDB(userName, password).getPassword());
     if(parkingDatabase.getUserDB(userName, password).getUsername().equals(dummy.getUsername()) &&
         parkingDatabase.getUserDB(userName, password).getPassword().equals(dummy.getPassword()))
     {

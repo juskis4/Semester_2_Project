@@ -46,11 +46,15 @@ public class LoginViewController {
 
     @FXML
     private void onLogin() {
-        if (viewModel.login()) {
+        try{
+            viewModel.login();
             viewHandler.openView("ParkingLotView");
-        } else {
+        }
+        catch (Exception e)
+        {
             errorLabel.setText("Wrong password or username!");
         }
+
     }
 
     @FXML

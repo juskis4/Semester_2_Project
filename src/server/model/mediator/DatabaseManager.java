@@ -56,11 +56,17 @@ public class DatabaseManager implements ParkingDatabase
       statement.setString(1, username);
       statement.setString(2, password);
 
-     statement.executeQuery();
-
-      return new User(username, password);
+      ResultSet resultSet = statement.executeQuery();
+      String password1 = null;
+      String username1 = null;
+      while(resultSet.next())
+      {
+        username1 = resultSet.getString("username");
+        password1 = resultSet.getString("password");
+      }
+      System.out.println(username1 + " " + password1);
+      return new User(username1, password1);
     }
-
   }
 
   private Connection getConnection() throws SQLException{
