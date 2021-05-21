@@ -2,16 +2,20 @@ package server.model.mediator;
 
 import server.model.domain.*;
 
+import java.sql.SQLException;
+
 public class ModelManager implements Model
 {
   private ParkingLot parkingLot;
   private DatabaseManager databaseManager;
   private Login login;
+  private ParkingDatabase parkingDatabase;
 
   public ModelManager()
   {
     parkingLot = new ParkingLot();
     login = new Login();
+    parkingDatabase = new DatabaseManager();
   }
 
   @Override public void registerSpace(String username, ParkingSpace parkingSpace, Time time, Date date)
@@ -40,8 +44,9 @@ public class ModelManager implements Model
   }
 
   @Override
-  public void register(String userName, String password) {
+  public void register(String userName, String password) throws SQLException {
     login.register(userName,password);
+    parkingDatabase.addUserDB(userName,password);
   }
 
   @Override
@@ -61,7 +66,7 @@ public class ModelManager implements Model
   }
 
   @Override public void registerVehicle(String username, String licenseNo, String color,
-      String carBrand)
+                                        String carBrand)
   {
     login.getUserList().getUserByUsername(username).registerVehicle(licenseNo, color, carBrand);
   }

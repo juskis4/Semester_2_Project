@@ -10,6 +10,7 @@ public class User implements Serializable
 
   private String firstname;
   private String lastname;
+  private String password;
 
   public User(String username)
   {
@@ -18,6 +19,17 @@ public class User implements Serializable
     this.vehicle = null;
     this.userRequest = null;
     this.username = username;
+    password = null;
+  }
+
+  public User(String username,String password)
+  {
+    this.firstname = null;
+    this.lastname = null;
+    this.vehicle = null;
+    this.userRequest = null;
+    this.username = username;
+    this.password = password;
   }
 
   public void setFirstname(String firstname)
