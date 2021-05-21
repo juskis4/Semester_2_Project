@@ -36,6 +36,8 @@ public class ViewHandler {
 
     public void openView(String window) {
         try {
+            double width = primaryStage.getWidth();
+            double height = primaryStage.getHeight();
             Region root = null;
             switch (window) {
                 case "Login":
@@ -86,6 +88,13 @@ public class ViewHandler {
             primaryStage.setMinWidth(root.minWidth(-1));
             primaryStage.setMinHeight(root.minHeight(-1));
             primaryStage.show();
+            if(primaryStage.getMinWidth() <= width){
+                primaryStage.setWidth(width);
+            }
+            if(primaryStage.getMinHeight() <= height)
+            {
+                primaryStage.setHeight(height);
+            }
         }
         catch (Exception e)
         {
