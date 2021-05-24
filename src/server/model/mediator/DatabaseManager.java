@@ -12,30 +12,6 @@ public class DatabaseManager implements ParkingDatabase
 
   public DatabaseManager()
   {
-//    String driver = "org.postgresql.Driver";
-//
-//    String url = "jdbc:postgresql://localhost:5432/postgres?currentSchema=jdbc";
-//
-//    String user = "postgres";
-//    String pw = "1234";
-//
-//    connection = null;
-//
-//    try {
-//      Class.forName(driver);
-//    }
-//    catch (ClassNotFoundException e)
-//    {
-//      e.printStackTrace();
-//    }
-//
-//    try {
-//      connection = DriverManager.getConnection(url, user, pw);
-//    }
-//    catch (SQLException e)
-//    {
-//      e.printStackTrace();
-//    }
   }
 
   public User addUserDB(String username, String password) throws SQLException {
@@ -69,36 +45,52 @@ public class DatabaseManager implements ParkingDatabase
     }
   }
 
+  public void addUserNamesDB(String firstName, String lastName, String username) throws SQLException {
+    try(Connection connection = getConnection()) {
+      PreparedStatement statement = connection.prepareStatement("UPDATE user_parking SET (f_name, l_name) = (?,?) WHERE username = ?;");
+      statement.setString(3,username);
+      statement.setString(1,firstName);
+      statement.setString(2,lastName);
+      statement.executeUpdate();
+
+
+      ResultSet resultSet = statement.executeQuery();
+      String f_name = null;
+      String l_name = null;
+      while(resultSet.next())
+      {
+        f_name = resultSet.getString("f_name");
+        l_name = resultSet.getString("l_name");
+      }
+      System.out.println(f_name + " " + l_name);
+    }
+  }
+
+  @Override public User getUserDB(String username) throws SQLException
+  {
+    try(Connection connection = getConnection())
+    {
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM user_parking WHERE username = ?;");
+      statement.setString(1, username);
+
+      ResultSet resultSet = statement.executeQuery();
+      String username1 = null;
+      while(resultSet.next())
+      {
+        username1 = resultSet.getString("username");
+      }
+      System.out.println(username1);
+      if(username1 != null)
+      {
+        return new User(username1);
+      }
+
+      return null;
+    }
+  }
   private Connection getConnection() throws SQLException{
 
     return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=parking_lot", "postgres","1234");
   }
-//  public void createTables()
-//  {
-//    String sql = "CREATE SCHEMA IF NOT EXIST \"ParkingReservation\";";
-//    try{
-//      Statement statement = connection.createStatement();
-//      statement.execute(sql);
-//    }
-//    catch (SQLException e)
-//    {
-//      e.printStackTrace();
-//      throw new RuntimeException("Could not create Schema");
-//    }
-//
-//    sql = "CREATE TABLE IF NOT EXISTS \"ParkingReservation\".ParkingLot ("
-//        + "Number varchar(2) NOT NULL PRIMARY KEY,"
-//        + "isReserved varchar(1) NOT NULL" + ");";
-//
-//    try {
-//      Statement statement = connection.createStatement();
-//      statement.execute(sql);
-//    }
-//    catch (SQLException e)
-//    {
-//      e.printStackTrace();
-//    }
-//
-//  }
 
 }

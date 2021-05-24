@@ -65,7 +65,7 @@ public class RemoteModel extends UnicastRemoteObject implements RemoteInterface
   }
 
   @Override
-  public void registerFirstAndLastName(String firstName, String lastName,String userName) throws RemoteException {
+  public void registerFirstAndLastName(String firstName, String lastName,String userName) throws SQLException, RemoteException {
     model.registerFirstAndLastName(firstName,lastName,userName);
   }
 
@@ -75,7 +75,9 @@ public class RemoteModel extends UnicastRemoteObject implements RemoteInterface
   }
 
   @Override
-  public User getUserByUserName(String userName) throws RemoteException {
+  public User getUserByUserName(String userName)
+      throws RemoteException, SQLException
+  {
     return model.getUserByUserName(userName);
   }
 

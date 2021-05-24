@@ -8,6 +8,7 @@ import javafx.beans.property.StringProperty;
 import server.model.domain.*;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class ReserveViewModel
 {
@@ -20,7 +21,7 @@ public class ReserveViewModel
 
   private Model model;
 
-  public ReserveViewModel(Model model) throws RemoteException
+  public ReserveViewModel(Model model) throws RemoteException, SQLException
   {
     this.model = model;
     if(getUser() == null)
@@ -88,7 +89,7 @@ public class ReserveViewModel
     return dateReturned;
   }
 
-  public void registerSpace() throws RemoteException
+  public void registerSpace() throws RemoteException, SQLException
   {
     model.registerSpace(model.getUserByUserName().getUsername(), getParkingSpace(), getTime(), getDate());
     getParkingSpace().setOccupied(true, model.getUserByUserName());
@@ -98,7 +99,7 @@ public class ReserveViewModel
     return model.getParkingLot();
   }
 
-  public User getUser() throws RemoteException
+  public User getUser() throws RemoteException, SQLException
   {
     return model.getUserByUserName();
   }
@@ -122,7 +123,7 @@ public class ReserveViewModel
       this.h = new SimpleIntegerProperty(0);
       this.m = new SimpleIntegerProperty(0);
     }
-    catch (RemoteException ignored)
+    catch (RemoteException | SQLException ignored)
     {
 
     }

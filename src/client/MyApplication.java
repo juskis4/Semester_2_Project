@@ -9,12 +9,14 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class MyApplication extends Application {
 
 
     @Override
-    public void start(Stage stage) throws RemoteException {
+    public void start(Stage stage) throws RemoteException, SQLException
+    {
             RMIClient client = new RMIClient();
             Model model = new ModelManager(client);
             ViewModelFactory viewModelFactory = new ViewModelFactory(model);

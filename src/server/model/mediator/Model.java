@@ -11,8 +11,9 @@ public interface Model
   void reserveParkingSpace(int index, User user);
   void register(String userName, String password) throws SQLException;
   boolean login(String userName, String password) throws SQLException;
-  void registerFirstAndLastName(String firstName, String lastName, String username);
-  User getUserByUserName(String userName);
+  void registerFirstAndLastName(String firstName, String lastName, String username)
+      throws SQLException;
+  User getUserByUserName(String userName) throws SQLException;
   void registerVehicle(String username, String licenseNo, String color, String carBrand);
   ParkingLot getParkingLot();
 }

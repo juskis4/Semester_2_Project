@@ -16,6 +16,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class ReserveViewController
 {
@@ -63,7 +64,7 @@ public class ReserveViewController
     return root;
   }
 
-  @FXML public void onReserve() throws RemoteException
+  @FXML public void onReserve() throws RemoteException, SQLException
   {
     viewModel.registerSpace();
     viewHandler.openView("ParkingLotView");

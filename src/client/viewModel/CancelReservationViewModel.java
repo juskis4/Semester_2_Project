@@ -9,6 +9,7 @@ import server.model.domain.User;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class CancelReservationViewModel {
     public static final String USER_NULL = "User not set.";
@@ -42,7 +43,7 @@ public class CancelReservationViewModel {
                 parkingSpaceFieldProperty = new SimpleStringProperty(parkingSpace.getNameOfParkingSpace());
             }
         }
-        catch (RemoteException ignored)
+        catch (RemoteException | SQLException ignored)
         {
 
         }
@@ -56,7 +57,7 @@ public class CancelReservationViewModel {
             parkingSpaceFieldProperty = new SimpleStringProperty(model.getParkingLot().getParkingSpaceByName(authorNameProperty.get()).getNameOfParkingSpace());
             vehicleInfoProperty = new SimpleStringProperty(model.getUserByUserName().getVehicle().toString());
         }
-        catch (RemoteException ignored)
+        catch (RemoteException | SQLException ignored)
         {
 
         }
@@ -85,7 +86,7 @@ public class CancelReservationViewModel {
         try {
             model.getParkingLot().getParkingSpaceByName(parkingSpaceFieldProperty.get()).setOccupied(false,model.getUserByUserName());
         }
-        catch (RemoteException ignored)
+        catch (RemoteException | SQLException ignored)
         {
 
         }

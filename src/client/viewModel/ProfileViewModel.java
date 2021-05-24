@@ -6,6 +6,7 @@ import javafx.beans.property.StringProperty;
 import server.model.domain.User;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class ProfileViewModel {
 
@@ -18,7 +19,7 @@ public class ProfileViewModel {
     private StringProperty secondNameProperty;
     private Model model;
 
-    public ProfileViewModel(Model model) throws RemoteException
+    public ProfileViewModel(Model model) throws RemoteException, SQLException
     {
 
         this.model = model;
@@ -40,7 +41,7 @@ public class ProfileViewModel {
         secondNameProperty = new SimpleStringProperty("");
     }
 
-    public void reset() throws RemoteException
+    public void reset() throws RemoteException, SQLException
     {
         userNameProperty = new SimpleStringProperty(model.getUserByUserName().getUsername());
         licenseNoProperty = new SimpleStringProperty(model.getUserByUserName().getVehicle().getLicenseNo());

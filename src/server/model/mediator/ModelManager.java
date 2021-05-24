@@ -64,14 +64,16 @@ public class ModelManager implements Model
   }
 
   @Override
-  public void registerFirstAndLastName(String firstName, String lastName, String username) {
-    login.getUserList().getUserByUsername(username).setFirstname(firstName);
-    login.getUserList().getUserByUsername(username).setLastname(lastName);
+  public void registerFirstAndLastName(String firstName, String lastName, String username)
+      throws SQLException
+  {
+    parkingDatabase.addUserNamesDB(firstName, lastName, username);
   }
 
   @Override
-  public User getUserByUserName(String userName) {
-    return login.getUserList().getUserByUsername(userName);
+  public User getUserByUserName(String userName) throws SQLException
+  {
+    return parkingDatabase.getUserDB(userName);
   }
 
   @Override public void registerVehicle(String username, String licenseNo, String color,

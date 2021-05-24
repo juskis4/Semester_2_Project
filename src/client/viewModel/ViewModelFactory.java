@@ -3,6 +3,7 @@ package client.viewModel;
 import client.model.Model;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class ViewModelFactory
 {
@@ -15,7 +16,7 @@ public class ViewModelFactory
   private ReserveViewModel reserveViewModel;
   private CancelReservationViewModel cancelReservationViewModel;
 
-  public ViewModelFactory(Model model) throws RemoteException
+  public ViewModelFactory(Model model) throws RemoteException, SQLException
   {
     this.loginViewModel = new LoginViewModel(model);
     this.registerViewModel = new RegisterViewModel(model);

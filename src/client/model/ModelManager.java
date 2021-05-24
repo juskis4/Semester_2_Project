@@ -14,7 +14,7 @@ public class ModelManager implements Model {
     private PropertyChangeSupport support;
 
     public ModelManager(RMIClient client) {
-        userName = null;
+        userName = "";
         this.client = client;
         support = new PropertyChangeSupport(this);
     }
@@ -43,9 +43,9 @@ public class ModelManager implements Model {
     @Override
     public void registerFirstAndLastName(String firstName, String lastName, String userName) {
         try {
-            this.userName = userName;
+            
             client.registerFirstAndLastName(firstName, lastName, userName);
-        } catch (RemoteException e) {
+        } catch (RemoteException | SQLException e) {
 
         }
     }
@@ -56,7 +56,8 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public User getUserByUserName() throws RemoteException {
+    public User getUserByUserName() throws RemoteException, SQLException
+    {
         return client.getUserByUserName(userName);
     }
 

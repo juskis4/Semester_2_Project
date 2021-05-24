@@ -9,6 +9,7 @@ import javafx.scene.layout.Region;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class ProfileViewController {
     @FXML
@@ -52,7 +53,7 @@ public class ProfileViewController {
     public void reset() {
         try {
             viewModel.reset();
-        } catch (RemoteException ignored) {
+        } catch (RemoteException | SQLException ignored) {
 
         }
     }

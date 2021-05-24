@@ -40,7 +40,9 @@ public class RMIClient extends UnicastRemoteObject implements RemoteListener<Str
         return server.login(userName, password);
     }
 
-    public void registerFirstAndLastName(String firstName, String lastName, String userName) throws RemoteException {
+    public void registerFirstAndLastName(String firstName, String lastName, String userName)
+        throws RemoteException, SQLException
+    {
         server.registerFirstAndLastName(firstName, lastName, userName);
     }
 
@@ -48,7 +50,9 @@ public class RMIClient extends UnicastRemoteObject implements RemoteListener<Str
         server.registerSpace(username, parkingSpace, time, date);
     }
 
-    public User getUserByUserName(String userName) throws RemoteException {
+    public User getUserByUserName(String userName)
+        throws RemoteException, SQLException
+    {
         return server.getUserByUserName(userName);
     }
 

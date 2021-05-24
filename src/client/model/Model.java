@@ -5,6 +5,7 @@ import utility.observer.javaobserver.PropertyChangeSubject;
 import utility.observer.javaobserver.UnnamedPropertyChangeSubject;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public interface Model extends UnnamedPropertyChangeSubject {
     void register(String userName, String password);
@@ -16,7 +17,7 @@ public interface Model extends UnnamedPropertyChangeSubject {
     void registerSpace(String username, ParkingSpace parkingSpace, Time time, Date date)
             throws RemoteException;
 
-    User getUserByUserName() throws RemoteException;
+    User getUserByUserName() throws RemoteException, SQLException;
 
     void registerVehicle(String licenseNo, String color, String carBrand) throws RemoteException;
 
