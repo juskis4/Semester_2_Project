@@ -84,6 +84,9 @@ public class ProfileViewModel implements PropertyChangeListener {
         {
             case "Login" : {
                 userNameProperty.setValue((String)evt.getOldValue());
+                licenseNoProperty.setValue(model.getUser().getVehicle().getLicenseNo());
+                actualFirstNameProperty.setValue(model.getUser().getFirstname());
+                actualSecondNameProperty.setValue(model.getUser().getLastname());
                 break;
             }
             default: {
