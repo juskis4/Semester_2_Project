@@ -1,7 +1,6 @@
 package client.model;
 
 import server.model.domain.*;
-import utility.observer.javaobserver.PropertyChangeSubject;
 import utility.observer.javaobserver.UnnamedPropertyChangeSubject;
 
 import java.rmi.RemoteException;
@@ -25,5 +24,5 @@ public interface Model extends UnnamedPropertyChangeSubject {
 
     void setNameSpace(String name);
 
-    User getUser();
+    client.utility.User getUser();
 }

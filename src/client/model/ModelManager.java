@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class ModelManager implements Model {
     private RMIClient client;
-    private User user;
+    private client.utility.User user;
     private PropertyChangeSupport support;
 
     public ModelManager(RMIClient client) {
@@ -22,7 +22,7 @@ public class ModelManager implements Model {
     @Override
     public void register(String userName, String password) {
         try {
-            this.user = new User(userName, password);
+            this.user = new client.utility.User(userName, password);
             client.register(userName, password);
         } catch (RemoteException ignored) {
 
@@ -32,7 +32,7 @@ public class ModelManager implements Model {
     @Override
     public boolean login(String userName, String password) {
         try {
-            this.user = new User(userName, password);
+            this.user = new client.utility.User(userName, password);
             support.firePropertyChange("Login", user.getUsername(), null);
             return client.login(userName, password);
         } catch (RemoteException | SQLException ignored) {
@@ -58,7 +58,8 @@ public class ModelManager implements Model {
 
     @Override
     public User getUserByUserName() throws RemoteException, SQLException {
-        return client.getUserByUserName(user.getUsername());
+        return null;
+//        return client.getUserByUserName(user.getUsername());
     }
 
     @Override
@@ -90,7 +91,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public User getUser() {
+    public client.utility.User getUser() {
         return user;
     }
 }
