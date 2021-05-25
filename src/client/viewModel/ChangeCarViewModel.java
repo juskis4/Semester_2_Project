@@ -3,6 +3,7 @@ package client.viewModel;
 import client.model.Model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import server.model.domain.Vehicle;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -54,11 +55,16 @@ public class ChangeCarViewModel implements PropertyChangeListener {
                 carBrandProperty.get());
     }
 
+
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if(evt.getPropertyName().equals("Login"))
+        if(evt.getPropertyName().equals("getVehicle"))
         {
-            userName = (String) evt.getOldValue();
+            Vehicle vehicle = (Vehicle) evt.getOldValue();
+            licenseNoProperty.set(vehicle.getLicenseNo());
+            carBrandProperty.set(vehicle.getCarBrand());
+            colorProperty.set(vehicle.getColor());
         }
     }
 }

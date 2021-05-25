@@ -3,6 +3,7 @@ package server.model.mediator;
 import javafx.beans.property.StringProperty;
 import org.postgresql.core.SqlCommand;
 import server.model.domain.User;
+import server.model.domain.Vehicle;
 
 import java.sql.*;
 
@@ -45,6 +46,33 @@ public class DatabaseManager implements ParkingDatabase
     }
   }
 
+  @Override public Vehicle getCarDB(String username) throws SQLException
+  {
+    try(Connection connection = getConnection())
+    {
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM car_info WHERE username = ?;");
+      statement.setString(1, username);
+
+      ResultSet resultSet = statement.executeQuery();
+      String username1 = null;
+      String licenseNo = null;
+      String carBrand = null;
+      String color = null;
+      while(resultSet.next())
+      {
+        username1 = resultSet.getString("username");
+        licenseNo = resultSet.getString("license_no");
+        carBrand = resultSet.getString("car_brand");
+        color = resultSet.getString("color");
+      }
+      if(licenseNo != null)
+      {
+        return new Vehicle(licenseNo, color, carBrand);
+      }
+      return null;
+    }
+  }
+
   public void addUserNamesDB(String firstName, String lastName, String username) throws SQLException {
     try(Connection connection = getConnection()) {
       PreparedStatement statement = connection.prepareStatement("UPDATE user_parking SET (f_name, l_name) = (?,?) WHERE username = ?;");
@@ -66,15 +94,31 @@ public class DatabaseManager implements ParkingDatabase
     }
   }
 
-  public void addCarDB(String username, String carBrand, String licenseNo, String color) throws SQLException {
+  public void addCarDB(String username, String licenseNo, String carBrand, String color) throws SQLException {
     try(Connection connection = getConnection()) {
-      PreparedStatement statement = connection.prepareStatement("INSERT INTO car_info (username, license_no, car_brand, color) VALUES (?,?,?,?)");
-      statement.setString(1,username);
-      statement.setString(2,licenseNo);
-      statement.setString(3,carBrand);
-      statement.setString(4,color);
-      statement.executeUpdate();
+      if(getCarDB(username) == null)
+      {
+        PreparedStatement statement = connection.prepareStatement(
+            "INSERT INTO car_info (username, license_no, car_brand, color) VALUES (?,?,?,?)");
+        statement.setString(1, username);
+        statement.setString(2, licenseNo);
+        statement.setString(3, carBrand);
+        statement.setString(4, color);
+        statement.executeUpdate();
+      }
 
+      else
+      {
+        PreparedStatement statement = connection.prepareStatement("UPDATE car_info SET (license_no, car_brand, color) = (?,?,?) WHERE username = ?;");
+        statement.setString(4,username);
+        if(licenseNo!=null)
+        {
+          statement.setString(1, licenseNo);
+          statement.setString(2, color);
+          statement.setString(3, carBrand);
+        }
+        statement.executeUpdate();
+      }
 
 //      ResultSet resultSet = statement.executeQuery();
 //      String f_name = null;

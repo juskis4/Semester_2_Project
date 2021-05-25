@@ -1,6 +1,7 @@
 package server.model.mediator;
 
 import server.model.domain.User;
+import server.model.domain.Vehicle;
 
 import java.sql.SQLException;
 
@@ -12,4 +13,5 @@ public interface ParkingDatabase
   void addUserNamesDB(String firstName, String lastName, String username) throws SQLException;
   User getUserDB(String username) throws SQLException;
   void addCarDB(String username, String carBrand, String licenseNo, String color) throws SQLException;
+  Vehicle getCarDB(String username) throws SQLException;
 }

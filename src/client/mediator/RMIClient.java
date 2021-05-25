@@ -58,7 +58,7 @@ public class RMIClient extends UnicastRemoteObject implements RemoteListener<Str
 
     public void registerVehicle(String username, String licenseNo, String color, String carBrand)
             throws RemoteException {
-        server.registerVehicle(username, licenseNo, color, carBrand);
+        server.registerVehicle(username, licenseNo, carBrand, color);
     }
 
     public ParkingLot getParkingLot() throws RemoteException{

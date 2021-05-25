@@ -37,6 +37,10 @@ public class ModelManager implements Model {
             {
                 support.firePropertyChange("FirstLastNames", user.getFirstname(), user.getLastname());
             }
+            if(user.getVehicle() != null)
+            {
+                support.firePropertyChange("getVehicle", null, user.getVehicle());
+            }
             support.firePropertyChange("Login", user.getUsername(), null);
             return client.login(userName, password);
         } catch (RemoteException | SQLException ignored) {
@@ -72,8 +76,8 @@ public class ModelManager implements Model {
     @Override
     public void registerVehicle(String licenseNo,
                                 String color, String carBrand) throws RemoteException {
-        client.registerVehicle(user.getUsername(), licenseNo, color, carBrand);
-        user.registerVehicle(licenseNo, color, carBrand);
+        client.registerVehicle(user.getUsername(), licenseNo, carBrand, color);
+        user.registerVehicle(licenseNo, carBrand, color);
         support.firePropertyChange("Vehicle", null, user.getVehicle().getLicenseNo());
     }
 

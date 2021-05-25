@@ -81,7 +81,7 @@ public class ModelManager implements Model
   {
     try
     {
-      parkingDatabase.addCarDB(username, licenseNo, color, carBrand);
+      parkingDatabase.addCarDB(username, licenseNo, carBrand, color);
     }
     catch (SQLException e)
     {

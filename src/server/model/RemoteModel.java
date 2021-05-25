@@ -84,7 +84,7 @@ public class RemoteModel extends UnicastRemoteObject implements RemoteInterface
   @Override public void registerVehicle(String username, String licenseNo,
       String color, String carBrand) throws RemoteException
   {
-    model.registerVehicle(username, licenseNo, color, carBrand);
+    model.registerVehicle(username, licenseNo, carBrand, color);
   }
 
   @Override
