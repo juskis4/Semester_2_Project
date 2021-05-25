@@ -25,6 +25,7 @@ public class ProfileViewModel implements PropertyChangeListener {
     {
 
         this.model = model;
+        model.addListener(this);
         userNameProperty = new SimpleStringProperty(USER_NULL);
         licenseNoProperty = new SimpleStringProperty(USER_NULL);
         actualFirstNameProperty = new SimpleStringProperty(USER_NULL);
