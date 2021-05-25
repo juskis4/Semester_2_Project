@@ -85,8 +85,6 @@ public class ProfileViewModel implements PropertyChangeListener {
         {
             case "Login" : {
                 userNameProperty.setValue((String)evt.getOldValue());
-
-
                 System.out.println("WORKING");
                 break;
             }
@@ -102,13 +100,6 @@ public class ProfileViewModel implements PropertyChangeListener {
                 break;
             }
             default: {
-                try {
-                    reset();
-                }
-                catch (Exception ignored)
-                {
-
-                }
             }
         }
     }
