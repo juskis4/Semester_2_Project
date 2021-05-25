@@ -24,4 +24,6 @@ public interface Model extends UnnamedPropertyChangeSubject {
     ParkingLot getParkingLot() throws RemoteException;
 
     void setNameSpace(String name);
+
+    User getUser();
 }

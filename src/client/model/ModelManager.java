@@ -10,11 +10,11 @@ import java.sql.SQLException;
 
 public class ModelManager implements Model {
     private RMIClient client;
-    private String userName;
+    private User user;
     private PropertyChangeSupport support;
 
     public ModelManager(RMIClient client) {
-        userName = "";
+        user = null;
         this.client = client;
         support = new PropertyChangeSupport(this);
     }
@@ -22,7 +22,7 @@ public class ModelManager implements Model {
     @Override
     public void register(String userName, String password) {
         try {
-            this.userName = userName;
+            this.user = new User(userName, password);
             client.register(userName, password);
         } catch (RemoteException ignored) {
 
@@ -32,7 +32,8 @@ public class ModelManager implements Model {
     @Override
     public boolean login(String userName, String password) {
         try {
-            this.userName = userName;
+            this.user = new User(userName, password);
+            support.firePropertyChange("Login", user.getUsername(), null);
             return client.login(userName, password);
         } catch (RemoteException | SQLException ignored) {
 
@@ -43,7 +44,7 @@ public class ModelManager implements Model {
     @Override
     public void registerFirstAndLastName(String firstName, String lastName, String userName) {
         try {
-            
+
             client.registerFirstAndLastName(firstName, lastName, userName);
         } catch (RemoteException | SQLException e) {
 
@@ -56,15 +57,15 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public User getUserByUserName() throws RemoteException, SQLException
-    {
-        return client.getUserByUserName(userName);
+    public User getUserByUserName() throws RemoteException, SQLException {
+        return client.getUserByUserName(user.getUsername());
     }
 
     @Override
     public void registerVehicle(String licenseNo,
                                 String color, String carBrand) throws RemoteException {
-        client.registerVehicle(userName, licenseNo, color, carBrand);
+        client.registerVehicle(user.getUsername(), licenseNo, color, carBrand);
+        user.registerVehicle(licenseNo, color, carBrand);
     }
 
     @Override
@@ -82,10 +83,14 @@ public class ModelManager implements Model {
         support.removePropertyChangeListener(listener);
     }
 
+
     @Override
     public void setNameSpace(String name) {
-        support.firePropertyChange(name,null,1);
+        support.firePropertyChange(name, null, 1);
     }
 
-
+    @Override
+    public User getUser() {
+        return user;
+    }
 }
