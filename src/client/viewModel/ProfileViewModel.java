@@ -87,6 +87,7 @@ public class ProfileViewModel implements PropertyChangeListener {
                 licenseNoProperty.setValue(model.getUser().getVehicle().getLicenseNo());
                 actualFirstNameProperty.setValue(model.getUser().getFirstname());
                 actualSecondNameProperty.setValue(model.getUser().getLastname());
+                System.out.println("WORKING");
                 break;
             }
             default: {
