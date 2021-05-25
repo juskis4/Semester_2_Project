@@ -23,6 +23,8 @@ public class ProfileViewController {
     @FXML
     private TextField firstName;
     @FXML
+    private Label errorLabel;
+    @FXML
     private TextField secondName;
     private ViewHandler viewHandler;
     private Region root;
@@ -43,6 +45,7 @@ public class ProfileViewController {
         actualSecondName.textProperty().bindBidirectional(viewModel.getActualSecondNameProperty());
         firstName.textProperty().bindBidirectional(viewModel.getFirstNameProperty());
         secondName.textProperty().bindBidirectional(viewModel.getSecondNameProperty());
+        errorLabel.textProperty().bindBidirectional(viewModel.getErrorLabelProperty());
 
     }
 
@@ -61,5 +64,17 @@ public class ProfileViewController {
     @FXML
     private void onChange() {
         viewModel.changeNames();
+    }
+
+    @FXML
+    private void onChangeYourCar()
+    {
+        viewHandler.openView("ChangeCar");
+    }
+
+    @FXML
+    private void onParkingLot()
+    {
+        viewHandler.openView("ParkingLotView");
     }
 }

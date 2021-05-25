@@ -24,5 +24,5 @@ public interface Model extends UnnamedPropertyChangeSubject {
 
     void setNameSpace(String name);
 
-    client.utility.User getUser();
+    User getUser();
 }

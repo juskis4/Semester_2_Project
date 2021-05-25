@@ -11,4 +11,5 @@ public interface ParkingDatabase
   User getUserDB(String username, String password) throws SQLException;
   void addUserNamesDB(String firstName, String lastName, String username) throws SQLException;
   User getUserDB(String username) throws SQLException;
+  void addCarDB(String username, String carBrand, String licenseNo, String color) throws SQLException;
 }

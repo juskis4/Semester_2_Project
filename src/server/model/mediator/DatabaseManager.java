@@ -66,6 +66,30 @@ public class DatabaseManager implements ParkingDatabase
     }
   }
 
+  public void addCarDB(String username, String carBrand, String licenseNo, String color) throws SQLException {
+    try(Connection connection = getConnection()) {
+      PreparedStatement statement = connection.prepareStatement("INSERT INTO car_info (username, license_no, car_brand, color) VALUES (?,?,?,?)");
+      statement.setString(1,username);
+      statement.setString(2,licenseNo);
+      statement.setString(3,carBrand);
+      statement.setString(4,color);
+      statement.executeUpdate();
+
+
+//      ResultSet resultSet = statement.executeQuery();
+//      String f_name = null;
+//      String l_name = null;
+//      while(resultSet.next())
+//      {
+//        f_name = resultSet.getString("f_name");
+//        l_name = resultSet.getString("l_name");
+//      }
+//      System.out.println(f_name + " " + l_name);
+    }
+  }
+
+
+
   @Override public User getUserDB(String username) throws SQLException
   {
     try(Connection connection = getConnection())
@@ -75,14 +99,27 @@ public class DatabaseManager implements ParkingDatabase
 
       ResultSet resultSet = statement.executeQuery();
       String username1 = null;
+      String firstName = null;
+      String lastName = null;
       while(resultSet.next())
       {
         username1 = resultSet.getString("username");
+        if(!(resultSet.getString("f_name")==null))
+        {
+          firstName = resultSet.getString("f_name");
+          lastName = resultSet.getString("l_name");
+        }
       }
       System.out.println(username1);
       if(username1 != null)
       {
-        return new User(username1);
+        User user = new User(username1);
+        if(firstName != null)
+        {
+          user.setFirstname(firstName);
+          user.setLastname(lastName);
+        }
+        return user;
       }
 
       return null;

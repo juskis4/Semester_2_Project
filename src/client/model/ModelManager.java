@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class ModelManager implements Model {
     private RMIClient client;
-    private client.utility.User user;
+    private User user;
     private PropertyChangeSupport support;
 
     public ModelManager(RMIClient client) {
@@ -22,7 +22,7 @@ public class ModelManager implements Model {
     @Override
     public void register(String userName, String password) {
         try {
-            this.user = new client.utility.User(userName, password);
+            this.user = new User(userName, password);
             client.register(userName, password);
         } catch (RemoteException ignored) {
 
@@ -32,7 +32,11 @@ public class ModelManager implements Model {
     @Override
     public boolean login(String userName, String password) {
         try {
-            this.user = new client.utility.User(userName, password);
+            this.user = client.getUserByUserName(userName);
+            if(user.getFirstname() != null)
+            {
+                support.firePropertyChange("FirstLastNames", user.getFirstname(), user.getLastname());
+            }
             support.firePropertyChange("Login", user.getUsername(), null);
             return client.login(userName, password);
         } catch (RemoteException | SQLException ignored) {
@@ -44,8 +48,11 @@ public class ModelManager implements Model {
     @Override
     public void registerFirstAndLastName(String firstName, String lastName, String userName) {
         try {
-
+            user.setLastname(lastName);
+            user.setFirstname(firstName);
+            support.firePropertyChange("FirstLastNames", user.getFirstname(), user.getLastname());
             client.registerFirstAndLastName(firstName, lastName, userName);
+
         } catch (RemoteException | SQLException e) {
 
         }
@@ -67,6 +74,7 @@ public class ModelManager implements Model {
                                 String color, String carBrand) throws RemoteException {
         client.registerVehicle(user.getUsername(), licenseNo, color, carBrand);
         user.registerVehicle(licenseNo, color, carBrand);
+        support.firePropertyChange("Vehicle", null, user.getVehicle().getLicenseNo());
     }
 
     @Override
@@ -91,7 +99,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public client.utility.User getUser() {
+    public User getUser() {
         return user;
     }
 }

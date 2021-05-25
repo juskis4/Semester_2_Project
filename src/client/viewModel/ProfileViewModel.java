@@ -12,13 +12,15 @@ import java.sql.SQLException;
 
 public class ProfileViewModel implements PropertyChangeListener {
 
-    public static final String USER_NULL = "";
+    public static final String USER_NULL = "Not set";
     private StringProperty userNameProperty;
     private StringProperty licenseNoProperty;
     private StringProperty actualFirstNameProperty;
     private StringProperty actualSecondNameProperty;
     private StringProperty firstNameProperty;
     private StringProperty secondNameProperty;
+    private StringProperty errorLabelProperty;
+
     private Model model;
 
     public ProfileViewModel(Model model) throws RemoteException, SQLException
@@ -32,6 +34,7 @@ public class ProfileViewModel implements PropertyChangeListener {
         actualSecondNameProperty = new SimpleStringProperty(USER_NULL);
         firstNameProperty = new SimpleStringProperty("");
         secondNameProperty = new SimpleStringProperty("");
+        errorLabelProperty = new SimpleStringProperty("");
     }
 
     public void reset() throws RemoteException, SQLException
@@ -42,6 +45,7 @@ public class ProfileViewModel implements PropertyChangeListener {
         actualSecondNameProperty = new SimpleStringProperty(model.getUser().getLastname());
         firstNameProperty = new SimpleStringProperty("");
         secondNameProperty = new SimpleStringProperty("");
+        errorLabelProperty = new SimpleStringProperty("");
     }
 
     public StringProperty getUserNameProperty()
@@ -62,6 +66,11 @@ public class ProfileViewModel implements PropertyChangeListener {
     public StringProperty getActualSecondNameProperty()
     {
         return actualSecondNameProperty;
+    }
+
+    public StringProperty getErrorLabelProperty()
+    {
+        return errorLabelProperty;
     }
 
     public StringProperty getFirstNameProperty()
@@ -90,15 +99,17 @@ public class ProfileViewModel implements PropertyChangeListener {
             }
             case "Vehicle":
             {
-                licenseNoProperty.setValue(model.getUser().getVehicle().getLicenseNo());
+                licenseNoProperty.setValue((String) evt.getNewValue());
                 break;
             }
             case "FirstLastNames":
             {
-                actualFirstNameProperty.setValue(model.getUser().getFirstname());
-                actualSecondNameProperty.setValue(model.getUser().getLastname());
+                actualFirstNameProperty.setValue((String)evt.getOldValue());
+                actualSecondNameProperty.setValue((String)evt.getNewValue());
+                System.out.println("Changing names");
                 break;
             }
+
             default: {
             }
         }

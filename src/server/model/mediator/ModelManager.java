@@ -79,7 +79,14 @@ public class ModelManager implements Model
   @Override public void registerVehicle(String username, String licenseNo, String color,
                                         String carBrand)
   {
-    login.getUserList().getUserByUsername(username).registerVehicle(licenseNo, color, carBrand);
+    try
+    {
+      parkingDatabase.addCarDB(username, licenseNo, color, carBrand);
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
   }
 
   @Override
