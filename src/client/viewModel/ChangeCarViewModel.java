@@ -4,17 +4,22 @@ import client.model.Model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.rmi.RemoteException;
 
-public class ChangeCarViewModel {
+public class ChangeCarViewModel implements PropertyChangeListener {
     private StringProperty carBrandProperty;
     private StringProperty licenseNoProperty;
     private StringProperty colorProperty;
     private StringProperty errorProperty;
     private Model model;
+    private String userName;
 
     public ChangeCarViewModel(Model model) {
         this.model = model;
+        model.addListener(this);
+        userName = "Not set";
         carBrandProperty = new SimpleStringProperty("");
         licenseNoProperty = new SimpleStringProperty("");
         colorProperty = new SimpleStringProperty("");
@@ -49,4 +54,11 @@ public class ChangeCarViewModel {
                 carBrandProperty.get());
     }
 
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if(evt.getPropertyName().equals("Login"))
+        {
+            userName = (String) evt.getOldValue();
+        }
+    }
 }
