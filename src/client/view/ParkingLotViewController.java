@@ -10,11 +10,12 @@ import javafx.scene.paint.Color;
 import utility.observer.javaobserver.UnnamedPropertyChangeSubject;
 
 import java.awt.*;
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 
-public class ParkingLotViewController {
+public class ParkingLotViewController implements PropertyChangeListener {
 
     @FXML
     private Label spaceA1;
@@ -73,6 +74,7 @@ public class ParkingLotViewController {
         this.viewModel = viewModel;
         this.viewHandler = viewHandler;
         this.root = root;
+        viewModel.addListener(this);
 
 
         spaceA1.textProperty().bindBidirectional(viewModel.spaceA1Property());
@@ -136,9 +138,9 @@ public class ParkingLotViewController {
         if (viewModel.isOccupied(name)) {
             space.setTextFill(Color.rgb(255, 0, 0));
         }
-// else if (space.isYourCar()) {
-////            space.setTextFill(Color.rgb(0, 0, 255));
-//        }
+//        else if () {
+//           space.setTextFill(Color.rgb(0, 0, 255));
+//       }
         else {
             spaceD6.setTextFill(Color.rgb(0, 255, 0));
         }
@@ -250,6 +252,7 @@ public class ParkingLotViewController {
     }
 
     private void onClickUndef(String name) {
+        viewModel.onClickUndef(name);
         viewHandler.openView("ReserveView");
 
     }
@@ -270,5 +273,128 @@ public class ParkingLotViewController {
     private void onWorkingHoursClicked()
     {
         viewHandler.openView("WorkingHoursView");
+    }
+
+    @Override public void propertyChange(PropertyChangeEvent evt)
+    {
+        Label dummylabel;
+        if(evt.getPropertyName().equals("ParkingSpaceName"))
+        {
+
+            switch ((String)evt.getNewValue())
+            {
+                case "A1":
+                {
+                    dummylabel = spaceA1;
+                    break;
+                }
+                case "A2":
+                {
+                    dummylabel = spaceA2;
+                    break;
+                }
+                case "A3":
+                {
+                    dummylabel = spaceA3;
+                    break;
+                }
+                case "A4":
+                {
+                    dummylabel = spaceA4;
+                    break;
+                }
+                case "A5":
+                {
+                    dummylabel = spaceA5;
+                    break;
+                }
+                case "A6":
+                {
+                    dummylabel = spaceA6;
+                    break;
+                }
+                case "B1":
+                {
+                    dummylabel = spaceB1;
+                    break;
+                }
+                case "B2":
+                {
+                    dummylabel = spaceB2;
+                    break;
+                }
+                case "B3":
+                {
+                    dummylabel = spaceB3;
+                    break;
+                }
+                case "B4":
+                {
+                    dummylabel = spaceB4;
+                    break;
+                }
+                case "C1":
+                {
+                    dummylabel = spaceC1;
+                    break;
+                }
+                case "C2":
+                {
+                    dummylabel = spaceC2;
+                    break;
+                }
+                case "C3":
+                {
+                    dummylabel = spaceC3;
+                    break;
+                }
+                case "C4":
+                {
+                    dummylabel = spaceC4;
+                    break;
+                }
+                case "D1":
+                {
+                    dummylabel = spaceD1;
+                    break;
+                }
+                case "D2":
+                {
+                    dummylabel = spaceD2;
+                    break;
+                }
+                case "D3":
+                {
+                    dummylabel = spaceD3;
+                    break;
+                }
+                case "D4":
+                {
+                    dummylabel = spaceD4;
+                    break;
+                }
+                case "D5":
+                {
+                    dummylabel = spaceD5;
+                    break;
+                }
+                case "D6":
+                {
+                    dummylabel = spaceD6;
+                    break;
+                }
+                default:
+                    dummylabel = null;
+            }
+
+            try
+            {
+                setColour(dummylabel, (String) evt.getNewValue());
+            }
+            catch (RemoteException e)
+            {
+                e.printStackTrace();
+            }
+        }
     }
 }

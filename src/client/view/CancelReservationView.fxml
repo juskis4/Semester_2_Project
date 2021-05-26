@@ -6,14 +6,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="351.0" prefWidth="583.0" style="-fx-background-color: E2E8CE;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.CancelReservationViewController">
+<AnchorPane prefHeight="351.0" prefWidth="583.0" style="-fx-background-color: E2E8CE;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.CancelReservationViewController">
    <children>
       <Text fill="#262626" layoutX="176.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancel reservation" textAlignment="CENTER" wrappingWidth="231.00003662109378">
          <font>
             <Font name="Malgun Gothic Semilight" size="26.0" />
          </font>
       </Text>
-      <Text fill="#262626" layoutX="409.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address: Kamtjatka 7" wrappingWidth="173.60001220703128">
+      <Text fill="#262626" layoutX="302.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address: Konsul Jensens Gade 24" wrappingWidth="279.6000122070313">
          <font>
             <Font name="Malgun Gothic Semilight" size="18.0" />
          </font>

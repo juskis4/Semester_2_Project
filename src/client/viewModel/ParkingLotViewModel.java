@@ -12,7 +12,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
-public class ParkingLotViewModel implements PropertyChangeListener {
+public class ParkingLotViewModel implements PropertyChangeListener, UnnamedPropertyChangeSubject {
 
     private StringProperty spaceA1;
     private StringProperty spaceA2;
@@ -40,6 +40,8 @@ public class ParkingLotViewModel implements PropertyChangeListener {
 
     private Model model;
 
+    private PropertyChangeSupport propertyChangeSupport;
+
     public ParkingLotViewModel(Model model){
         this.model = model;
         model.addListener(this);
@@ -64,6 +66,8 @@ public class ParkingLotViewModel implements PropertyChangeListener {
         spaceD4 = new SimpleStringProperty("D4");
         spaceD5 = new SimpleStringProperty("D5");
         spaceD6 = new SimpleStringProperty("D6");
+        propertyChangeSupport = new PropertyChangeSupport(this);
+
     }
 
     public void reset(){
@@ -76,7 +80,10 @@ public class ParkingLotViewModel implements PropertyChangeListener {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-
+        if(evt.getPropertyName().equals("ReserveSpace"))
+        {
+            propertyChangeSupport.firePropertyChange("ParkingSpaceName", null, evt.getNewValue());
+        }
     }
 
     public StringProperty spaceA1Property() {
@@ -178,7 +185,16 @@ public class ParkingLotViewModel implements PropertyChangeListener {
 
     public void onClickUndef(String name)
     {
-        model.setNameSpace(name);
+        model.pressOnParkingSpace(name);
     }
 
+    @Override public void addListener(PropertyChangeListener listener)
+    {
+        propertyChangeSupport.addPropertyChangeListener(listener);
+    }
+
+    @Override public void removeListener(PropertyChangeListener listener)
+    {
+        propertyChangeSupport.removePropertyChangeListener(listener);
+    }
 }

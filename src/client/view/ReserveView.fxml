@@ -8,72 +8,60 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="351.0" prefWidth="583.0" style="-fx-background-color: E2E8CE;"
-            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="client.view.ReserveViewController">
+<AnchorPane prefHeight="351.0" prefWidth="583.0" style="-fx-background-color: E2E8CE;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.ReserveViewController">
     <children>
-        <Text fill="#262626" layoutX="193.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserve"
-              textAlignment="CENTER" wrappingWidth="204.00003662109378">
+        <Text fill="#262626" layoutX="193.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserve" textAlignment="CENTER" wrappingWidth="204.00003662109378">
             <font>
-                <Font name="Malgun Gothic Semilight" size="26.0"/>
+                <Font name="Malgun Gothic Semilight" size="26.0" />
             </font>
         </Text>
-        <Text fill="#262626" layoutX="409.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              text="Address: Kamtjatka 7" wrappingWidth="173.60001220703128">
+        <Text fill="#262626" layoutX="311.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address: Konsul Jensens Gade 24" wrappingWidth="271.6000122070313">
             <font>
-                <Font name="Malgun Gothic Semilight" size="18.0"/>
+                <Font name="Malgun Gothic Semilight" size="18.0" />
             </font>
         </Text>
-        <Text fill="#262626" layoutX="36.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parking Space:"
-              wrappingWidth="136.80002441406253">
+        <Text fill="#262626" layoutX="36.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parking Space:" wrappingWidth="136.80002441406253">
             <font>
-                <Font name="Malgun Gothic Semilight" size="18.0"/>
+                <Font name="Malgun Gothic Semilight" size="18.0" />
             </font>
         </Text>
-        <Label fx:id="errorLabel" layoutX="14.0" layoutY="325.0" text="Error Label" textFill="RED"/>
+        <Label fx:id="errorLabel" layoutX="14.0" layoutY="325.0" text="Error Label" textFill="RED" />
         <Label fx:id="parkingSpaceField" layoutX="161.0" layoutY="89.0" text="ParkingSpace" textFill="#262626">
             <font>
-                <Font name="Malgun Gothic Semilight" size="18.0"/>
+                <Font name="Malgun Gothic Semilight" size="18.0" />
             </font>
         </Label>
-        <Text fill="#262626" layoutX="36.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserve on:"
-              wrappingWidth="106.40000000000003">
+        <Text fill="#262626" layoutX="36.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserve on:" wrappingWidth="106.40000000000003">
             <font>
-                <Font name="Malgun Gothic Semilight" size="18.0"/>
+                <Font name="Malgun Gothic Semilight" size="18.0" />
             </font>
         </Text>
-        <DatePicker fx:id="reserveDate" layoutX="135.0" layoutY="134.0" prefHeight="26.0" prefWidth="226.0"
-                    style="-fx-background-color: ACBFA4;"/>
-        <Text fill="#262626" layoutX="36.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserve for:"
-              wrappingWidth="106.40000000000009">
+        <DatePicker fx:id="reserveDate" layoutX="135.0" layoutY="134.0" prefHeight="26.0" prefWidth="226.0" style="-fx-background-color: ACBFA4;" />
+        <Text fill="#262626" layoutX="36.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserve for:" wrappingWidth="106.40000000000009">
             <font>
-                <Font name="Malgun Gothic Semilight" size="18.0"/>
+                <Font name="Malgun Gothic Semilight" size="18.0" />
             </font>
         </Text>
         <Label layoutX="201.0" layoutY="180.0" text="H," textFill="#262626">
             <font>
-                <Font name="Malgun Gothic Semilight" size="18.0"/>
+                <Font name="Malgun Gothic Semilight" size="18.0" />
             </font>
         </Label>
-        <TextField fx:id="hourField" layoutX="135.0" layoutY="179.0" prefHeight="26.0" prefWidth="58.0"
-                   style="-fx-background-color: F7F9F1;"/>
-        <TextField fx:id="minField" layoutX="226.0" layoutY="180.0" prefHeight="26.0" prefWidth="58.0"
-                   style="-fx-background-color: F7F9F1;"/>
+        <TextField fx:id="hourField" layoutX="135.0" layoutY="179.0" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: F7F9F1;" />
+        <TextField fx:id="minField" layoutX="226.0" layoutY="180.0" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: F7F9F1;" />
         <Label layoutX="287.0" layoutY="180.0" text="Min" textFill="#262626">
             <font>
-                <Font name="Malgun Gothic Semilight" size="18.0"/>
+                <Font name="Malgun Gothic Semilight" size="18.0" />
             </font>
         </Label>
-        <Button layoutX="36.0" layoutY="271.0" mnemonicParsing="false" onAction="#onWorkingHours"
-                style="-fx-background-color: F7F9F1;" text="Working hours">
+        <Button layoutX="36.0" layoutY="271.0" mnemonicParsing="false" onAction="#onWorkingHours" style="-fx-background-color: F7F9F1;" text="Working hours">
             <font>
-                <Font name="Malgun Gothic Semilight" size="13.0"/>
+                <Font name="Malgun Gothic Semilight" size="13.0" />
             </font>
         </Button>
-        <Button layoutX="302.0" layoutY="226.0" mnemonicParsing="false" onAction="#onReserve"
-                style="-fx-background-color: F7F9F1;" text="Reserve">
+        <Button layoutX="302.0" layoutY="226.0" mnemonicParsing="false" onAction="#onReserve" style="-fx-background-color: F7F9F1;" text="Reserve">
             <font>
-                <Font name="Malgun Gothic Semilight" size="13.0"/>
+                <Font name="Malgun Gothic Semilight" size="13.0" />
             </font>
         </Button>
     </children>

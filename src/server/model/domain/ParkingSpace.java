@@ -31,7 +31,6 @@ public class ParkingSpace implements Serializable
     this.date = date;
   }
 
-
   public String getNameOfParkingSpace()
   {
     return nameOfParkingSpace;

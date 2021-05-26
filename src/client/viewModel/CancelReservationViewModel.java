@@ -7,11 +7,14 @@ import javafx.beans.property.StringProperty;
 import server.model.domain.ParkingSpace;
 import server.model.domain.User;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
-public class CancelReservationViewModel {
+public class CancelReservationViewModel implements PropertyChangeListener
+{
     public static final String USER_NULL = "User not set.";
     private StringProperty errorLabelProperty;
     private StringProperty parkingSpaceFieldProperty;
@@ -84,11 +87,27 @@ public class CancelReservationViewModel {
     public void onCancel()
     {
         try {
-            model.getParkingLot().getParkingSpaceByName(parkingSpaceFieldProperty.get()).setOccupied(false,model.getUserByUserName());
+            model.getParkingLot().getParkingSpaceByName(parkingSpaceFieldProperty.get()).setOccupied(false,null, null, null, null);
         }
-        catch (RemoteException | SQLException ignored)
+        catch (RemoteException ignored)
         {
 
+        }
+    }
+
+    @Override public void propertyChange(PropertyChangeEvent evt)
+    {
+        if (evt.getPropertyName().equals("Login"))
+        {
+            authorNameProperty.setValue((String) evt.getOldValue());
+        }
+        else if(evt.getPropertyName().equals("ReserveSpace"))
+        {
+            parkingSpaceFieldProperty.setValue((String)evt.getNewValue());
+        }
+        else if (evt.getPropertyName().equals("Vehicle"))
+        {
+            vehicleInfoProperty.setValue((String) evt.getNewValue());
         }
     }
 }
