@@ -6,20 +6,29 @@ public class ParkingSpace implements Serializable
 {
   private boolean isOccupied;
   private String nameOfParkingSpace;
-  private User user;
+  private String userName;
+  private Time startingTime;
+  private Time endingTime;
+  private Date date;
   
 
   public ParkingSpace(String nameOfParkingSpace)
   {
     this.nameOfParkingSpace = nameOfParkingSpace;
-    isOccupied = false;
-    this.user = null;
+    this.isOccupied = false;
+    this.userName = null;
+    this.startingTime = null;
+    this.endingTime = null;
+    this.date = null;
   }
 
-  public void setOccupied(boolean isOccupied, User user)
+  public void setOccupied(boolean isOccupied, String userName, Time startingTime, Time endingTime, Date date)
   {
     this.isOccupied = isOccupied;
-    this.user = user;
+    this.userName = userName;
+    this.startingTime = startingTime;
+    this.endingTime = endingTime;
+    this.date = date;
   }
 
 
@@ -41,9 +50,9 @@ public class ParkingSpace implements Serializable
     return isOccupied == other.isOccupied && nameOfParkingSpace.equals(other.nameOfParkingSpace);
   }
 
-  public User getUser()
+  public String getUser()
   {
-    return user;
+    return userName;
   }
 
 

@@ -63,8 +63,14 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void registerSpace(String username, ParkingSpace parkingSpace, Time time, Date date) throws RemoteException {
-        client.registerSpace(username, parkingSpace, time, date);
+    public void pressOnParkingSpace(String nameOfSpace) {
+        support.firePropertyChange("PressOnReserve",null,nameOfSpace);
+    }
+
+    @Override
+    public void registerSpace(String username, ParkingSpace parkingSpace, Time startingTime, Time endingTime, Date date) throws RemoteException {
+        client.registerSpace(username, parkingSpace, startingTime, endingTime, date);
+        support.firePropertyChange("ReserveSpace", null, parkingSpace.getNameOfParkingSpace());
     }
 
     @Override

@@ -6,9 +6,7 @@ import java.sql.SQLException;
 
 public interface Model
 {
-  void registerSpace(String username, ParkingSpace parkingSpace, Time time, Date date);
-  void reserveParkingSpace(ParkingSpace parkingSpace, User user);
-  void reserveParkingSpace(int index, User user);
+  void registerSpace(String username, ParkingSpace parkingSpace, Time startingTime, Time endingTime, Date date);
   void register(String userName, String password) throws SQLException;
   boolean login(String userName, String password) throws SQLException;
   void registerFirstAndLastName(String firstName, String lastName, String username)

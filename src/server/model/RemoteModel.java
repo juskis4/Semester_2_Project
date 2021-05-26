@@ -69,9 +69,9 @@ public class RemoteModel extends UnicastRemoteObject implements RemoteInterface
     model.registerFirstAndLastName(firstName,lastName,userName);
   }
 
-  @Override public void registerSpace(String username, ParkingSpace parkingSpace, Time time, Date date) throws RemoteException
+  @Override public void registerSpace(String username, ParkingSpace parkingSpace, Time startingTime, Time endingTime, Date date) throws RemoteException
   {
-    model.registerSpace(username, parkingSpace, time, date);
+    model.registerSpace(username, parkingSpace, startingTime, endingTime, date);
   }
 
   @Override

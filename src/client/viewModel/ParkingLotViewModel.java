@@ -8,11 +8,11 @@ import javafx.scene.control.Label;
 import utility.observer.javaobserver.PropertyChangeSubject;
 import utility.observer.javaobserver.UnnamedPropertyChangeSubject;
 
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
-
-public class ParkingLotViewModel {
+public class ParkingLotViewModel implements PropertyChangeListener {
 
     private StringProperty spaceA1;
     private StringProperty spaceA2;
@@ -38,10 +38,11 @@ public class ParkingLotViewModel {
     private StringProperty spaceD5;
     private StringProperty spaceD6;
 
-    Model model;
+    private Model model;
 
     public ParkingLotViewModel(Model model){
         this.model = model;
+        model.addListener(this);
 
         spaceA1 = new SimpleStringProperty("A1");
         spaceA2 = new SimpleStringProperty("A2");
@@ -71,6 +72,11 @@ public class ParkingLotViewModel {
 
     public boolean isOccupied(String name) throws RemoteException {
         return model.getParkingLot().isOccupiedBySpaceName(name);
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+
     }
 
     public StringProperty spaceA1Property() {
@@ -170,9 +176,9 @@ public class ParkingLotViewModel {
         return spaceD6;
     }
 
-//    public void onClickUndef(String name)
-//    {
-//        model.setNameSpace(name);
-//    }
+    public void onClickUndef(String name)
+    {
+        model.setNameSpace(name);
+    }
 
 }

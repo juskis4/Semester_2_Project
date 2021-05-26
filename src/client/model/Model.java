@@ -13,8 +13,11 @@ public interface Model extends UnnamedPropertyChangeSubject {
 
     void registerFirstAndLastName(String firstName, String lastName, String userName);
 
-    void registerSpace(String username, ParkingSpace parkingSpace, Time time, Date date)
+    void registerSpace(String username, ParkingSpace parkingSpace, Time startingTime, Time endingTime, Date date)
             throws RemoteException;
+
+
+    void pressOnParkingSpace(String nameOfSpace);
 
     User getUserByUserName() throws RemoteException, SQLException;
 

@@ -7,37 +7,46 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import server.model.domain.*;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.nio.charset.StandardCharsets;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.time.LocalTime;
+import java.util.Locale;
 
-public class ReserveViewModel
+public class ReserveViewModel implements PropertyChangeListener
 {
   private StringProperty nameOfParkingSpace;
   private StringProperty errorLabelProperty;
-  private static final String USER_NULL = "User not set";
   private StringProperty dateInString;
   private IntegerProperty h;
   private IntegerProperty m;
+  private String userName;
 
   private Model model;
 
   public ReserveViewModel(Model model) throws RemoteException, SQLException
   {
     this.model = model;
-    if(getUser() == null)
-    {
-      nameOfParkingSpace = new SimpleStringProperty(USER_NULL);
-    }
-    else {
-      String parkingSpaceName;
-      parkingSpaceName = getParkingLot().getParkingSpaceByUser(
-              getUser()).getNameOfParkingSpace();
-      nameOfParkingSpace = new SimpleStringProperty(parkingSpaceName);
-    }
+    userName = null;
+    nameOfParkingSpace = new SimpleStringProperty("");
     this.dateInString = new SimpleStringProperty("");
     this.errorLabelProperty = new SimpleStringProperty("");
     this.h = new SimpleIntegerProperty(0);
     this.m = new SimpleIntegerProperty(0);
+  }
+
+  @Override
+  public void propertyChange(PropertyChangeEvent evt) {
+    if(evt.getPropertyName().equals("PressOnReserve"))
+    {
+        nameOfParkingSpace.setValue((String) evt.getNewValue());
+    }
+    else if(evt.getPropertyName().equals("Login"))
+    {
+      userName = (String) evt.getOldValue();
+    }
   }
 
   public StringProperty dateInStringProperty()
@@ -91,8 +100,14 @@ public class ReserveViewModel
 
   public void registerSpace() throws RemoteException, SQLException
   {
-    model.registerSpace(model.getUserByUserName().getUsername(), getParkingSpace(), getTime(), getDate());
-    getParkingSpace().setOccupied(true, model.getUserByUserName());
+    //creating current time and ending time
+    int seconds = getTime().convertToSeconds();
+    LocalTime localTime = LocalTime.now();
+    Time currentTime = new Time(localTime.getHour(),localTime.getMinute());
+    Time endingTime = currentTime.copy();
+    endingTime.tic(seconds);
+
+    model.registerSpace(userName, getParkingSpace(), currentTime,endingTime, getDate());
   }
   public ParkingLot getParkingLot() throws RemoteException
   {
@@ -106,27 +121,9 @@ public class ReserveViewModel
 
   public void reset()
   {
-    try
-    {
-      if(getUser() == null)
-      {
-        nameOfParkingSpace = new SimpleStringProperty(USER_NULL);
-      }
-      else {
-        String parkingSpaceName;
-        parkingSpaceName = getParkingLot().getParkingSpaceByUser(
-                getUser()).getNameOfParkingSpace();
-        nameOfParkingSpace = new SimpleStringProperty(parkingSpaceName);
-      }
       this.dateInString = new SimpleStringProperty("");
       this.errorLabelProperty = new SimpleStringProperty("");
       this.h = new SimpleIntegerProperty(0);
       this.m = new SimpleIntegerProperty(0);
-    }
-    catch (RemoteException | SQLException ignored)
-    {
-
-    }
   }
-
 }

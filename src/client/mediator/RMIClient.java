@@ -46,8 +46,8 @@ public class RMIClient extends UnicastRemoteObject implements RemoteListener<Str
         server.registerFirstAndLastName(firstName, lastName, userName);
     }
 
-    public void registerSpace(String username, ParkingSpace parkingSpace, Time time, Date date) throws RemoteException {
-        server.registerSpace(username, parkingSpace, time, date);
+    public void registerSpace(String username, ParkingSpace parkingSpace, Time startingTime, Time endingTime, Date date) throws RemoteException {
+        server.registerSpace(username, parkingSpace, startingTime, endingTime, date);
     }
 
     public User getUserByUserName(String userName)

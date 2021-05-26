@@ -16,7 +16,7 @@ public interface RemoteInterface extends RemoteSubject<String, String>
   void register(String username, String password) throws RemoteException;
   void registerFirstAndLastName(String firstName, String lastName, String userName) throws SQLException,
       RemoteException;
-  void registerSpace(String username, ParkingSpace parkingSpace, Time time, Date date) throws RemoteException;
+  void registerSpace(String username, ParkingSpace parkingSpace, Time startingTime, Time endingTime, Date date) throws RemoteException;
   User getUserByUserName(String userName) throws RemoteException, SQLException;
   void registerVehicle(String username, String licenseNo, String color, String carBrand) throws RemoteException;
   ParkingLot getParkingLot() throws RemoteException;

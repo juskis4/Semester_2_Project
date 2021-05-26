@@ -18,28 +18,14 @@ public class ModelManager implements Model
     parkingDatabase = new DatabaseManager();
   }
 
-  @Override public void registerSpace(String username, ParkingSpace parkingSpace, Time time, Date date)
+  @Override public void registerSpace(String userName, ParkingSpace parkingSpace, Time startingTime, Time endingTime, Date date)
   {
-    // TO BE IMPLEMENTED WITH DATABASE
-  }
-
-  @Override
-  public void reserveParkingSpace(ParkingSpace parkingSpace, User user) {
     for(int i = 0; i < parkingLot.size(); i++)
     {
       if(parkingLot.getParkingSpace(i).equals(parkingSpace) && !(parkingSpace.getIsOccupied()))
       {
-        parkingLot.getParkingSpace(i).setOccupied(true, user);
+        parkingLot.getParkingSpace(i).setOccupied(true, userName,startingTime,endingTime,date);
       }
-    }
-  }
-
-  @Override
-  public void reserveParkingSpace(int index, User user)
-  {
-    if(!parkingLot.getParkingSpace(index).getIsOccupied())
-    {
-      parkingLot.getParkingSpace(index).setOccupied(true, user);
     }
   }
 

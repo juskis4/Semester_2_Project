@@ -74,6 +74,7 @@ public class ParkingLotViewController {
         this.viewHandler = viewHandler;
         this.root = root;
 
+
         spaceA1.textProperty().bindBidirectional(viewModel.spaceA1Property());
         spaceA2.textProperty().bindBidirectional(viewModel.spaceA2Property());
         spaceA3.textProperty().bindBidirectional(viewModel.spaceA3Property());
@@ -142,6 +143,7 @@ public class ParkingLotViewController {
             spaceD6.setTextFill(Color.rgb(0, 255, 0));
         }
     }
+
 
     @FXML
     private void onClickedA1() {
@@ -249,7 +251,7 @@ public class ParkingLotViewController {
 
     private void onClickUndef(String name) {
         viewHandler.openView("ReserveView");
-//        viewModel.onClickUndef(name);
+
     }
 
     @FXML
