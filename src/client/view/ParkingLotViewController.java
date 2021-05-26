@@ -383,6 +383,7 @@ public class ParkingLotViewController implements PropertyChangeListener {
                     dummylabel = spaceD6;
                     break;
                 }
+
                 default:
                     dummylabel = null;
             }

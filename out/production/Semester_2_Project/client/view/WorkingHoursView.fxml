@@ -44,7 +44,7 @@
             <Font name="Malgun Gothic Semilight" size="26.0" />
          </font>
       </Text>
-      <Text fill="#262626" layoutX="481.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address: Kamtjatka 7" wrappingWidth="173.60001220703128">
+      <Text fill="#262626" layoutX="399.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address: Konsul Jensens Gade 24" wrappingWidth="265.2000192642213">
          <font>
             <Font name="Malgun Gothic Semilight" size="18.0" />
          </font>

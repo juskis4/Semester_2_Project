@@ -29,7 +29,8 @@ public class ReserveViewModel implements PropertyChangeListener
   public ReserveViewModel(Model model) throws RemoteException, SQLException
   {
     this.model = model;
-    userName = null;
+    userName = "";
+    model.addListener(this);
     nameOfParkingSpace = new SimpleStringProperty("");
     this.dateInString = new SimpleStringProperty("");
     this.errorLabelProperty = new SimpleStringProperty("");

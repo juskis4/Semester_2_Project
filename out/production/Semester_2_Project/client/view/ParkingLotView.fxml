@@ -152,7 +152,7 @@
                 <Font name="Malgun Gothic Semilight" size="24.0" />
             </font>
         </Label>
-        <Text fill="#262626" layoutX="562.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address: Kamtjatka 7" wrappingWidth="173.60001220703128">
+        <Text fill="#262626" layoutX="499.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address: Konsul Jensens Gade 24" wrappingWidth="274.6000122070313">
             <font>
                 <Font name="Malgun Gothic Semilight" size="18.0" />
             </font>
