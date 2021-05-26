@@ -171,7 +171,7 @@ public class DatabaseManager implements ParkingDatabase
   }
   private Connection getConnection() throws SQLException{
 
-    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=parking_lot", "postgres","1234");
+    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=parking_lot", "postgres","1");
   }
 
 }

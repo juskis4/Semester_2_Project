@@ -16,7 +16,7 @@ public class ParkingSpace implements Serializable
   {
     this.nameOfParkingSpace = nameOfParkingSpace;
     this.isOccupied = false;
-    this.userName = null;
+    this.userName = "";
     this.startingTime = null;
     this.endingTime = null;
     this.date = null;
@@ -26,6 +26,10 @@ public class ParkingSpace implements Serializable
   {
     this.isOccupied = isOccupied;
     this.userName = userName;
+    if(userName == null)
+    {
+      this.userName = "";
+    }
     this.startingTime = startingTime;
     this.endingTime = endingTime;
     this.date = date;
@@ -49,12 +53,23 @@ public class ParkingSpace implements Serializable
     return isOccupied == other.isOccupied && nameOfParkingSpace.equals(other.nameOfParkingSpace);
   }
 
+
   public String getUser()
   {
     return userName;
   }
 
+  public Date getDate() {
+    return date;
+  }
 
+  public Time getEndingTime() {
+    return endingTime;
+  }
+
+  public Time getStartingTime() {
+    return startingTime;
+  }
 
   @Override public String toString()
   {

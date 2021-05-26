@@ -61,6 +61,9 @@ public class ParkingLotViewController implements PropertyChangeListener {
     @FXML
     private Label spaceD6;
 
+    @FXML
+    private Label errorLabel;
+
     private ViewHandler viewHandler;
     private Region root;
     private ParkingLotViewModel viewModel;
@@ -76,7 +79,7 @@ public class ParkingLotViewController implements PropertyChangeListener {
         this.root = root;
         viewModel.addListener(this);
 
-
+        errorLabel.textProperty().bindBidirectional(viewModel.getErrorLabel());
         spaceA1.textProperty().bindBidirectional(viewModel.spaceA1Property());
         spaceA2.textProperty().bindBidirectional(viewModel.spaceA2Property());
         spaceA3.textProperty().bindBidirectional(viewModel.spaceA3Property());
@@ -138,9 +141,9 @@ public class ParkingLotViewController implements PropertyChangeListener {
         if (viewModel.isOccupied(name)) {
             space.setTextFill(Color.rgb(255, 0, 0));
         }
-//        else if () {
-//           space.setTextFill(Color.rgb(0, 0, 255));
-//       }
+        else if (viewModel.parkingSpaceIsYours(name)) {
+           space.setTextFill(Color.rgb(0, 0, 255));
+       }
         else {
             spaceD6.setTextFill(Color.rgb(0, 255, 0));
         }
@@ -252,8 +255,11 @@ public class ParkingLotViewController implements PropertyChangeListener {
     }
 
     private void onClickUndef(String name) {
-        viewModel.onClickUndef(name);
-        viewHandler.openView("ReserveView");
+        if(viewModel.onClickUndef(name))
+        {
+            viewHandler.openView("ReserveView");
+        }
+        else errorLabel.setText("You already reserved a space.");
 
     }
 

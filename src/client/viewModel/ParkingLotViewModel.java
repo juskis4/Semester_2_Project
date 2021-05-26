@@ -5,12 +5,14 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import server.model.domain.ParkingLot;
 import utility.observer.javaobserver.PropertyChangeSubject;
 import utility.observer.javaobserver.UnnamedPropertyChangeSubject;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 public class ParkingLotViewModel implements PropertyChangeListener, UnnamedPropertyChangeSubject {
 
@@ -38,14 +40,16 @@ public class ParkingLotViewModel implements PropertyChangeListener, UnnamedPrope
     private StringProperty spaceD5;
     private StringProperty spaceD6;
 
-    private Model model;
+    private StringProperty errorLabel;
 
+    private Model model;
+    private String userName;
     private PropertyChangeSupport propertyChangeSupport;
 
     public ParkingLotViewModel(Model model){
         this.model = model;
         model.addListener(this);
-
+        userName = "";
         spaceA1 = new SimpleStringProperty("A1");
         spaceA2 = new SimpleStringProperty("A2");
         spaceA3 = new SimpleStringProperty("A3");
@@ -66,6 +70,7 @@ public class ParkingLotViewModel implements PropertyChangeListener, UnnamedPrope
         spaceD4 = new SimpleStringProperty("D4");
         spaceD5 = new SimpleStringProperty("D5");
         spaceD6 = new SimpleStringProperty("D6");
+        errorLabel = new SimpleStringProperty("");
         propertyChangeSupport = new PropertyChangeSupport(this);
 
     }
@@ -84,6 +89,15 @@ public class ParkingLotViewModel implements PropertyChangeListener, UnnamedPrope
         {
             propertyChangeSupport.firePropertyChange("ParkingSpaceName", null, evt.getNewValue());
         }
+        else if(evt.getPropertyName().equals("Login"))
+        {
+            userName = (String) evt.getOldValue();
+        }
+    }
+
+    public StringProperty getErrorLabel()
+    {
+        return errorLabel;
     }
 
     public StringProperty spaceA1Property() {
@@ -183,10 +197,41 @@ public class ParkingLotViewModel implements PropertyChangeListener, UnnamedPrope
         return spaceD6;
     }
 
-    public void onClickUndef(String name)
+    public boolean onClickUndef(String name)
     {
-        model.pressOnParkingSpace(name);
+        try {
+            if(!model.getParkingLot().isOcuppiedByUser(userName))
+            {
+                model.pressOnParkingSpace(name);
+                return true;
+            }
+        }
+        catch (RemoteException ignored)
+        {
+
+        }
+        return false;
     }
+
+    public boolean parkingSpaceIsYours(String nameOfParkingSpace)
+    {
+        try {
+            ParkingLot parkingLot = model.getParkingLot();
+            for(int i = 0; i < parkingLot.size(); i++)
+            {
+                if(parkingLot.getParkingSpace(i).getNameOfParkingSpace().equals(nameOfParkingSpace) && parkingLot.isOcuppiedByUser(userName))
+                {
+                    return true;
+                }
+            }
+        }
+        catch (RemoteException ignored)
+        {
+
+        }
+        return false;
+    }
+
 
     @Override public void addListener(PropertyChangeListener listener)
     {

@@ -27,6 +27,8 @@ public class ParkingLot implements Serializable
     }
   }
 
+
+
   public ArrayList<ParkingSpace> getParkingSpaces()
   {
     return parkingSpaces;
@@ -85,6 +87,17 @@ public class ParkingLot implements Serializable
     }
     return notOccupied;
   }
+
+  public boolean isOcuppiedByUser(String userName)
+  {
+      for (ParkingSpace parkingSpace : parkingSpaces) {
+        if (parkingSpace.getUser().equals(userName)) {
+          return true;
+        }
+      }
+    return false;
+  }
+
 
   public ParkingSpace getParkingSpaceByUser(User user)
   {
