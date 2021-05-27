@@ -76,6 +76,6 @@ public class Time implements Serializable
 
   @Override public String toString()
   {
-    return this.hour + ":" + this.minute + ":" + this.second;
+    return this.hour + ":" + this.minute;
   }
 }

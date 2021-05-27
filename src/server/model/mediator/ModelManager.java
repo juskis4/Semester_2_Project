@@ -88,6 +88,7 @@ public class ModelManager implements Model
     Date date = new Date(localDate.getDayOfMonth(), localDate.getMonthValue(), localDate.getYear());
     LocalTime localTime = LocalTime.now();
     Time currentTime = new Time(localTime.getHour(),localTime.getMinute());
+    System.out.println(date.toString());
     parkingDatabase.addLog(username, date, currentTime, parkingSpace);
   }
 }

@@ -107,7 +107,6 @@ public class ReserveViewModel implements PropertyChangeListener
     Time currentTime = new Time(localTime.getHour(),localTime.getMinute());
     Time endingTime = currentTime.copy();
     endingTime.tic(seconds);
-
     model.registerSpace(userName, getParkingSpace(), currentTime,endingTime, getDate());
   }
   public ParkingLot getParkingLot() throws RemoteException

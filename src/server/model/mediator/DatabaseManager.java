@@ -75,7 +75,7 @@ public class DatabaseManager implements ParkingDatabase
     }
   }
 
-  @Override public void addLog(String username, Date date, Time time,
+  @Override public void addLog(String username, Date currentDate, Time currentTime,
       String parkingSpace) throws SQLException
   {
     try(Connection connection = getConnection())
@@ -85,9 +85,11 @@ public class DatabaseManager implements ParkingDatabase
       statement.setString(2, getCarDB(username).getLicenseNo());
       statement.setString(3, getCarDB(username).getCarBrand());
       statement.setString(4, getCarDB(username).getColor());
-      statement.setString(5, date.toString());
-      statement.setString(6, time.toString());
+      statement.setString(5, currentDate.toString());
+
+      statement.setString(6, currentTime.toString());
       statement.setString(7, parkingSpace);
+      statement.executeUpdate();
     }
   }
 
