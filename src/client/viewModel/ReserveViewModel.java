@@ -120,6 +120,11 @@ public class ReserveViewModel implements PropertyChangeListener
     return model.getUserByUserName();
   }
 
+  public void addLog() throws RemoteException, SQLException
+  {
+    model.addLog(userName, getParkingSpace().getNameOfParkingSpace());
+  }
+
   public void reset()
   {
       this.dateInString = new SimpleStringProperty("");

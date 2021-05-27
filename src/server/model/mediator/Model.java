@@ -14,4 +14,5 @@ public interface Model
   User getUserByUserName(String userName) throws SQLException;
   void registerVehicle(String username, String licenseNo, String color, String carBrand);
   ParkingLot getParkingLot();
+  void addLog(String username, String parkingSpace) throws SQLException;
 }

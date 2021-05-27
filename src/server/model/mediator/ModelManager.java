@@ -3,6 +3,8 @@ package server.model.mediator;
 import server.model.domain.*;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class ModelManager implements Model
 {
@@ -78,5 +80,14 @@ public class ModelManager implements Model
   @Override
   public ParkingLot getParkingLot() {
     return parkingLot;
+  }
+
+  @Override public void addLog(String username, String parkingSpace) throws SQLException
+  {
+    LocalDate localDate = LocalDate.now();
+    Date date = new Date(localDate.getDayOfMonth(), localDate.getMonthValue(), localDate.getYear());
+    LocalTime localTime = LocalTime.now();
+    Time currentTime = new Time(localTime.getHour(),localTime.getMinute());
+    parkingDatabase.addLog(username, date, currentTime, parkingSpace);
   }
 }

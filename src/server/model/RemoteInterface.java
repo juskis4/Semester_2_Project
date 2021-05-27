@@ -20,4 +20,6 @@ public interface RemoteInterface extends RemoteSubject<String, String>
   User getUserByUserName(String userName) throws RemoteException, SQLException;
   void registerVehicle(String username, String licenseNo, String color, String carBrand) throws RemoteException;
   ParkingLot getParkingLot() throws RemoteException;
+  void addLog(String username, String parkingSpace)
+      throws RemoteException, SQLException;
 }

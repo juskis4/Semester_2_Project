@@ -2,6 +2,8 @@ package server.model.mediator;
 
 import javafx.beans.property.StringProperty;
 import org.postgresql.core.SqlCommand;
+import server.model.domain.Date;
+import server.model.domain.Time;
 import server.model.domain.User;
 import server.model.domain.Vehicle;
 
@@ -70,6 +72,22 @@ public class DatabaseManager implements ParkingDatabase
         return new Vehicle(licenseNo, color, carBrand);
       }
       return null;
+    }
+  }
+
+  @Override public void addLog(String username, Date date, Time time,
+      String parkingSpace) throws SQLException
+  {
+    try(Connection connection = getConnection())
+    {
+      PreparedStatement statement = connection.prepareStatement("INSERT INTO logs(username,license_no, car_brand, color, date, time, parking_space) VALUES(?,?,?,?,?,?,?);");
+      statement.setString(1, username);
+      statement.setString(2, getCarDB(username).getLicenseNo());
+      statement.setString(3, getCarDB(username).getCarBrand());
+      statement.setString(4, getCarDB(username).getColor());
+      statement.setString(5, date.toString());
+      statement.setString(6, time.toString());
+      statement.setString(7, parkingSpace);
     }
   }
 

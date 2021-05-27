@@ -28,4 +28,6 @@ public interface Model extends UnnamedPropertyChangeSubject {
     void setNameSpace(String name);
 
     User getUser();
+    void addLog(String username, String parkingSpace)
+        throws RemoteException, SQLException;
 }

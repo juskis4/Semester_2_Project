@@ -112,4 +112,10 @@ public class ModelManager implements Model {
     public User getUser() {
         return user;
     }
+
+    @Override public void addLog(String username, String parkingSpace)
+        throws RemoteException, SQLException
+    {
+        client.addLog(username, parkingSpace);
+    }
 }

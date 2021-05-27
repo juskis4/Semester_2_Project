@@ -92,6 +92,11 @@ public class RemoteModel extends UnicastRemoteObject implements RemoteInterface
     return model.getParkingLot();
   }
 
+  @Override public void addLog(String username, String parkingSpace) throws RemoteException, SQLException
+  {
+    model.addLog(username, parkingSpace);
+  }
+
   @Override
   public boolean addListener(GeneralListener<String, String> listener, String... propertyNames) throws RemoteException {
     return property.addListener(listener,propertyNames);

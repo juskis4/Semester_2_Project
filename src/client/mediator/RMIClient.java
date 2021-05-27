@@ -64,6 +64,11 @@ public class RMIClient extends UnicastRemoteObject implements RemoteListener<Str
     public ParkingLot getParkingLot() throws RemoteException{
         return server.getParkingLot();
     }
+    public void addLog(String username, String parkingSpace)
+        throws RemoteException, SQLException
+    {
+        server.addLog(username, parkingSpace);
+    }
 
     @Override
     public void propertyChange(ObserverEvent<String, String> event) throws RemoteException {

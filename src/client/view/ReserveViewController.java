@@ -67,6 +67,7 @@ public class ReserveViewController
   @FXML public void onReserve() throws RemoteException, SQLException
   {
     viewModel.registerSpace();
+    viewModel.addLog();
     viewHandler.openView("ParkingLotView");
   }
   @FXML public void onWorkingHours()
