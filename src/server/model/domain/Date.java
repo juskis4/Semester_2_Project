@@ -2,21 +2,43 @@ package server.model.domain;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+/**
+ * A class that represents date.
+ */
+
 public class Date implements Serializable
 {
   private int day;
   private int month;
   private int year;
+
+  /**
+   * A constructor for date class with integers.
+   * @param day the day as an integer.
+   * @param month the month as an integer.
+   * @param year the year as an integer.
+   */
   public Date(int day, int month, int year)
   {
     set(day, month, year);
   }
+
+  /**
+   * A constructor for date class with month name as a string.
+   * @param day the day as an integer.
+   * @param monthName the month as a string.
+   * @param year the year as an integer.
+   */
   public Date(int day, String monthName, int year)
   {
     this.day = day;
     this.month = convertToMonthNumber(monthName);
     this.year = year;
   }
+
+  /**
+   * A constructor for date that sets todays date.
+   */
   public Date()
   {
     LocalDate today = LocalDate.now();
@@ -24,6 +46,13 @@ public class Date implements Serializable
     this.month = today.getMonthValue();
     this.year = today.getYear();
   }
+
+  /**
+   * Setter for date.
+   * @param day the day as an integer.
+   * @param month the month as an integer.
+   * @param year the year as an integer.
+   */
   public void set(int day, int month, int year)
   {
     if(year < 0)
@@ -62,6 +91,11 @@ public class Date implements Serializable
   {
     return year;
   }
+
+  /**
+   * A method that calculates if the year is Leap year.
+   * @return true if Leap year, false if not.
+   */
   public boolean isLeapYear()
   {
     if(year % 4 == 0 && ((year % 100 != 0) || year % 400 == 0))
@@ -73,6 +107,11 @@ public class Date implements Serializable
       return false;
     }
   }
+
+  /**
+   * A method to move the date.
+   * @param days the number of days that you want to move.
+   */
   public void stepForward(int days)
   {
     for(int i = 0; i < days; i++)
@@ -80,6 +119,11 @@ public class Date implements Serializable
       stepForwardOneDay();
     }
   }
+
+  /**
+   * A method that calculates months name.
+   * @return months name.
+   */
   public String getMonthName()
   {
     if(month == 1)
@@ -132,6 +176,10 @@ public class Date implements Serializable
     }
     return "Error";
   }
+
+  /**
+   * A method to move the date by one day.
+   */
   public void stepForwardOneDay()
   {
     day++;
@@ -146,6 +194,11 @@ public class Date implements Serializable
       year++;
     }
   }
+
+  /**
+   * A method that calculates how many days the month has.
+   * @return number of days in a month.
+   */
   public int numberOfDaysInMonth()
   {
     if(month == 2 && isLeapYear() == true)
@@ -166,12 +219,24 @@ public class Date implements Serializable
     }
     return 0;
   }
+
+  /**
+   * A method that checks if one date is before another.
+   * @param other Date that is suppose to be or not suppose be be after another date.
+   * @return true if date is before "other", false if otherwise.
+   */
   public boolean isBefore(Date other)
   {
     int dummyDaysOfThis = year * 400 + month * 31 + day;
     int dummyDaysOfOther = other.year * 400 + other.month * 31 + other.day;
     return dummyDaysOfThis<dummyDaysOfOther;
   }
+
+  /**
+   * A method that calculates the years between 2 dates.
+   * @param other the date that the years between is calculated.
+   * @return the number of years between 2 dates.
+   */
   public int yearsBetween(Date other)
   {
     int years = 0;
@@ -193,6 +258,11 @@ public class Date implements Serializable
     }
     return years;
   }
+
+  /**
+   * A method that calculates the day of the week.
+   * @return the day of the week.
+   */
   public String dayOfWeek()
   {
     double answer1;
@@ -216,6 +286,10 @@ public class Date implements Serializable
     }
   }
 
+  /**
+   * A method that puts date in specific format.
+   * @return return a string with date in a specific format.
+   */
   @Override public String toString()
   {
     if (day < 10 && month >= 10)
@@ -235,6 +309,12 @@ public class Date implements Serializable
       return day + "/" + month + "/" + year;
     }
   }
+
+  /**
+   * A method that coverts month name to an integer.
+   * @param monthName month name.
+   * @return Monhth as and integer.
+   */
   public static int convertToMonthNumber(String monthName)
   {
     switch (monthName)
@@ -254,11 +334,22 @@ public class Date implements Serializable
     }
     return 0;
   }
+
+  /**
+   * A method to copy date.
+   * @return the copy of the date.
+   */
   public Date copy()
   {
     Date other = new Date(day, month, year);
     return other;
   }
+
+  /**
+   * A method that checks if date and another object are equal.
+   * @param obj An object that is checked with date.
+   * @return true if date and object are equal, false if otherwise.
+   */
   public boolean equals(Object obj)
   {
     if(!(obj instanceof Date))

@@ -3,10 +3,16 @@ package server.model.domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * A class that represents parking lot.
+ */
 public class ParkingLot implements Serializable
 {
   private ArrayList<ParkingSpace> parkingSpaces;
 
+  /**
+   * A constructor for parking lot, that creates an array list pf parking spaces, give them names and adds it to array list.
+   */
   public ParkingLot()
   {
     this.parkingSpaces = new ArrayList<>();
@@ -27,14 +33,20 @@ public class ParkingLot implements Serializable
     }
   }
 
-
-
+  /**
+   * Getter for parking spaces array list
+   * @return parking spaces array list.
+   */
   public ArrayList<ParkingSpace> getParkingSpaces()
   {
     return parkingSpaces;
   }
 
-  //Get parking space by the name of it
+  /**
+   * A getter that gets parking space from array list by it's name.
+   * @param name name of parking space.
+   * @return parking space object.
+   */
   public ParkingSpace getParkingSpaceByName(String name)
   {
     for(int i = 0; i<parkingSpaces.size(); i++)
@@ -47,16 +59,30 @@ public class ParkingLot implements Serializable
     return null;
   }
 
+  /**
+   * Getter for parking spaces array list size.
+   * @return size of parking spaces array list.
+   */
   public int size()
   {
     return parkingSpaces.size();
   }
 
+  /**
+   * Getter for parking space, by an index.
+   * @param index index of a parking space.
+   * @return parking space object.
+   */
   public ParkingSpace getParkingSpace(int index)
   {
     return parkingSpaces.get(index);
   }
 
+  /**
+   * A method that checks if the parking space is occupied.
+   * @param parkingSpaceName parking space name, that will be checked.
+   * @return true if parking space is occupied, false if not.
+   */
   public boolean isOccupiedBySpaceName(String parkingSpaceName)
   {
     for(int i = 0; i< parkingSpaces.size(); i++)
@@ -69,12 +95,20 @@ public class ParkingLot implements Serializable
     return false;
   }
 
+  /**
+   * A method that checks if parking space is occupied, by its index.
+   * @param index index of a parking space.
+   * @return true if parking space is occupied, false if not.
+   */
   public boolean isOccupied(int index)
   {
     return parkingSpaces.get(index).getIsOccupied();
   }
 
-  //Get all the not occupied parking spaces
+  /**
+   * Getter for all not occupied parking spaces.
+   * @return array list of not occupied parking spaces.
+   */
   public ArrayList<ParkingSpace> notOccupiedParkingSpaces()
   {
     ArrayList<ParkingSpace> notOccupied = new ArrayList<>();
@@ -88,6 +122,11 @@ public class ParkingLot implements Serializable
     return notOccupied;
   }
 
+  /**
+   * A method that checks if there's a parking space occupied by specific user.
+   * @param userName Users username.
+   * @return true if there is a parking space occupied by this user, false if not.
+   */
   public boolean isOcuppiedByUser(String userName)
   {
       for (ParkingSpace parkingSpace : parkingSpaces) {
@@ -98,7 +137,11 @@ public class ParkingLot implements Serializable
     return false;
   }
 
-
+  /**
+   * A method for getting a parking space that a user reserved.
+   * @param user
+   * @return parking space that is reserved by this user.
+   */
   public ParkingSpace getParkingSpaceByUser(User user)
   {
     for(int i = 0; i< parkingSpaces.size(); i++)
@@ -110,6 +153,4 @@ public class ParkingLot implements Serializable
     }
     return null;
   }
-
-  //TODO: 05/05/21  ADD A QUEUE ELEMENT OR DECIDE TO USE QUEUEADT INSTEAD
 }

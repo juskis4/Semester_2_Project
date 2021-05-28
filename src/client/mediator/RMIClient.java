@@ -15,10 +15,17 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 
+/**
+ * A class that represent the client
+ */
 public class RMIClient extends UnicastRemoteObject implements RemoteListener<String, String> {
 
     private RemoteInterface server;
 
+    /**
+     * A constructor for client that looks up for e server in the registry.
+     * @throws RemoteException
+     */
     public RMIClient() throws RemoteException{
         try {
             server = (RemoteInterface) Naming.lookup("rmi://localhost:1099/ParkingLot");
@@ -29,17 +36,39 @@ public class RMIClient extends UnicastRemoteObject implements RemoteListener<Str
         }
     }
 
+    /**
+     * Calling register method in server.
+     * @param userName users username.
+     * @param password users password.
+     * @throws RemoteException throwing remote exception.
+     */
     public void register(String userName, String password) throws RemoteException {
 
         server.register(userName, password);
     }
 
+    /**
+     * Calling login method in server.
+     * @param userName users username.
+     * @param password users password.
+     * @return true if login is validated false, if otherwise.
+     * @throws RemoteException throwing remote exception.
+     * @throws SQLException throwing sql exception.
+     */
     public boolean login(String userName, String password)
         throws RemoteException, SQLException
     {
         return server.login(userName, password);
     }
 
+    /**
+     * Calling register first and last name in server.
+     * @param firstName users first name.
+     * @param lastName users last name.
+     * @param userName users username.
+     * @throws RemoteException throwing remote exception.
+     * @throws SQLException throwing sql exception.
+     */
     public void registerFirstAndLastName(String firstName, String lastName, String userName)
         throws RemoteException, SQLException
     {

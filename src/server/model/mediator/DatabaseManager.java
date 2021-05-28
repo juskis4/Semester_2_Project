@@ -9,14 +9,27 @@ import server.model.domain.Vehicle;
 
 import java.sql.*;
 
+/**
+ * A class that represents systems communication with database.
+ */
 public class DatabaseManager implements ParkingDatabase
 {
   private Connection connection;
 
+  /**
+   * Constructor for database.
+   */
   public DatabaseManager()
   {
   }
 
+  /**
+   * A method that creates and adds user to database.
+   * @param username users username.
+   * @param password users password.
+   * @return user.
+   * @throws SQLException throwing sql exception.
+   */
   public User addUserDB(String username, String password) throws SQLException {
     try(Connection connection = getConnection()) {
       PreparedStatement statement = connection.prepareStatement("INSERT INTO user_parking(username,password) VALUES(?,?);");
@@ -27,6 +40,13 @@ public class DatabaseManager implements ParkingDatabase
     }
   }
 
+  /**
+   * A method that exports user from database.
+   * @param username users username.
+   * @param password users password.
+   * @return user
+   * @throws SQLException throwing sql exception.
+   */
   @Override public User getUserDB(String username, String password) throws SQLException
   {
     try(Connection connection = getConnection())
@@ -48,6 +68,12 @@ public class DatabaseManager implements ParkingDatabase
     }
   }
 
+  /**
+   * A method that exports users vehicle from database.
+   * @param username users username
+   * @return vehicle.
+   * @throws SQLException throwing sql exception.
+   */
   @Override public Vehicle getCarDB(String username) throws SQLException
   {
     try(Connection connection = getConnection())
@@ -75,6 +101,14 @@ public class DatabaseManager implements ParkingDatabase
     }
   }
 
+  /**
+   * A method that imports log to database.
+   * @param username users username.
+   * @param currentDate logs date.
+   * @param currentTime logs time.
+   * @param parkingSpace name of parking space.
+   * @throws SQLException throwing sql exception.
+   */
   @Override public void addLog(String username, Date currentDate, Time currentTime,
       String parkingSpace) throws SQLException
   {
@@ -93,6 +127,13 @@ public class DatabaseManager implements ParkingDatabase
     }
   }
 
+  /**
+   * A method that imports users first and last names into the database.
+   * @param firstName users first name.
+   * @param lastName users last name.
+   * @param username users username.
+   * @throws SQLException throwing sql exception.
+   */
   public void addUserNamesDB(String firstName, String lastName, String username) throws SQLException {
     try(Connection connection = getConnection()) {
       PreparedStatement statement = connection.prepareStatement("UPDATE user_parking SET (f_name, l_name) = (?,?) WHERE username = ?;");
@@ -114,6 +155,14 @@ public class DatabaseManager implements ParkingDatabase
     }
   }
 
+  /**
+   * A method that imports users vehicle to database.
+   * @param username users username.
+   * @param licenseNo users vehicle license number.
+   * @param carBrand user vehicle brand.
+   * @param color user vehicle color.
+   * @throws SQLException throwing sql exception.
+   */
   public void addCarDB(String username, String licenseNo, String carBrand, String color) throws SQLException {
     try(Connection connection = getConnection()) {
       if(getCarDB(username) == null)
@@ -139,21 +188,15 @@ public class DatabaseManager implements ParkingDatabase
         }
         statement.executeUpdate();
       }
-
-//      ResultSet resultSet = statement.executeQuery();
-//      String f_name = null;
-//      String l_name = null;
-//      while(resultSet.next())
-//      {
-//        f_name = resultSet.getString("f_name");
-//        l_name = resultSet.getString("l_name");
-//      }
-//      System.out.println(f_name + " " + l_name);
     }
   }
 
-
-
+  /**
+   * A method that exports user from database.
+   * @param username users username.
+   * @return user.
+   * @throws SQLException throwing sql exception.
+   */
   @Override public User getUserDB(String username) throws SQLException
   {
     try(Connection connection = getConnection())
@@ -189,6 +232,12 @@ public class DatabaseManager implements ParkingDatabase
       return null;
     }
   }
+
+  /**
+   * A method that connects java application with postgresql database.
+   * @return connection.
+   * @throws SQLException throwing sql exception.
+   */
   private Connection getConnection() throws SQLException{
 
     return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=parking_lot", "postgres","1");
