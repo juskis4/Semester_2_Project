@@ -15,6 +15,9 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 
+/**
+ * Controller for parking lot view.
+ */
 public class ParkingLotViewController implements PropertyChangeListener {
 
     @FXML
@@ -68,11 +71,18 @@ public class ParkingLotViewController implements PropertyChangeListener {
     private Region root;
     private ParkingLotViewModel viewModel;
 
-
+    /**
+     * Constructor that is empty.
+     */
     public ParkingLotViewController() {
 
     }
-
+    /**
+     * Initialization method to initialize controllers viewmodel, viewhandler, root, binding instance variables to viewmodels and setting label colors.
+     * @param viewHandler views handler.
+     * @param viewModel cancel reservation viewmodel.
+     * @param root root.
+     */
     public void init(ViewHandler viewHandler, ParkingLotViewModel viewModel, Region root) throws RemoteException {
         this.viewModel = viewModel;
         this.viewHandler = viewHandler;
@@ -129,14 +139,27 @@ public class ParkingLotViewController implements PropertyChangeListener {
         setColour(spaceD6, "D6");
     }
 
+    /**
+     * Getter for root.
+     * @return root.
+     */
     public Region getRoot() {
         return root;
     }
 
+    /**
+     * Resetting the controller.
+     */
     public void reset() {
         viewModel.reset();
     }
 
+    /**
+     * Setting red color if the space is reserved, green if it's free, blue if it is reserved by the client that is using the system.
+     * @param space label that represents parking space.
+     * @param name parking space name.
+     * @throws RemoteException throwing remote exception.
+     */
     private void setColour(Label space, String name) throws RemoteException {
         if (viewModel.isOccupied(name)) {
             space.setTextFill(Color.rgb(255, 0, 0));
@@ -281,6 +304,10 @@ public class ParkingLotViewController implements PropertyChangeListener {
         viewHandler.openView("WorkingHoursView");
     }
 
+    /**
+     * Catching event(Parking space name) and depending on the parking space name and its occupancy setting itscolor.
+     * @param evt event(Parking space name).
+     */
     @Override public void propertyChange(PropertyChangeEvent evt)
     {
         Label dummylabel;

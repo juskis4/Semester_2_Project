@@ -11,6 +11,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * A class for handling controllers.
+ */
 public class ViewHandler {
     private Scene currentScene;
     private Stage primaryStage;
@@ -24,16 +27,28 @@ public class ViewHandler {
     private ReserveViewController reserveViewController;
     private CancelReservationViewController cancelReservationViewController;
 
+    /**
+     * Constructor that initializes view model factory.
+     * @param viewModelFactory
+     */
     public ViewHandler(ViewModelFactory viewModelFactory) {
         this.viewModelFactory = viewModelFactory;
     }
 
+    /**
+     * Starting and opening the first window(login window).
+     * @param primaryStage the first stage.
+     */
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.currentScene = new Scene(new Region());
         openView("Login");
     }
 
+    /**
+     * A method for opening different views.
+     * @param window view name.
+     */
     public void openView(String window) {
         try {
             double width = primaryStage.getWidth();
@@ -102,6 +117,11 @@ public class ViewHandler {
         }
     }
 
+    /**
+     * Loader for login view.
+     * @param fxmlFile view name.
+     * @return returning view root.
+     */
     public Region loadLoginView(String fxmlFile) {
         if (loginViewController == null) {
             try {
@@ -119,7 +139,11 @@ public class ViewHandler {
         }
         return loginViewController.getRoot();
     }
-
+    /**
+     * Loader for register view.
+     * @param fxmlFile view name.
+     * @return returning view root.
+     */
     public Region loadRegisterView(String fxmlFile) {
         if (registerViewController == null) {
             try {
@@ -137,7 +161,11 @@ public class ViewHandler {
         }
         return registerViewController.getRoot();
     }
-
+    /**
+     * Loader for change car view.
+     * @param fxmlFile view name.
+     * @return returning view root.
+     */
     public Region loadChangeCarView(String fxmlFile) {
         if (changeCarViewController == null) {
             try {
@@ -155,7 +183,11 @@ public class ViewHandler {
         }
         return changeCarViewController.getRoot();
     }
-
+    /**
+     * Loader for profile view.
+     * @param fxmlFile view name.
+     * @return returning view root.
+     */
     public Region loadProfileView(String fxmlFile) {
         if (profileViewController == null) {
             try {
@@ -170,7 +202,11 @@ public class ViewHandler {
         }
         return profileViewController.getRoot();
     }
-
+    /**
+     * Loader for parking view.
+     * @param fxmlFile view name.
+     * @return returning view root.
+     */
     public Region loadParkingView(String fxmlFile) {
         if (parkingLotViewController == null) {
             try {
@@ -185,7 +221,11 @@ public class ViewHandler {
         }
         return parkingLotViewController.getRoot();
     }
-
+    /**
+     * Loader for working hours view.
+     * @param fxmlFile view name.
+     * @return returning view root.
+     */
     public Region loadWorkingHoursView(String fxmlFile) {
         if (workingHoursViewController == null) {
             try {
@@ -201,7 +241,11 @@ public class ViewHandler {
         }
         return workingHoursViewController.getRoot();
     }
-
+    /**
+     * Loader for reserve view.
+     * @param fxmlFile view name.
+     * @return returning view root.
+     */
     public Region loadReserveView(String fxmlFile) {
         if (reserveViewController == null) {
             try {
@@ -216,7 +260,11 @@ public class ViewHandler {
         }
         return reserveViewController.getRoot();
     }
-
+    /**
+     * Loader for cancel reservation view.
+     * @param fxmlFile view name.
+     * @return returning view root.
+     */
     public Region loadCancelReservationView(String fxmlFile) {
         if (cancelReservationViewController == null) {
             try {
@@ -231,5 +279,4 @@ public class ViewHandler {
         }
         return cancelReservationViewController.getRoot();
     }
-
 }

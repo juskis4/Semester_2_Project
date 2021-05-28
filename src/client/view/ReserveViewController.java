@@ -18,6 +18,9 @@ import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
+/**
+ * Controller for reserve view.
+ */
 public class ReserveViewController
 {
   @FXML private TextField hourField;
@@ -29,11 +32,19 @@ public class ReserveViewController
   private Region root;
   private ReserveViewModel viewModel;
 
+  /**
+   * Constructor that is empty.
+   */
   public ReserveViewController()
   {
 
   }
-
+  /**
+   * Initialization method to initialize controllers viewmodel, viewhandler, root and binding instance variables to viewmodels.
+   * @param viewHandler views handler.
+   * @param viewModel cancel reservation viewmodel.
+   * @param root root.
+   */
   public void init(ViewHandler viewHandler, ReserveViewModel viewModel, Region root)
       throws RemoteException
   {
@@ -49,27 +60,40 @@ public class ReserveViewController
     TextField dateEditor = reserveDate.getEditor();
     viewModel.dateInStringProperty().bindBidirectional(dateEditor.textProperty());
     errorLabel.textProperty().bindBidirectional(viewModel.getErrorLabelProperty());
-
-//    dateEditor.textProperty().bind(viewModel.dateInStringProperty());
-
   }
 
+  /**
+   * Resetting the controller.
+   */
   public void reset()
   {
     viewModel.reset();
   }
 
+  /**
+   * Getter for root.
+   * @return root.
+   */
   public Region getRoot()
   {
     return root;
   }
 
+  /**
+   * A method that calls register space, add log methods and opens parking lot view after pressing reserve button.
+   * @throws RemoteException
+   * @throws SQLException
+   */
   @FXML public void onReserve() throws RemoteException, SQLException
   {
     viewModel.registerSpace();
     viewModel.addLog();
     viewHandler.openView("ParkingLotView");
   }
+
+  /**
+   * A method that opens working hours window.
+   */
   @FXML public void onWorkingHours()
   {
     viewHandler.openView("WorkingHoursView");

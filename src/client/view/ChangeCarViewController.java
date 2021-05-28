@@ -9,6 +9,9 @@ import javafx.scene.layout.Region;
 
 import java.rmi.RemoteException;
 
+/**
+ * A controller for change car view.
+ */
 public class ChangeCarViewController
 {
   @FXML private TextField carBrandField;
@@ -19,11 +22,19 @@ public class ChangeCarViewController
   private Region root;
   private ChangeCarViewModel viewModel;
 
+  /**
+   * Constructor that is empty.
+   */
   public ChangeCarViewController()
   {
 
   }
-
+  /**
+   * Initialization method to initialize controllers viewmodel, viewhandler, root and binding instance variables to viewmodels.
+   * @param viewHandler views handler.
+   * @param viewModel cancel reservation viewmodel.
+   * @param root root.
+   */
   public void init(ViewHandler viewHandler, ChangeCarViewModel viewModel, Region root)
   {
     this.viewModel = viewModel;
@@ -36,11 +47,18 @@ public class ChangeCarViewController
     errorLabel.textProperty().bindBidirectional(viewModel.getErrorProperty());
   }
 
+  /**
+   * Getter for root.
+   * @return root.
+   */
   public Region getRoot()
   {
     return root;
   }
 
+  /**
+   * Resetting the controller.
+   */
   public void reset()
   {
     viewModel.reset();

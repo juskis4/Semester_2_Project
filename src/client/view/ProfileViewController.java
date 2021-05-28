@@ -11,6 +11,9 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
+/**
+ * A controller for profile view.
+ */
 public class ProfileViewController {
     @FXML
     private Label userName;
@@ -30,10 +33,18 @@ public class ProfileViewController {
     private Region root;
     private ProfileViewModel viewModel;
 
+    /**
+     * Constructor that is empty.
+     */
     public ProfileViewController() {
-        ///
-    }
 
+    }
+    /**
+     * Initialization method to initialize controllers viewmodel, viewhandler, root and binding instance variables to viewmodels.
+     * @param viewHandler views handler.
+     * @param viewModel cancel reservation viewmodel.
+     * @param root root.
+     */
     public void init(ViewHandler viewHandler, ProfileViewModel viewModel, Region root) {
         this.viewHandler = viewHandler;
         this.viewModel = viewModel;
@@ -49,10 +60,17 @@ public class ProfileViewController {
 
     }
 
+    /**
+     * Getter for root.
+     * @return root.
+     */
     public Region getRoot() {
         return root;
     }
 
+    /**
+     * Resetting the controller.
+     */
     public void reset() {
         try {
             viewModel.reset();
