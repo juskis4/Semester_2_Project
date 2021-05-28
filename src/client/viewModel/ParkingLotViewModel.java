@@ -14,6 +14,11 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+
+/**
+ * A constructor that represents the viewmodel for ParkingLot and it is part of MVVM pattern.
+ * This viewmodel is a subject and listener, as a part of Observer pattern.
+ */
 public class ParkingLotViewModel implements PropertyChangeListener, UnnamedPropertyChangeSubject {
 
     private StringProperty spaceA1;
@@ -46,6 +51,10 @@ public class ParkingLotViewModel implements PropertyChangeListener, UnnamedPrope
     private String userName;
     private PropertyChangeSupport propertyChangeSupport;
 
+    /**
+     * A constructor the initializes the model and names for every parking space. Model ads this class as a listener.
+     * @param model client model.
+     */
     public ParkingLotViewModel(Model model){
         this.model = model;
         model.addListener(this);
@@ -75,14 +84,31 @@ public class ParkingLotViewModel implements PropertyChangeListener, UnnamedPrope
 
     }
 
+
+    /**
+     * A method that is empty.
+     */
     public void reset(){
 
     }
 
+    /**
+     * A method that sets the specific parking space as occupied.
+     * @param name name of the parking space that user selects.
+     * @return true or false, if that space is occupied or not.
+     * @throws RemoteException if connection between client and server is wrong.
+     */
     public boolean isOccupied(String name) throws RemoteException {
         return model.getParkingLot().isOccupiedBySpaceName(name);
     }
 
+    /**
+     * Method part of Observer pattern, 2 statements.
+     * If "reserveSpace" event namem is fired, then this class fires another event that goes into ParkingLotController
+     * to take the name of the parking space that has just been reserved by the user. "Login" event is fired once customer logged
+     * in, and gets its username.
+     * @param evt gets name of the specific fired event.
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if(evt.getPropertyName().equals("ReserveSpace"))
@@ -95,108 +121,201 @@ public class ParkingLotViewModel implements PropertyChangeListener, UnnamedPrope
         }
     }
 
+    /**
+     * Gets the errorLabel information.
+     * @return error text.
+     */
     public StringProperty getErrorLabel()
     {
         return errorLabel;
     }
 
+    /**
+     * Gets the name of A1 parking space.
+     * @return spaceA1 name;
+     **/
     public StringProperty spaceA1Property() {
         return spaceA1;
     }
+
+    /**
+     * Gets the name of A2 parking space.
+     * @return spaceA2 name;
+     **/
 
     public StringProperty spaceA2Property() {
         return spaceA2;
     }
 
+    /**
+     * Gets the name of A3 parking space.
+     * @return spaceA3 name;
+     **/
+
     public StringProperty spaceA3Property() {
         return spaceA3;
     }
 
+    /**
+     * Gets the name of A4 parking space.
+     * @return spaceA4 name;
+     **/
 
     public StringProperty spaceA4Property() {
         return spaceA4;
     }
 
 
+    /**
+     * Gets the name of A5 parking space.
+     * @return spaceA5 name;
+     **/
     public StringProperty spaceA5Property() {
         return spaceA5;
     }
 
+    /**
+     * Gets the name of A6 parking space.
+     * @return spaceA6 name;
+     **/
 
     public StringProperty spaceA6Property() {
         return spaceA6;
     }
 
+    /**
+     * Gets the name of B1 parking space.
+     * @return spaceB1 name;
+     **/
 
     public StringProperty spaceB1Property() {
         return spaceB1;
     }
 
+    /**
+     * Gets the name of B2 parking space.
+     * @return spaceB2 name;
+     **/
 
     public StringProperty spaceB2Property() {
         return spaceB2;
     }
 
+    /**
+     * Gets the name of B3 parking space.
+     * @return spaceB3 name;
+     **/
 
     public StringProperty spaceB3Property() {
         return spaceB3;
     }
 
+    /**
+     * Gets the name of B4 parking space.
+     * @return spaceB4 name;
+     **/
 
     public StringProperty spaceB4Property() {
         return spaceB4;
     }
 
+    /**
+     * Gets the name of C1 parking space.
+     * @return spaceC1 name;
+     **/
 
     public StringProperty spaceC1Property() {
         return spaceC1;
     }
 
+    /**
+     * Gets the name of C2 parking space.
+     * @return spaceC2 name;
+     **/
 
     public StringProperty spaceC2Property() {
         return spaceC2;
     }
 
 
+    /**
+     * Gets the name of C3 parking space.
+     * @return spaceC3 name;
+     **/
+
     public StringProperty spaceC3Property() {
         return spaceC3;
     }
 
+    /**
+     * Gets the name of C4 parking space.
+     * @return spaceC4 name;
+     **/
 
     public StringProperty spaceC4Property() {
         return spaceC4;
     }
 
+    /**
+     * Gets the name of D1 parking space.
+     * @return spaceD1 name;
+     **/
 
     public StringProperty spaceD1Property() {
         return spaceD1;
     }
 
+    /**
+     * Gets the name of D2 parking space.
+     * @return spaceD2 name;
+     **/
 
     public StringProperty spaceD2Property() {
         return spaceD2;
     }
 
+    /**
+     * Gets the name of D3 parking space.
+     * @return spaceD3 name;
+     **/
 
     public StringProperty spaceD3Property() {
         return spaceD3;
     }
 
+    /**
+     * Gets the name of D4 parking space.
+     * @return spaceD4 name;
+     **/
 
     public StringProperty spaceD4Property() {
         return spaceD4;
     }
 
+    /**
+     * Gets the name of D5 parking space.
+     * @return spaceD5 name;
+     **/
 
     public StringProperty spaceD5Property() {
         return spaceD5;
     }
 
+    /**
+     * Gets the name of D6 parking space.
+     * @return spaceD6 name;
+     **/
 
     public StringProperty spaceD6Property() {
         return spaceD6;
     }
 
+    /**
+     * Method that fires an event in model once the specific parking space is not occupied by user. Returns true if
+     * the process has been done, false if not.
+     * @param name of the parking space.
+     * @return
+     */
     public boolean onClickUndef(String name)
     {
         try {
@@ -212,6 +331,12 @@ public class ParkingLotViewModel implements PropertyChangeListener, UnnamedPrope
         }
         return false;
     }
+
+    /**
+     * Verifies if the specific parking space is yours or not and returns true, false if not.
+     * @param nameOfParkingSpace
+     * @return
+     */
 
     public boolean parkingSpaceIsYours(String nameOfParkingSpace)
     {
@@ -232,11 +357,20 @@ public class ParkingLotViewModel implements PropertyChangeListener, UnnamedPrope
         return false;
     }
 
+    /**
+     * Method provided by Observer pattern. It adds a class as a listener for this viewmodel.
+     * @param listener
+     */
 
     @Override public void addListener(PropertyChangeListener listener)
     {
         propertyChangeSupport.addPropertyChangeListener(listener);
     }
+
+    /**
+     * Method provided by Observer pattern. It removes a class as a listener for this viewmodel.
+     * @param listener
+     */
 
     @Override public void removeListener(PropertyChangeListener listener)
     {

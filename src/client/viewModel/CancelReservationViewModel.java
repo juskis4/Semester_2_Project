@@ -13,6 +13,10 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
+/**
+ * A class that represents the viewmodel of CancelReservation window and it is part of MVVM pattern.
+ * This viewmodel is a listener to model, as a Observer pattern part.
+ */
 public class CancelReservationViewModel implements PropertyChangeListener
 {
     public static final String USER_NULL = "User not set.";
@@ -22,6 +26,11 @@ public class CancelReservationViewModel implements PropertyChangeListener
     private StringProperty vehicleInfoProperty;
     private Model model;
 
+    /**
+     * A constructor that sets the label text for every StringProperty variable.
+     * @param model used for getting the actual information that user provided about his car, his username and
+     *              the name of the parking space taken by him.
+     */
     public CancelReservationViewModel(Model model)
     {
         try {
@@ -52,6 +61,9 @@ public class CancelReservationViewModel implements PropertyChangeListener
         }
     }
 
+    /**
+     * Resets all text labels and gets the actual informations, by using the model.
+     */
     public void reset()
     {
         try {
@@ -66,24 +78,44 @@ public class CancelReservationViewModel implements PropertyChangeListener
         }
     }
 
+    /**
+     * Getter for errorLabel text.
+     * @return actual errorLabel informations.
+     */
     public StringProperty getErrorLabelProperty()
     {
         return errorLabelProperty;
     }
 
+    /**
+     * Getter for parkingSpaceName text
+     * @return actual parkingSpaceName that has been selected for cancellation.
+     */
     public StringProperty getParkingSpaceFieldProperty() {
         return parkingSpaceFieldProperty;
     }
+
+    /**
+     * Getter for authorName text
+     * @return the username the client logged in with.
+     */
 
     public StringProperty getAuthorNameProperty()
     {
         return authorNameProperty;
     }
 
+    /**
+     * Getter for vehicle's informations.
+     * @return the license plate, color and brand of customer's car.
+     */
     public StringProperty getVehicleInfoProperty(){
         return vehicleInfoProperty;
     }
 
+    /**
+     * Cancels user reservation. Sets the parking space to unoccupied and all its information to null
+     */
     public void onCancel()
     {
         try {
@@ -95,6 +127,12 @@ public class CancelReservationViewModel implements PropertyChangeListener
         }
     }
 
+    /**
+     * Method part of Observer pattern, 3 statemens. Author name is received once the login has been done,
+     * parkingSpaceField is received once user clicks the "Reserve" button in the "ParkingLot" window, or vehicle informations
+     * are provided once user adds his car informations.
+     * @param evt is used for receiving the propertyName, more precisely the name of the event fired.
+     */
     @Override public void propertyChange(PropertyChangeEvent evt)
     {
         if (evt.getPropertyName().equals("Login"))
