@@ -6,6 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 
+/**
+ * A controller for support view.
+ */
 public class SupportViewController
 {
   @FXML private Label errorLabel;
@@ -13,11 +16,19 @@ public class SupportViewController
   private Region root;
   private SupportViewModel supportViewModel;
 
+  /**
+   * Constructor that is empty.
+   */
   public SupportViewController()
   {
 
   }
-
+  /**
+   * Initialization method to initialize controllers viewmodel, viewhandler, root and binding instance variables to viewmodels.
+   * @param viewHandler views handler.
+   * @param viewModel cancel reservation viewmodel.
+   * @param root root.
+   */
   public void init(ViewHandler viewHandler, SupportViewModel viewModel, Region root)
   {
     this.supportViewModel = viewModel;
@@ -26,11 +37,18 @@ public class SupportViewController
     errorLabel.textProperty().bindBidirectional(viewModel.getErrorProperty());
   }
 
+  /**
+   * Getter for root.
+   * @return root.
+   */
   public Region getRoot()
   {
     return root;
   }
 
+  /**
+   * Resetting the controller.
+   */
   public void reset()
   {
     supportViewModel.reset();
