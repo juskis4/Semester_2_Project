@@ -281,6 +281,12 @@ public class ParkingLotViewController implements PropertyChangeListener {
         viewHandler.openView("WorkingHoursView");
     }
 
+    @FXML
+    private void onSupport()
+    {
+        viewHandler.openView("SupportView");
+    }
+
     @Override public void propertyChange(PropertyChangeEvent evt)
     {
         Label dummylabel;

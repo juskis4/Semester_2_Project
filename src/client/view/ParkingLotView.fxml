@@ -45,6 +45,11 @@
                         <Font name="Malgun Gothic Semilight" size="18.0" />
                     </font>
                 </Text>
+            <Text fill="#262626" layoutX="27.0" layoutY="308.0" onMouseClicked="#onSupport" strokeType="OUTSIDE" strokeWidth="0.0" text="Support" wrappingWidth="150.40003147125248">
+               <font>
+                  <Font name="Malgun Gothic Semilight" size="18.0" />
+               </font>
+            </Text>
             </children>
         </AnchorPane>
         <Text fill="#262626" layoutX="367.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parking Lot" textAlignment="CENTER" wrappingWidth="204.00003662109378">

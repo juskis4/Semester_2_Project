@@ -60,4 +60,10 @@ public class ChangeCarViewController
   {
     viewHandler.openView("ProfileView");
   }
+
+  @FXML private void onSupport()
+  {
+    viewHandler.openView("SupportView");
+  }
+
 }
