@@ -1,5 +1,6 @@
 package server.model.domain;
 
+
 import java.io.Serializable;
 
 public class ParkingSpace implements Serializable
@@ -10,7 +11,7 @@ public class ParkingSpace implements Serializable
   private Time startingTime;
   private Time endingTime;
   private Date date;
-  
+
 
   public ParkingSpace(String nameOfParkingSpace)
   {
@@ -22,16 +23,37 @@ public class ParkingSpace implements Serializable
     this.date = null;
   }
 
-  public void setOccupied(boolean isOccupied, String userName, Time startingTime, Time endingTime, Date date)
+  public void setNotOccupied()
   {
-    this.isOccupied = isOccupied;
+    this.isOccupied = false;
+    userName = "";
+    startingTime = null;
+    endingTime = null;
+    date = null;
+  }
+
+  public void setOccupied(String userName, Time startingTime, Time endingTime, Date date)
+  {
+    this.isOccupied = true;
     this.userName = userName;
     if(userName == null)
     {
-      this.userName = "";
+      throw new IllegalArgumentException("Username is null.");
+    }
+    if(startingTime == null)
+    {
+      throw new IllegalArgumentException("Starting time is null.");
     }
     this.startingTime = startingTime;
+    if(endingTime == null)
+    {
+      throw new IllegalArgumentException("Ending time is null.");
+    }
     this.endingTime = endingTime;
+    if(date == null)
+    {
+      throw new IllegalArgumentException("Date is null.");
+    }
     this.date = date;
   }
 
@@ -73,8 +95,15 @@ public class ParkingSpace implements Serializable
 
   @Override public String toString()
   {
-    return "ParkingSpace{" + "isOccupied=" + isOccupied
-        + ", nameOfParkingSpace='" + nameOfParkingSpace + '\'' + '}';
+    String all = "Parking space: " + nameOfParkingSpace;
+    if(isOccupied)
+    {
+      all+= ", is occupied from " + startingTime + " to " + endingTime + ", on " + date;
+    }
+    else {
+      all+= ", is not occupied";
+    }
+    return all;
   }
 
   //TODO: After finishing the project, delete "boolean isOcuppied" for every class.

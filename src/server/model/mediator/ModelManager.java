@@ -26,7 +26,7 @@ public class ModelManager implements Model
     {
       if(parkingLot.getParkingSpace(i).equals(parkingSpace) && !(parkingSpace.getIsOccupied()))
       {
-        parkingLot.getParkingSpace(i).setOccupied(true, userName,startingTime,endingTime,date);
+        parkingLot.getParkingSpace(i).setOccupied(userName,startingTime,endingTime,date);
       }
     }
   }

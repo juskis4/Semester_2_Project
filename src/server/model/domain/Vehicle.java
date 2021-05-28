@@ -8,9 +8,7 @@ public class Vehicle
 
   public Vehicle(String licenseNo, String color, String carBrand)
   {
-    this.LicenseNo = licenseNo;
-    this.Color = color;
-    this.CarBrand = carBrand;
+    changeCar(licenseNo,color,carBrand);
   }
 
   public String getCarBrand()
@@ -30,14 +28,25 @@ public class Vehicle
 
   public void changeCar(String licenseNo, String color, String carBrand)
   {
-    this.LicenseNo = licenseNo;
-    this.Color = color;
-    this.CarBrand = carBrand;
+    if(licenseNo == null)
+    {
+      throw new IllegalArgumentException("License number is null.");
+    }
+    else this.LicenseNo = licenseNo;
+    if(color == null)
+    {
+      throw new IllegalArgumentException("Color is null");
+    }
+    else this.Color = color;
+    if(carBrand == null)
+    {
+      throw new IllegalArgumentException("Car brand is null");
+    }
+    else this.CarBrand = carBrand;
   }
 
   @Override public String toString()
   {
-    return "Vehicle{" + "LicenseNo='" + LicenseNo + '\'' + ", Color='" + Color
-        + '\'' + ", CarBrand='" + CarBrand + '\'' + '}';
+    return "Vehicle " + CarBrand + ", license no: " + LicenseNo + ", color: " + Color;
   }
 }

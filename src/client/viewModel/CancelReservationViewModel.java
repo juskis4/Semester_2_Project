@@ -87,7 +87,7 @@ public class CancelReservationViewModel implements PropertyChangeListener
     public void onCancel()
     {
         try {
-            model.getParkingLot().getParkingSpaceByName(parkingSpaceFieldProperty.get()).setOccupied(false,null, null, null, null);
+            model.getParkingLot().getParkingSpaceByName(parkingSpaceFieldProperty.get()).setNotOccupied();
         }
         catch (RemoteException ignored)
         {
