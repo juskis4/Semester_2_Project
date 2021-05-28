@@ -1,6 +1,7 @@
 package client.viewModel;
 
 import client.model.Model;
+import client.view.SupportViewController;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -15,6 +16,7 @@ public class ViewModelFactory
   private WorkingHoursViewModel workingHoursViewModel;
   private ReserveViewModel reserveViewModel;
   private CancelReservationViewModel cancelReservationViewModel;
+  private SupportViewModel supportViewModel;
 
   public ViewModelFactory(Model model) throws RemoteException, SQLException
   {
@@ -26,6 +28,7 @@ public class ViewModelFactory
     this.workingHoursViewModel = new WorkingHoursViewModel(model);
     this.reserveViewModel = new ReserveViewModel(model);
     this.cancelReservationViewModel = new CancelReservationViewModel(model);
+    this.supportViewModel = new SupportViewModel(model);
   }
 
   public ReserveViewModel getReserveViewModel()
@@ -67,5 +70,10 @@ public class ViewModelFactory
   public CancelReservationViewModel getCancelReservationViewModel()
   {
     return cancelReservationViewModel;
+  }
+
+  public SupportViewModel getSupportViewModel()
+  {
+    return supportViewModel;
   }
 }

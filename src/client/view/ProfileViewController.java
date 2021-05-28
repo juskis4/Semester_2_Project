@@ -95,4 +95,10 @@ public class ProfileViewController {
     {
         viewHandler.openView("ParkingLotView");
     }
+
+    @FXML
+    private void onSupport()
+    {
+        viewHandler.openView("SupportView");
+    }
 }
