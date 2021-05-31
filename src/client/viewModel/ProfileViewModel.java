@@ -10,6 +10,10 @@ import java.beans.PropertyChangeListener;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
+/**
+ * A class that represents the viewmodel of Profile window and it is part of MVVM pattern.
+ * This viewmodel is a listener to client model, as a Observer pattern part.
+ */
 public class ProfileViewModel implements PropertyChangeListener {
 
     public static final String USER_NULL = "Not set";
@@ -23,7 +27,12 @@ public class ProfileViewModel implements PropertyChangeListener {
 
     private Model model;
 
-    public ProfileViewModel(Model model) throws RemoteException, SQLException
+    /**
+     * A constructor that sets the label text for every StringProperty variable.
+     * When profile viewmodel is created, informations about user are set to null.
+     * @param model client model
+     */
+    public ProfileViewModel(Model model)
     {
 
         this.model = model;
@@ -37,6 +46,11 @@ public class ProfileViewModel implements PropertyChangeListener {
         errorLabelProperty = new SimpleStringProperty("");
     }
 
+    /**
+     * Resets all labels and gets information about user's vehicle license plate, first and second name from model.
+     * @throws RemoteException
+     * @throws SQLException
+     */
     public void reset() throws RemoteException, SQLException
     {
         userNameProperty = new SimpleStringProperty(model.getUser().getUsername());
@@ -48,46 +62,88 @@ public class ProfileViewModel implements PropertyChangeListener {
         errorLabelProperty = new SimpleStringProperty("");
     }
 
+    /**
+     * Gets the username.
+     * @return
+     */
     public StringProperty getUserNameProperty()
     {
         return userNameProperty;
     }
 
+    /**
+     * Gets the vehicle license number.
+     * @return
+     */
     public StringProperty getLicenseNoProperty()
     {
         return licenseNoProperty;
     }
+
+    /**
+     * Gets the actual first name.
+     * @return
+     */
 
     public StringProperty getActualFirstNameProperty()
     {
         return actualFirstNameProperty;
     }
 
+    /**
+     * Gets the actual second name.
+     * @return
+     */
+
     public StringProperty getActualSecondNameProperty()
     {
         return actualSecondNameProperty;
     }
+
+    /**
+     * Gets informations about errors, if any.
+     * @return
+     */
 
     public StringProperty getErrorLabelProperty()
     {
         return errorLabelProperty;
     }
 
+    /**
+     * Gets the first name that has to be set.
+     * @return
+     */
     public StringProperty getFirstNameProperty()
     {
         return firstNameProperty;
     }
+
+    /**
+     * Gets the second name that has to be set.
+     * @return
+     */
 
     public StringProperty getSecondNameProperty()
     {
         return secondNameProperty;
     }
 
+    /**
+     * A method that register the first and last name of user. All informations are stored in database.
+     */
+
     public void changeNames()
     {
         model.registerFirstAndLastName(firstNameProperty.get(),secondNameProperty.get(),userNameProperty.get());
     }
 
+    /**
+     * Method part of Observer pattern, 3 statements.
+     * It gets the customer's name once "Login" event is fired, if uset registers his vehicle, then the number plate is set here.
+     * If names, by "FirstLastNames" event, are changed, then actual first and second name are stored in database.
+     * @param evt
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         switch (evt.getPropertyName())
