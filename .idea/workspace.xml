@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a34f4303-2cbb-4b5a-a844-4cacdd7d10f4" name="Default Changelist" comment="" />
+    <list default="true" id="a34f4303-2cbb-4b5a-a844-4cacdd7d10f4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/client/model/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/ModelManager.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,7 +19,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../postgresql-42.2.20 (1).jar" />
+    <property name="last_opened_file_path" value="$USER_HOME$/postgresql-42.2.20 (1).jar" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
