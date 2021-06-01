@@ -46,7 +46,7 @@ public class ModelManager implements Model {
     @Override
     public boolean login(String userName, String password) {
         try {
-            this.user = client.getUserByUserName(userName);
+            setUser(userName);
             if(user.getFirstname() != null)
             {
                 support.firePropertyChange("FirstLastNames", user.getFirstname(), user.getLastname());
@@ -62,7 +62,10 @@ public class ModelManager implements Model {
         }
         return false;
     }
-
+    private void setUser(String username) throws RemoteException, SQLException
+    {
+        this.user = client.getUserByUserName(username);
+    }
     /**
      * Calling register first and last name method, setting user first, last names and firing them.
      * @param firstName users first name.
