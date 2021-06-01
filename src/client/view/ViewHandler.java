@@ -26,7 +26,7 @@ public class ViewHandler {
     private WorkingHoursViewController workingHoursViewController;
     private ReserveViewController reserveViewController;
     private CancelReservationViewController cancelReservationViewController;
-
+    private SupportViewController supportViewController;
     /**
      * Constructor that initializes view model factory.
      * @param viewModelFactory
@@ -85,6 +85,10 @@ public class ViewHandler {
 
                 case "CancelReservationView":
                     root = loadCancelReservationView("CancelReservationView.fxml");
+                    break;
+
+                case "SupportView":
+                    root = loadSupportViewController("SupportView.fxml");
                     break;
             }
 
@@ -279,4 +283,24 @@ public class ViewHandler {
         }
         return cancelReservationViewController.getRoot();
     }
+    /**
+     * Loader for support view.
+     * @param fxmlFile view name.
+     * @return returning view root.
+     */
+    public Region loadSupportViewController(String fxmlFile) {
+        if (supportViewController == null) {
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(fxmlFile));
+                Region root = loader.load();
+                supportViewController = loader.getController();
+                supportViewController.init(this, viewModelFactory.getSupportViewModel(), root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return supportViewController.getRoot();
+    }
+
 }
