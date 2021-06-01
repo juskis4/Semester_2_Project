@@ -48,22 +48,22 @@
                   <Font name="Malgun Gothic Semilight" size="26.0" />
                </font>
             </Text>
-            <Text fill="#262626" layoutX="238.0" layoutY="125.0" onMouseClicked="#onWorkingHours" strokeType="OUTSIDE" strokeWidth="0.0" text="If you have any problems or question call this number" wrappingWidth="429.60010471344">
+            <Text fill="#262626" layoutX="238.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="If you have any problems or question call this number" wrappingWidth="429.60010471344">
                <font>
                   <Font name="Malgun Gothic Semilight" size="18.0" />
                </font>
             </Text>
-            <Text fill="#262626" layoutX="238.0" layoutY="160.0" onMouseClicked="#onWorkingHours" strokeType="OUTSIDE" strokeWidth="0.0" text="+45 758 9183 382" wrappingWidth="429.60010471344">
+            <Text fill="#262626" layoutX="238.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+45 758 9183 382" wrappingWidth="429.60010471344">
                <font>
                   <Font name="Malgun Gothic Semilight" size="18.0" />
                </font>
             </Text>
-            <Text fill="#262626" layoutX="238.0" layoutY="284.0" onMouseClicked="#onWorkingHours" strokeType="OUTSIDE" strokeWidth="0.0" text="You can also submit a complain here!" wrappingWidth="429.60010471344">
+            <Text fill="#262626" layoutX="238.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can also submit a complain here!" wrappingWidth="429.60010471344">
                <font>
                   <Font name="Malgun Gothic Semilight" size="18.0" />
                </font>
             </Text>
-            <Button layoutX="609.0" layoutY="363.0" mnemonicParsing="false"  style="-fx-background-color: F7F9F1;" text="Submit">
+            <Button layoutX="609.0" layoutY="363.0" mnemonicParsing="false" style="-fx-background-color: F7F9F1;" text="Submit">
                <font>
                   <Font name="Malgun Gothic Semilight" size="13.0" />
                </font>
