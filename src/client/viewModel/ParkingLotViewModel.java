@@ -5,7 +5,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import server.model.domain.ParkingLot;
 import utility.observer.javaobserver.PropertyChangeSubject;
 import utility.observer.javaobserver.UnnamedPropertyChangeSubject;
@@ -47,8 +46,6 @@ public class ParkingLotViewModel implements PropertyChangeListener, UnnamedPrope
     private StringProperty spaceD6;
 
     private StringProperty errorLabel;
-
-
 
     private Model model;
     private String userName;

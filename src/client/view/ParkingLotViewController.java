@@ -3,7 +3,6 @@ package client.view;
 import client.viewModel.ParkingLotViewModel;
 import client.viewModel.RegisterViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 import server.model.domain.ParkingLot;
 import javafx.scene.control.Label;
@@ -68,7 +67,6 @@ public class ParkingLotViewController implements PropertyChangeListener {
     @FXML
     private Label errorLabel;
 
-
     private ViewHandler viewHandler;
     private Region root;
     private ParkingLotViewModel viewModel;
@@ -115,7 +113,6 @@ public class ParkingLotViewController implements PropertyChangeListener {
         spaceD4.textProperty().bindBidirectional(viewModel.spaceD4Property());
         spaceD5.textProperty().bindBidirectional(viewModel.spaceD5Property());
         spaceD6.textProperty().bindBidirectional(viewModel.spaceD6Property());
-
 
         setColour(spaceA1, "A1");
         setColour(spaceA2, "A2");
@@ -305,12 +302,6 @@ public class ParkingLotViewController implements PropertyChangeListener {
     private void onWorkingHoursClicked()
     {
         viewHandler.openView("WorkingHoursView");
-    }
-
-    @FXML
-    private void onSupport()
-    {
-        viewHandler.openView("SupportView");
     }
 
     /**
