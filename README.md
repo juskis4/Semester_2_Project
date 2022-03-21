@@ -36,7 +36,7 @@ need to type in all the information every time I want to reserve a space.
 
 **High Priority**
 
-As a user, I want to see available parking spots, so that I would be able to
+6. As a user, I want to see available parking spots, so that I would be able to
 reserve it.
 7. As a user, I want to see occupied parking spots, so that I would see if any spots
 are left.
